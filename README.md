@@ -34,6 +34,19 @@ dying, and being replaced by blank-memory newborns. Free to run.
 
 That's it — no server, no bill, nothing to keep running on your own machine.
 
+6. **Open that URL and paste your Groq key** into the box at the top —
+   saved only in your browser, used for your live conversations.
+
+## Want real RPG art instead of the built-in placeholder look?
+
+The town works immediately with no extra steps, using simple original
+pixel-styled CSS shapes. For actual game-quality sprites, see
+`assets/README.md` — it points you to **Kenney.nl**, a genuinely free
+(CC0/public domain) asset source made for exactly this kind of top-down RPG
+town, and explains exactly which files to download and where to drop them.
+No code changes needed; the page detects what's present and upgrades
+automatically.
+
 ## How the pieces work
 - `data/agents-seed.json` — the starting 16 agents, staggered across life
   stages so the town never ages in synchronized "waves."

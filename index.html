@@ -21,7 +21,7 @@
   .toolBtn{border:1px solid #ffffff22;background:var(--panel);color:var(--ink);border-radius:8px;padding:6px 12px;font-size:12.5px;cursor:pointer;}
 
   .viewport{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.4);background:#243a26;}
-  .world{position:absolute;width:280%;height:240%;}
+  .world{position:absolute;width:280%;height:240%;transition:left 0.16s linear, top 0.16s linear;background-repeat:repeat;}
   .region{position:absolute;border-radius:16px;}
   .road{position:absolute;background:#c9a876;opacity:.8;border-radius:6px;}
   .zoneWrap{position:absolute;}
@@ -31,10 +31,13 @@
   .zoneLabel{position:absolute;bottom:-15px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;color:#2a2010;background:#ffffffc0;padding:1px 5px;border-radius:6px;white-space:nowrap;}
   .regionLabel{position:absolute;top:6px;left:10px;font-size:11px;font-weight:800;color:#ffffffb0;letter-spacing:.5px;text-transform:uppercase;}
 
-  .sprite{position:absolute;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:18px;transition:left 2.2s ease-in-out, top 2.2s ease-in-out;cursor:pointer;z-index:5;}
+  .sprite{position:absolute;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:18px;transition:left 2.2s ease-in-out, top 2.2s ease-in-out;cursor:pointer;z-index:5;image-rendering:pixelated;}
   .sprite.extra{cursor:default;opacity:.7;font-size:15px;z-index:2;transition:left 4.5s ease-in-out, top 4.5s ease-in-out;}
+  .sprite.player{z-index:6;transition:left 0.16s linear, top 0.16s linear;}
+  .sprite img{width:100%;height:100%;object-fit:contain;image-rendering:pixelated;pointer-events:none;}
   .sprite .under{position:absolute;bottom:-2px;width:18px;height:3px;border-radius:2px;}
   .sprite .bubble{position:absolute;top:-20px;left:50%;transform:translateX(-50%);white-space:nowrap;background:var(--panel);border:1px solid #ffffff22;font-size:9px;padding:2px 5px;border-radius:6px;pointer-events:none;opacity:0;transition:opacity .3s;z-index:10;}
+  .zoneWrap img.buildingImg{width:100%;height:100%;object-fit:contain;image-rendering:pixelated;}
 
   .legend{display:flex;gap:14px;margin-top:10px;font-size:12px;color:#c9c2a8;flex-wrap:wrap;}
   .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;}
@@ -94,9 +97,9 @@
   </div>
   <div class="controls">
     <div class="dpad">
-      <span></span><button onclick="move(0,-1)">↑</button><span></span>
-      <button onclick="move(-1,0)">←</button><span></span><button onclick="move(1,0)">→</button>
-      <span></span><button onclick="move(0,1)">↓</button><span></span>
+      <span></span><button onmousedown="startHold(0,-1)" onmouseup="stopHold()" onmouseleave="stopHold()" ontouchstart="startHold(0,-1)" ontouchend="stopHold()">↑</button><span></span>
+      <button onmousedown="startHold(-1,0)" onmouseup="stopHold()" onmouseleave="stopHold()" ontouchstart="startHold(-1,0)" ontouchend="stopHold()">←</button><span></span><button onmousedown="startHold(1,0)" onmouseup="stopHold()" onmouseleave="stopHold()" ontouchstart="startHold(1,0)" ontouchend="stopHold()">→</button>
+      <span></span><button onmousedown="startHold(0,1)" onmouseup="stopHold()" onmouseleave="stopHold()" ontouchstart="startHold(0,1)" ontouchend="stopHold()">↓</button><span></span>
     </div>
     <button id="talkBtn" onclick="tryTalk()">💬<br>Talk</button>
   </div>
@@ -270,7 +273,60 @@ async function loadTown(){
   TOWN.agents.forEach(a=>{ const z=zoneById("home_"+a.id); if(z) z.label=a.name+"'s house"; });
 }
 
-function buildingHTML(z){
+// ── Real-asset support (optional) ────────────────────────────────────────
+// Drop free CC0 Kenney sprites into assets/ (see assets/README.md) and the
+// town automatically switches from the CSS look to real art — no code
+// changes needed. If a file 404s, we silently fall back per-element.
+const AVAILABLE_ASSETS = new Set();
+function checkAsset(path){
+  return new Promise(resolve=>{
+    const img = new Image();
+    img.onload = ()=>{ AVAILABLE_ASSETS.add(path); resolve(true); };
+    img.onerror = ()=> resolve(false);
+    img.src = path;
+  });
+}
+const BUILDING_ASSET_FOR = {
+  cafe:"cafe", workshop:"workshop", academy:"academy", garden:"garden", market:"market", park:"park",
+  hall:"hall", gallery:"gallery", giftshop:"giftshop", terminal:"terminal", runway:"runway",
+  entrance:"entrance", corridor:"corridor", vault:"vault",
+};
+const HOUSE_VARIANTS = ["house1","house2","house3","house4"];
+async function preloadAssets(){
+  const checks = [];
+  checks.push(checkAsset("assets/tiles/ground.png"));
+  Object.values(BUILDING_ASSET_FOR).forEach(name=> checks.push(checkAsset(`assets/buildings/${name}.png`)));
+  HOUSE_VARIANTS.forEach(name=> checks.push(checkAsset(`assets/buildings/${name}.png`)));
+  checks.push(checkAsset("assets/characters/player.png"));
+  ["kid","teen","adult","senior"].forEach(name=> checks.push(checkAsset(`assets/characters/${name}.png`)));
+  [1,2,3,4].forEach(n=> checks.push(checkAsset(`assets/characters/extra${n}.png`)));
+  await Promise.all(checks);
+  if(AVAILABLE_ASSETS.has("assets/tiles/ground.png")){
+    document.getElementById("world").style.backgroundImage = "url(assets/tiles/ground.png)";
+  }
+}
+function buildingAssetFor(zoneId, index){
+  if(zoneId.startsWith("home_")){
+    const path = `assets/buildings/${HOUSE_VARIANTS[index % HOUSE_VARIANTS.length]}.png`;
+    return AVAILABLE_ASSETS.has(path) ? path : null;
+  }
+  const name = BUILDING_ASSET_FOR[zoneId];
+  if(!name) return null;
+  const path = `assets/buildings/${name}.png`;
+  return AVAILABLE_ASSETS.has(path) ? path : null;
+}
+function characterHTML(kind, emojiFallback){
+  const path = `assets/characters/${kind}.png`;
+  if(AVAILABLE_ASSETS.has(path)) return `<img src="${path}" alt="">`;
+  return emojiFallback;
+}
+
+function buildingHTML(z, index){
+  const asset = buildingAssetFor(z.id, index||0);
+  if(asset){
+    return `<img class="buildingImg" src="${asset}" alt="">
+      <div class="zoneLabel">${z.label||""}</div>`;
+  }
   return `<div class="roof" style="background:${shade(z.color,-18)}"></div>
     <div class="body" style="background:${z.color}"><div class="windows"></div></div>
     <div class="zoneLabel">${z.label||""}</div>`;
@@ -298,27 +354,29 @@ function renderWorld(){
     el.style.left=rd.x+"%"; el.style.top=rd.y+"%"; el.style.width=rd.w+"%"; el.style.height=rd.h+"%";
     world.appendChild(el);
   });
+  let houseIndex=0;
   ZONES.forEach(z=>{
     const wrap=document.createElement("div"); wrap.className="zoneWrap";
     wrap.style.left=z.x+"%"; wrap.style.top=z.y+"%"; wrap.style.width=z.w+"%"; wrap.style.height=z.h+"%";
-    wrap.innerHTML=buildingHTML(z);
+    wrap.innerHTML=buildingHTML(z, z.id.startsWith("home_") ? houseIndex++ : 0);
     world.appendChild(wrap);
   });
-  const p=document.createElement("div"); p.id="playerSprite"; p.className="sprite";
+  const p=document.createElement("div"); p.id="playerSprite"; p.className="sprite player";
   p.style.left=(player.x*100)+"%"; p.style.top=(player.y*100)+"%";
-  p.innerHTML=`🧑‍🎓<div class="under" style="background:var(--amber)"></div>`;
+  p.innerHTML=`${characterHTML("player","🧑‍🎓")}<div class="under" style="background:var(--amber)"></div>`;
   world.appendChild(p);
   TOWN.agents.forEach(a=>{
     const s=document.createElement("div"); s.id="sprite-"+a.id; s.className="sprite"; s.title=a.name;
     s.onclick=()=>openChat(a.id);
     const langColor=a.lang==="it"?"var(--it)":"var(--hi)";
-    s.innerHTML=`${emojiFor(a)}<div class="under" style="background:${langColor}"></div><div class="bubble" id="bubble-${a.id}"></div>`;
+    s.innerHTML=`${characterHTML(characterKind(a), emojiFor(a))}<div class="under" style="background:${langColor}"></div><div class="bubble" id="bubble-${a.id}"></div>`;
     world.appendChild(s);
   });
   extras=[];
   Object.entries(EXTRA_PER_REGION).forEach(([regionKey,n])=>{
     for(let i=0;i<n;i++){
-      const e=document.createElement("div"); e.className="sprite extra"; e.textContent=EXTRA_EMOJI[i%EXTRA_EMOJI.length];
+      const e=document.createElement("div"); e.className="sprite extra";
+      e.innerHTML = characterHTML(`extra${(i%4)+1}`, EXTRA_EMOJI[i%EXTRA_EMOJI.length]);
       const pos=randomPointInRegion(regionKey);
       e.style.left=(pos.x*100)+"%"; e.style.top=(pos.y*100)+"%";
       e.dataset.region = regionKey;
@@ -338,6 +396,12 @@ function emojiFor(a){
   if(a.stage==="senior"||a.stage==="elder") return a.lang==="hi"?"🧓":"👴";
   const jobEmoji={cafe:"👩‍🍳",workshop:"🧑‍🔧",garden:"🧘",market:"🧑‍🌾",park:"🧑‍🎨"};
   return jobEmoji[a.job]||"🧑";
+}
+function characterKind(a){
+  if(a.stage==="kid") return "kid";
+  if(a.stage==="teen") return "teen";
+  if(a.stage==="senior"||a.stage==="elder") return "senior";
+  return "adult";
 }
 function updateCamera(){
   const vp = document.getElementById("viewport").getBoundingClientRect();
@@ -372,13 +436,25 @@ setInterval(()=>{
   extras.forEach(e=>{ const pos=randomPointInRegion(e.dataset.region); e.style.left=(pos.x*100)+"%"; e.style.top=(pos.y*100)+"%"; });
 }, 6000);
 
+// Real tile-grid movement: one fixed-size step per press, camera and
+// character animate in perfect lockstep (same duration), and no new step
+// can start until the current one finishes — classic Pokémon/Zelda feel.
+const TILE_STEP = 1/34;      // world divided into ~34 tiles across
+const MOVE_MS = 160;         // must match the .sprite.player / .world CSS transition
+let isMoving = false;
+
 function move(dx,dy){
-  if(active) return;
-  player.x=Math.min(0.98,Math.max(0.01,player.x+dx*0.018));
-  player.y=Math.min(0.98,Math.max(0.01,player.y+dy*0.018));
-  const p=document.getElementById("playerSprite");
-  p.style.left=(player.x*100)+"%"; p.style.top=(player.y*100)+"%";
-  updateCamera(); updateTalkBtn();
+  if(active || isMoving) return;
+  const nx = Math.min(0.98, Math.max(0.01, player.x + dx*TILE_STEP));
+  const ny = Math.min(0.98, Math.max(0.01, player.y + dy*TILE_STEP));
+  if(nx===player.x && ny===player.y) return; // hit world edge, no-op
+  isMoving = true;
+  player.x = nx; player.y = ny;
+  const p = document.getElementById("playerSprite");
+  p.style.left = (player.x*100)+"%"; p.style.top = (player.y*100)+"%";
+  updateCamera();
+  updateTalkBtn();
+  setTimeout(()=>{ isMoving=false; }, MOVE_MS);
 }
 document.addEventListener("keydown",(e)=>{
   const map={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]};
@@ -386,10 +462,9 @@ document.addEventListener("keydown",(e)=>{
   else if(!active && (e.key==="e"||e.key===" ")) tryTalk();
   else if(e.key==="Escape"){ closeChat(); closeSchedules(); }
 });
-let heldDir=null, heldInterval=null;
-function startHold(dx,dy){ move(dx,dy); clearInterval(heldInterval); heldInterval=setInterval(()=>move(dx,dy),140); }
+let heldInterval=null;
+function startHold(dx,dy){ move(dx,dy); clearInterval(heldInterval); heldInterval=setInterval(()=>move(dx,dy), MOVE_MS+20); }
 function stopHold(){ clearInterval(heldInterval); }
-document.querySelectorAll(".dpad button").forEach(()=>{}); // (click-based move already wired via onclick)
 
 function nearestAgent(){
   let best=null,bestD=999;
@@ -528,7 +603,7 @@ function handleModelReply(raw){
   else if(!currentQuest) qEl.style.display="none";
 }
 
-loadTown().then(renderWorld);
+Promise.all([loadTown(), preloadAssets()]).then(renderWorld);
 </script>
 </body>
 </html>
