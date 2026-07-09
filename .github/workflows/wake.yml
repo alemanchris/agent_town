@@ -1,0 +1,33 @@
+name: Wake the Town
+
+on:
+  schedule:
+    # Mon, Wed, Fri at 08:00 UTC — adjust to taste
+    - cron: "0 8 * * 1,3,5"
+  workflow_dispatch: {} # lets you trigger it manually from the Actions tab too
+
+permissions:
+  contents: write
+
+jobs:
+  wake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run wake cycle
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: node scripts/wake_cycle.js
+
+      - name: Commit updated town state
+        run: |
+          git config user.name "agent-town-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/agents.json
+          git diff --cached --quiet && echo "No changes" || git commit -m "Wake cycle: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push
