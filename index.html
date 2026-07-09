@@ -286,34 +286,48 @@ function checkAsset(path){
     img.src = path;
   });
 }
-const BUILDING_ASSET_FOR = {
-  cafe:"cafe", workshop:"workshop", academy:"academy", garden:"garden", market:"market", park:"park",
-  hall:"hall", gallery:"gallery", giftshop:"giftshop", terminal:"terminal", runway:"runway",
-  entrance:"entrance", corridor:"corridor", vault:"vault",
+// Building look: {wall, roof} pairs. Prefers the richer "RPG Base" pack;
+// falls back to the urban pack's flat wall texture; falls back to plain
+// color if neither is present. Nothing here requires renaming your files.
+const BUILDING_STYLE = {
+  cafe:"cream", market:"cream", garden:"cream",
+  workshop:"stone", terminal:"stone", entrance:"stone", corridor:"stone", vault:"stone", runway:"stone",
+  academy:"dark", hall:"dark", gallery:"dark", giftshop:"dark", park:"dark",
 };
-const HOUSE_VARIANTS = ["house1","house2","house3","house4"];
+const HOUSE_STYLES = ["cream","stone","dark","cream"];
+const STYLE_ASSETS = {
+  cream: { wall:"_wall_cream", roof:"_roof_brown", fallbackWall:"_wall_tan" },
+  stone: { wall:"_wall_stone", roof:"_roof_dark",  fallbackWall:"_wall_gray" },
+  dark:  { wall:"_wall_stone", roof:"_roof_brown", fallbackWall:"_wall_red" },
+};
 async function preloadAssets(){
-  const checks = [];
-  checks.push(checkAsset("assets/tiles/ground.png"));
-  Object.values(BUILDING_ASSET_FOR).forEach(name=> checks.push(checkAsset(`assets/buildings/${name}.png`)));
-  HOUSE_VARIANTS.forEach(name=> checks.push(checkAsset(`assets/buildings/${name}.png`)));
+  const checks = [
+    checkAsset("assets/tiles/grass.png"), checkAsset("assets/tiles/dirt.png"), checkAsset("assets/tiles/water.png"),
+    checkAsset("assets/tiles/ground.png"),
+    checkAsset("assets/buildings/_wall_cream.png"), checkAsset("assets/buildings/_wall_stone.png"),
+    checkAsset("assets/buildings/_roof_brown.png"), checkAsset("assets/buildings/_roof_dark.png"),
+    checkAsset("assets/buildings/_door_tan.png"),
+    checkAsset("assets/tiles/tree_green.png"), checkAsset("assets/tiles/tree_orange.png"),
+  ];
+  ["_wall_tan","_wall_gray","_wall_red","_wall_red2"].forEach(name=> checks.push(checkAsset(`assets/buildings/${name}.png`)));
   checks.push(checkAsset("assets/characters/player.png"));
   ["kid","teen","adult","senior"].forEach(name=> checks.push(checkAsset(`assets/characters/${name}.png`)));
   [1,2,3,4].forEach(n=> checks.push(checkAsset(`assets/characters/extra${n}.png`)));
   await Promise.all(checks);
-  if(AVAILABLE_ASSETS.has("assets/tiles/ground.png")){
-    document.getElementById("world").style.backgroundImage = "url(assets/tiles/ground.png)";
+  const world = document.getElementById("world");
+  if(AVAILABLE_ASSETS.has("assets/tiles/grass.png")){
+    world.style.backgroundImage = "url(assets/tiles/grass.png)"; world.style.backgroundSize = "96px 96px";
+  } else if(AVAILABLE_ASSETS.has("assets/tiles/ground.png")){
+    world.style.backgroundImage = "url(assets/tiles/ground.png)"; world.style.backgroundSize = "64px 64px";
   }
 }
-function buildingAssetFor(zoneId, index){
-  if(zoneId.startsWith("home_")){
-    const path = `assets/buildings/${HOUSE_VARIANTS[index % HOUSE_VARIANTS.length]}.png`;
-    return AVAILABLE_ASSETS.has(path) ? path : null;
-  }
-  const name = BUILDING_ASSET_FOR[zoneId];
-  if(!name) return null;
-  const path = `assets/buildings/${name}.png`;
-  return AVAILABLE_ASSETS.has(path) ? path : null;
+function pathExists(name){ return AVAILABLE_ASSETS.has(`assets/buildings/${name}.png`) ? `assets/buildings/${name}.png` : null; }
+function textureFor(zoneId, index){
+  const styleKey = zoneId.startsWith("home_") ? HOUSE_STYLES[index % HOUSE_STYLES.length] : (BUILDING_STYLE[zoneId] || "stone");
+  const s = STYLE_ASSETS[styleKey];
+  const wall = pathExists(s.wall) || pathExists(s.fallbackWall);
+  const roof = pathExists(s.roof) || wall;
+  return wall ? {wall, roof} : null;
 }
 function characterHTML(kind, emojiFallback){
   const path = `assets/characters/${kind}.png`;
@@ -322,9 +336,10 @@ function characterHTML(kind, emojiFallback){
 }
 
 function buildingHTML(z, index){
-  const asset = buildingAssetFor(z.id, index||0);
-  if(asset){
-    return `<img class="buildingImg" src="${asset}" alt="">
+  const tex = textureFor(z.id, index||0);
+  if(tex){
+    return `<div class="roof" style="background-image:url(${tex.roof});background-repeat:repeat;background-size:48px 48px;"></div>
+      <div class="body" style="background-image:url(${tex.wall});background-repeat:repeat;background-size:48px 48px;"></div>
       <div class="zoneLabel">${z.label||""}</div>`;
   }
   return `<div class="roof" style="background:${shade(z.color,-18)}"></div>
@@ -385,6 +400,29 @@ function renderWorld(){
   });
   tick(true);
   updateCamera();
+  renderTrees();
+}
+function renderTrees(){
+  const world = document.getElementById("world");
+  const treeSpots = [
+    {zone:"garden", n:4}, {zone:"park", n:5},
+  ];
+  const treeImgs = ["assets/tiles/tree_green.png","assets/tiles/tree_orange.png"];
+  const usable = treeImgs.filter(p=>AVAILABLE_ASSETS.has(p));
+  if(!usable.length) return;
+  treeSpots.forEach(spot=>{
+    const z = zoneById(spot.zone); if(!z) return;
+    for(let i=0;i<spot.n;i++){
+      const t = document.createElement("div");
+      t.style.position="absolute";
+      t.style.width="5%"; t.style.height="9%";
+      t.style.left = (z.x + 5 + Math.random()*(z.w-10)) + "%";
+      t.style.top = (z.y + 5 + Math.random()*(z.h-14)) + "%";
+      t.style.zIndex = "3"; t.style.pointerEvents="none";
+      t.innerHTML = `<img src="${usable[i%usable.length]}" style="width:100%;height:100%;object-fit:contain;image-rendering:pixelated;" alt="">`;
+      world.appendChild(t);
+    }
+  });
 }
 function randomPointInRegion(key){
   const r = REGIONS[key];
