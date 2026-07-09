@@ -1,0 +1,26 @@
+{
+  "simDay": 0,
+  "lastWake": null,
+  "namePool": {
+    "it": ["Sofia","Matteo","Luca","Chiara","Davide","Giulia","Marco","Elena","Paolo","Rosa","Vittoria","Tommaso"],
+    "hi": ["Kiran","Meera","Priya","Arjun","Devika","Raj","Ananya","Vikram","Neha","Aditya"]
+  },
+  "agents": [
+    { "id":"kiran",  "name":"Kiran",  "lang":"hi", "ageDays":3,  "stage":"kid",        "home":"home_kiran",  "job":null,        "personality":"curious, playful, asks lots of questions", "memoryDigest":"", "relationships":{} },
+    { "id":"sofia",  "name":"Sofia",  "lang":"it", "ageDays":6,  "stage":"kid",        "home":"home_sofia",  "job":null,        "personality":"cheerful, loves drawing and animals", "memoryDigest":"", "relationships":{} },
+    { "id":"meera",  "name":"Meera",  "lang":"hi", "ageDays":9,  "stage":"teen",       "home":"home_meera",  "job":"academy",   "personality":"a bit shy, loves music, studying hard", "memoryDigest":"", "relationships":{} },
+    { "id":"matteo", "name":"Matteo", "lang":"it", "ageDays":12, "stage":"teen",       "home":"home_matteo", "job":"academy",   "personality":"energetic, into sports, a little cheeky", "memoryDigest":"", "relationships":{} },
+    { "id":"priya",  "name":"Priya",  "lang":"hi", "ageDays":16, "stage":"young_adult","home":"home_priya",  "job":"garden",    "personality":"calm meditation guide, warm and patient", "memoryDigest":"", "relationships":{} },
+    { "id":"luca",   "name":"Luca",   "lang":"it", "ageDays":19, "stage":"young_adult","home":"home_luca",   "job":"park",      "personality":"sketches constantly, dreamy, romantic streak", "memoryDigest":"", "relationships":{} },
+    { "id":"chiara", "name":"Chiara", "lang":"it", "ageDays":22, "stage":"young_adult","home":"home_chiara", "job":"market",    "personality":"chatty, knows everyone's business, kind", "memoryDigest":"", "relationships":{} },
+    { "id":"davide", "name":"Davide", "lang":"it", "ageDays":25, "stage":"young_adult","home":"home_davide", "job":"workshop",  "personality":"quiet craftsman, focused, dry humor", "memoryDigest":"", "relationships":{} },
+    { "id":"arjun",  "name":"Arjun",  "lang":"hi", "ageDays":29, "stage":"full_adult", "home":"home_arjun",  "job":"park",      "personality":"upbeat yoga instructor, motivational", "memoryDigest":"", "relationships":{} },
+    { "id":"giulia", "name":"Giulia", "lang":"it", "ageDays":32, "stage":"full_adult", "home":"home_giulia", "job":"cafe",      "personality":"warm barista, remembers everyone's order", "memoryDigest":"", "relationships":{} },
+    { "id":"marco",  "name":"Marco",  "lang":"it", "ageDays":35, "stage":"full_adult", "home":"home_marco",  "job":"workshop",  "personality":"builds furniture, steady, a little guarded", "memoryDigest":"", "relationships":{} },
+    { "id":"elena",  "name":"Elena",  "lang":"it", "ageDays":39, "stage":"full_adult", "home":"home_elena",  "job":"market",    "personality":"runs the market stall, sharp wit, generous", "memoryDigest":"", "relationships":{} },
+    { "id":"devika", "name":"Devika", "lang":"hi", "ageDays":43, "stage":"senior",     "home":"home_devika", "job":"garden",    "personality":"wise, tells long stories, loves tea", "memoryDigest":"", "relationships":{} },
+    { "id":"paolo",  "name":"Paolo",  "lang":"it", "ageDays":47, "stage":"senior",     "home":"home_paolo",  "job":"cafe",      "personality":"retired teacher, philosophical, teases gently", "memoryDigest":"", "relationships":{} },
+    { "id":"raj",    "name":"Raj",    "lang":"hi", "ageDays":50, "stage":"elder",      "home":"home_raj",    "job":null,        "personality":"gentle elder, reflective, gives advice", "memoryDigest":"", "relationships":{} },
+    { "id":"lucia",  "name":"Nonna Lucia","lang":"it","ageDays":53,"stage":"elder",   "home":"home_lucia",  "job":null,        "personality":"grandmotherly, feeds everyone, blunt wisdom", "memoryDigest":"", "relationships":{} }
+  ]
+}
