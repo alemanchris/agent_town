@@ -46,6 +46,12 @@
   .dpad button{border:none;border-radius:10px;background:#3a4a3d;color:var(--ink);font-size:18px;cursor:pointer;}
   #talkBtn{width:78px;height:78px;border-radius:18px;border:none;font-weight:800;cursor:pointer;background:#3a4a3d;color:#8a8a7a;}
   #talkBtn.ready{background:var(--amber);color:#2a1f10;}
+  #enterBtn{width:78px;height:78px;border-radius:18px;border:none;font-weight:800;cursor:pointer;background:#3a4a3d;color:#8a8a7a;}
+  #enterBtn.ready{background:#c98a4a;color:#2a1f10;}
+
+  #interiorRoom{position:relative;width:100%;aspect-ratio:16/10;border-radius:14px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.4);background:#5a4632;}
+  #interiorRoom .furn{position:absolute;image-rendering:pixelated;}
+  #interiorRoom .furn img{width:100%;height:100%;object-fit:contain;image-rendering:pixelated;}
 
   #overlay,#scheduleOverlay{position:fixed;inset:0;background:rgba(8,10,8,.6);display:none;align-items:flex-end;justify-content:center;z-index:50;}
   #sheet,#scheduleSheet{width:100%;max-width:640px;max-height:85vh;background:var(--panel);border-radius:18px 18px 0 0;display:flex;flex-direction:column;box-shadow:0 -10px 50px rgba(0,0,0,.5);}
@@ -102,8 +108,16 @@
       <span></span><button onmousedown="startHold(0,1)" onmouseup="stopHold()" onmouseleave="stopHold()" ontouchstart="startHold(0,1)" ontouchend="stopHold()">↓</button><span></span>
     </div>
     <button id="talkBtn" onclick="tryTalk()">💬<br>Talk</button>
+    <button id="enterBtn" onclick="tryEnter()">🚪<br>Enter</button>
   </div>
   <div id="setupNote">Get a free key at console.groq.com — no card needed. Paste it above once; it stays in this browser.</div>
+</div>
+
+<div id="interiorScreen" style="display:none;">
+  <div id="interiorRoom"></div>
+  <div style="display:flex;justify-content:center;margin-top:14px;">
+    <button class="toolBtn" onclick="exitBuilding()">🚪 Step back outside</button>
+  </div>
 </div>
 
 <div id="overlay" onclick="closeChat(event)">
@@ -173,15 +187,20 @@ const ZONES = [
   })),
 ];
 function zoneById(id){ return ZONES.find(z=>z.id===id); }
-const STEP_PX = 48; // real pixel size of one grid tile — shared by player movement, NPC placement, and adjacency checks
+// The grid is derived from fixed constants (matching the .world CSS), not
+// live DOM measurement — this guarantees the player and every NPC land on
+// the exact same grid regardless of load timing, resize, or zoom.
+const WORLD_W_PCT = 280, WORLD_H_PCT = 240; // must match .world width/height in CSS
+const VIEWPORT_ASPECT = 16/10;               // must match .viewport aspect-ratio
+const PIXEL_RATIO = (WORLD_H_PCT/WORLD_W_PCT) * (1/VIEWPORT_ASPECT); // worldHeightPx/worldWidthPx
+const STEP_Y_FRAC = 1/22;              // one grid step, as a fraction of world height
+const STEP_X_FRAC = STEP_Y_FRAC * PIXEL_RATIO; // equivalent real distance, as a fraction of world width
+
 function snapToGrid(fx, fy){
-  const world = document.getElementById("world");
-  if(!world) return {x:fx, y:fy};
-  const ww = world.offsetWidth, wh = world.offsetHeight;
-  if(!ww || !wh) return {x:fx, y:fy};
-  const stepXFrac = STEP_PX/ww, stepYFrac = STEP_PX/wh;
-  return { x: Math.round(fx/stepXFrac)*stepXFrac, y: Math.round(fy/stepYFrac)*stepYFrac };
+  return { x: Math.round(fx/STEP_X_FRAC)*STEP_X_FRAC, y: Math.round(fy/STEP_Y_FRAC)*STEP_Y_FRAC };
 }
+function gridCol(fx){ return Math.round(fx/STEP_X_FRAC); }
+function gridRow(fy){ return Math.round(fy/STEP_Y_FRAC); }
 function zoneCenter(id, seedOffset){
   const z = zoneById(id) || zoneById("home_"+id) || ZONES[0];
   const jitterX = ((seedOffset*37)%100)/100 * (z.w/100) * 0.5;
@@ -273,7 +292,7 @@ function scheduleFor(agent, minuteOfDay){
 // ── State ────────────────────────────────────────────────────────────────
 let TOWN=null, simMinute=8*60;
 const REAL_SECONDS_PER_GAME_MINUTE=(90*60)/(24*60);
-let player={x:0.2,y:0.2}, active=null, chatHistory={}, currentQuest=null, lastZoneOf={}, extras=[];
+let player=snapToGrid(0.2,0.2), active=null, chatHistory={}, currentQuest=null, lastZoneOf={}, extras=[];
 const EXTRA_PER_REGION={square:5,residential:8,museum:3,outskirts:4,dungeon:1};
 const EXTRA_EMOJI=["🚶","🧍","🧑‍🦱","🧑‍🦳","🐕","🚴"];
 
@@ -306,9 +325,9 @@ const BUILDING_STYLE = {
 };
 const HOUSE_STYLES = ["cream","stone","dark","cream"];
 const STYLE_ASSETS = {
-  cream: { wall:"_wall_cream", roof:"_roof_brown", fallbackWall:"_wall_tan" },
-  stone: { wall:"_wall_stone", roof:"_roof_dark",  fallbackWall:"_wall_gray" },
-  dark:  { wall:"_wall_stone", roof:"_roof_brown", fallbackWall:"_wall_red" },
+  cream: { wall:"_wall_tan",   roof:"_roof_brown", fallbackWall:"_wall_tan" },
+  stone: { wall:"_wall_gray",  roof:"_roof_dark",  fallbackWall:"_wall_gray" },
+  dark:  { wall:"_wall_red",   roof:"_roof_brown", fallbackWall:"_wall_red" },
 };
 async function preloadAssets(){
   const checks = [
@@ -320,6 +339,7 @@ async function preloadAssets(){
     checkAsset("assets/tiles/tree_green.png"), checkAsset("assets/tiles/tree_orange.png"),
   ];
   ["_wall_tan","_wall_gray","_wall_red","_wall_red2"].forEach(name=> checks.push(checkAsset(`assets/buildings/${name}.png`)));
+  ["floor_wood","rug","table","chair","bed","sofa","bookshelf","fireplace","cabinet","plant"].forEach(name=> checks.push(checkAsset(`assets/furniture/${name}.png`)));
   checks.push(checkAsset("assets/characters/player.png"));
   ["kid","teen","adult","senior"].forEach(name=> checks.push(checkAsset(`assets/characters/${name}.png`)));
   [1,2,3,4].forEach(n=> checks.push(checkAsset(`assets/characters/extra${n}.png`)));
@@ -415,23 +435,42 @@ function renderWorld(){
 function renderTrees(){
   const world = document.getElementById("world");
   const treeSpots = [
-    {zone:"garden", n:4}, {zone:"park", n:5},
+    {zone:"garden", n:5}, {zone:"park", n:6},
+    {zone:"square", n:8, border:true}, {zone:"residential", n:6, border:true},
+    {zone:"museum", n:3, border:true}, {zone:"outskirts", n:3, border:true},
   ];
   const treeImgs = ["assets/tiles/tree_green.png","assets/tiles/tree_orange.png"];
   const usable = treeImgs.filter(p=>AVAILABLE_ASSETS.has(p));
   if(!usable.length) return;
   treeSpots.forEach(spot=>{
-    const z = zoneById(spot.zone); if(!z) return;
+    const z = spot.border ? REGIONS[spot.zone] : zoneById(spot.zone);
+    if(!z) return;
     for(let i=0;i<spot.n;i++){
       const t = document.createElement("div");
       t.style.position="absolute";
-      t.style.width="5%"; t.style.height="9%";
-      t.style.left = (z.x + 5 + Math.random()*(z.w-10)) + "%";
-      t.style.top = (z.y + 5 + Math.random()*(z.h-14)) + "%";
+      t.style.width="4%"; t.style.height="7%";
+      // border trees hug the edge of the region; zone trees scatter inside it
+      const insetX = spot.border ? (Math.random()<0.5 ? 1 : z.w-5) : 5;
+      const insetY = spot.border ? Math.random()*(z.h-8) : 5;
+      t.style.left = (z.x + insetX + (spot.border?0:Math.random()*(z.w-10))) + "%";
+      t.style.top = (z.y + insetY + (spot.border?0:Math.random()*(z.h-14))) + "%";
       t.style.zIndex = "3"; t.style.pointerEvents="none";
       t.innerHTML = `<img src="${usable[i%usable.length]}" style="width:100%;height:100%;object-fit:contain;image-rendering:pixelated;" alt="">`;
       world.appendChild(t);
     }
+  });
+  renderDoorMarkers(world);
+}
+function renderDoorMarkers(world){
+  ZONES.forEach(z=>{
+    const d = doorCellFor(z);
+    const el = document.createElement("div");
+    el.style.position="absolute";
+    el.style.left=(d.x*100)+"%"; el.style.top=(d.y*100)+"%";
+    el.style.width="3%"; el.style.height="3%"; el.style.marginLeft="-1.5%"; el.style.marginTop="-1.5%";
+    el.style.background="#f2b053"; el.style.borderRadius="50%"; el.style.zIndex="4";
+    el.style.boxShadow="0 0 6px 2px rgba(242,176,83,.6)"; el.style.pointerEvents="none";
+    world.appendChild(el);
   });
 }
 function randomPointInRegion(key){
@@ -477,7 +516,7 @@ function tick(force){
       lastZoneOf[a.id]=sched.zone;
     }
   });
-  updateTalkBtn();
+  updateTalkBtn(); updateEnterBtn();
 }
 setInterval(()=>{ if(TOWN) tick(false); }, REAL_SECONDS_PER_GAME_MINUTE*1000);
 setInterval(()=>{
@@ -492,11 +531,8 @@ let isMoving = false;
 
 function move(dx,dy){
   if(active || isMoving) return;
-  const world = document.getElementById("world");
-  const ww = world.offsetWidth, wh = world.offsetHeight;
-  const stepXFrac = STEP_PX/ww, stepYFrac = STEP_PX/wh; // equal real px, different % per axis
-  const nx = Math.min(0.98, Math.max(0.01, player.x + dx*stepXFrac));
-  const ny = Math.min(0.98, Math.max(0.01, player.y + dy*stepYFrac));
+  const nx = Math.min(0.98, Math.max(0.01, player.x + dx*STEP_X_FRAC));
+  const ny = Math.min(0.98, Math.max(0.01, player.y + dy*STEP_Y_FRAC));
   if(nx===player.x && ny===player.y) return; // hit world edge, no-op
   isMoving = true;
   player.x = nx; player.y = ny;
@@ -504,11 +540,12 @@ function move(dx,dy){
   p.style.left = (player.x*100)+"%"; p.style.top = (player.y*100)+"%";
   if(dx!==0) p.style.transform = dx<0 ? "scaleX(-1)" : "scaleX(1)"; // face the way you're walking
   updateCamera();
-  updateTalkBtn();
+  updateTalkBtn(); updateEnterBtn();
   setTimeout(()=>{ isMoving=false; }, MOVE_MS);
 }
 document.addEventListener("keydown",(e)=>{
   const map={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]};
+  if(insideBuilding){ if(e.key==="Escape") exitBuilding(); return; }
   if(!active && map[e.key]) move(...map[e.key]);
   else if(!active && (e.key==="e"||e.key===" ")) tryTalk();
   else if(e.key==="Escape"){ closeChat(); closeSchedules(); }
@@ -517,21 +554,111 @@ let heldInterval=null;
 function startHold(dx,dy){ move(dx,dy); clearInterval(heldInterval); heldInterval=setInterval(()=>move(dx,dy), MOVE_MS+20); }
 function stopHold(){ clearInterval(heldInterval); }
 
+// Strict cardinal adjacency: only directly N/S/E/W, exactly one tile away —
+// no diagonals, no "close enough." This is what actually makes standing
+// "next to" someone a precise, intentional action instead of a fuzzy zone.
 function nearestAgent(){
-  const world = document.getElementById("world");
-  const ww = world.offsetWidth, wh = world.offsetHeight;
-  let best=null,bestD=999;
+  const pc = gridCol(player.x), pr = gridRow(player.y);
+  let found = null;
   TOWN.agents.forEach(a=>{
+    if(found) return;
     const el=document.getElementById("sprite-"+a.id); if(!el) return;
-    const ax=parseFloat(el.style.left)/100, ay=parseFloat(el.style.top)/100;
-    const dxPx=(ax-player.x)*ww, dyPx=(ay-player.y)*wh;
-    const d=Math.hypot(dxPx, dyPx);
-    if(d<bestD){ bestD=d; best=a; }
+    const ac = gridCol(parseFloat(el.style.left)/100);
+    const ar = gridRow(parseFloat(el.style.top)/100);
+    const sameCol = ac===pc && Math.abs(ar-pr)===1;
+    const sameRow = ar===pr && Math.abs(ac-pc)===1;
+    if(sameCol || sameRow) found = a;
   });
-  return bestD < STEP_PX*1.5 ? best : null; // "adjacent" = about one tile away, in real pixels
+  return found;
 }
 function updateTalkBtn(){ document.getElementById("talkBtn").className=nearestAgent()?"ready":""; }
 function tryTalk(){ const n=nearestAgent(); if(n) openChat(n.id); }
+
+// ── Interior rooms: walk up to a building's door and step inside ────────
+let insideBuilding = null;
+let savedOutdoorPos = null;
+
+function doorCellFor(z){
+  const doorFrac = { x:(z.x/100)+(z.w/200), y:(z.y+z.h)/100 };
+  return snapToGrid(doorFrac.x, doorFrac.y);
+}
+function atDoor(){
+  const pc = gridCol(player.x), pr = gridRow(player.y);
+  for(const z of ZONES){
+    const d = doorCellFor(z);
+    if(gridCol(d.x)===pc && gridRow(d.y)===pr) return z;
+  }
+  return null;
+}
+function updateEnterBtn(){
+  document.getElementById("enterBtn").className = atDoor() ? "ready" : "";
+}
+function tryEnter(){
+  const z = atDoor();
+  if(z) enterBuilding(z);
+}
+
+// Simple reusable room templates — houses get a bed + fireplace, other
+// buildings get a more communal layout. Furniture positions are fixed
+// percentages within the room so nothing needs per-building hand-tuning.
+const ROOM_TEMPLATES = {
+  house: [
+    {img:"fireplace", x:6,  y:8,  w:16, h:26},
+    {img:"bookshelf", x:76, y:8,  w:16, h:26},
+    {img:"bed",       x:70, y:56, w:22, h:34},
+    {img:"table",     x:36, y:44, w:18, h:24},
+    {img:"chair",     x:30, y:60, w:10, h:16},
+    {img:"chair",     x:56, y:60, w:10, h:16},
+    {img:"rug",       x:34, y:66, w:24, h:20},
+    {img:"plant",     x:6,  y:60, w:12, h:22},
+  ],
+  communal: [
+    {img:"table",     x:20, y:40, w:20, h:24},
+    {img:"table",     x:56, y:40, w:20, h:24},
+    {img:"chair",     x:14, y:58, w:10, h:16},
+    {img:"chair",     x:34, y:58, w:10, h:16},
+    {img:"chair",     x:50, y:58, w:10, h:16},
+    {img:"chair",     x:70, y:58, w:10, h:16},
+    {img:"cabinet",   x:76, y:8,  w:18, h:28},
+    {img:"bookshelf", x:4,  y:8,  w:16, h:28},
+    {img:"rug",       x:30, y:64, w:36, h:22},
+    {img:"plant",     x:88, y:60, w:10, h:20},
+  ],
+};
+
+function enterBuilding(z){
+  savedOutdoorPos = { x:player.x, y:player.y };
+  insideBuilding = z.id;
+  document.getElementById("interiorScreen").style.display = "block";
+  document.getElementById("app").style.display = "none";
+  renderInterior(z);
+}
+function exitBuilding(){
+  insideBuilding = null;
+  document.getElementById("interiorScreen").style.display = "none";
+  document.getElementById("app").style.display = "block";
+  if(savedOutdoorPos){ player = savedOutdoorPos; }
+  updateCamera(); updateTalkBtn(); updateEnterBtn();
+}
+function renderInterior(z){
+  const room = document.getElementById("interiorRoom");
+  room.innerHTML = "";
+  if(AVAILABLE_ASSETS.has("assets/furniture/floor_wood.png")){
+    room.style.backgroundImage = "url(assets/furniture/floor_wood.png)";
+    room.style.backgroundSize = "64px 64px";
+  }
+  const template = z.id.startsWith("home_") ? ROOM_TEMPLATES.house : ROOM_TEMPLATES.communal;
+  template.forEach(piece=>{
+    const path = `assets/furniture/${piece.img}.png`;
+    if(!AVAILABLE_ASSETS.has(path)) return; // first-pass crops — skip gracefully if missing
+    const el = document.createElement("div");
+    el.className = "furn";
+    el.style.left=piece.x+"%"; el.style.top=piece.y+"%"; el.style.width=piece.w+"%"; el.style.height=piece.h+"%";
+    el.innerHTML = `<img src="${path}" alt="">`;
+    room.appendChild(el);
+  });
+}
+
 
 // ── Schedule popup ───────────────────────────────────────────────────────
 function fmtHour(h){
