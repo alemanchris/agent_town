@@ -173,11 +173,21 @@ const ZONES = [
   })),
 ];
 function zoneById(id){ return ZONES.find(z=>z.id===id); }
+const STEP_PX = 48; // real pixel size of one grid tile — shared by player movement, NPC placement, and adjacency checks
+function snapToGrid(fx, fy){
+  const world = document.getElementById("world");
+  if(!world) return {x:fx, y:fy};
+  const ww = world.offsetWidth, wh = world.offsetHeight;
+  if(!ww || !wh) return {x:fx, y:fy};
+  const stepXFrac = STEP_PX/ww, stepYFrac = STEP_PX/wh;
+  return { x: Math.round(fx/stepXFrac)*stepXFrac, y: Math.round(fy/stepYFrac)*stepYFrac };
+}
 function zoneCenter(id, seedOffset){
   const z = zoneById(id) || zoneById("home_"+id) || ZONES[0];
   const jitterX = ((seedOffset*37)%100)/100 * (z.w/100) * 0.5;
   const jitterY = ((seedOffset*53)%100)/100 * (z.h/100) * 0.5;
-  return { x:(z.x/100 + (z.w/100)*0.25 + jitterX), y:(z.y/100 + (z.h/100)*0.25 + jitterY) };
+  const raw = { x:(z.x/100 + (z.w/100)*0.25 + jitterX), y:(z.y/100 + (z.h/100)*0.25 + jitterY) };
+  return snapToGrid(raw.x, raw.y);
 }
 
 // ── Seeded RNG so "today" is stable, but different each wake cycle ──────
@@ -477,19 +487,22 @@ setInterval(()=>{
 // Real tile-grid movement: one fixed-size step per press, camera and
 // character animate in perfect lockstep (same duration), and no new step
 // can start until the current one finishes — classic Pokémon/Zelda feel.
-const TILE_STEP = 1/34;      // world divided into ~34 tiles across
 const MOVE_MS = 160;         // must match the .sprite.player / .world CSS transition
 let isMoving = false;
 
 function move(dx,dy){
   if(active || isMoving) return;
-  const nx = Math.min(0.98, Math.max(0.01, player.x + dx*TILE_STEP));
-  const ny = Math.min(0.98, Math.max(0.01, player.y + dy*TILE_STEP));
+  const world = document.getElementById("world");
+  const ww = world.offsetWidth, wh = world.offsetHeight;
+  const stepXFrac = STEP_PX/ww, stepYFrac = STEP_PX/wh; // equal real px, different % per axis
+  const nx = Math.min(0.98, Math.max(0.01, player.x + dx*stepXFrac));
+  const ny = Math.min(0.98, Math.max(0.01, player.y + dy*stepYFrac));
   if(nx===player.x && ny===player.y) return; // hit world edge, no-op
   isMoving = true;
   player.x = nx; player.y = ny;
   const p = document.getElementById("playerSprite");
   p.style.left = (player.x*100)+"%"; p.style.top = (player.y*100)+"%";
+  if(dx!==0) p.style.transform = dx<0 ? "scaleX(-1)" : "scaleX(1)"; // face the way you're walking
   updateCamera();
   updateTalkBtn();
   setTimeout(()=>{ isMoving=false; }, MOVE_MS);
@@ -505,14 +518,17 @@ function startHold(dx,dy){ move(dx,dy); clearInterval(heldInterval); heldInterva
 function stopHold(){ clearInterval(heldInterval); }
 
 function nearestAgent(){
+  const world = document.getElementById("world");
+  const ww = world.offsetWidth, wh = world.offsetHeight;
   let best=null,bestD=999;
   TOWN.agents.forEach(a=>{
     const el=document.getElementById("sprite-"+a.id); if(!el) return;
     const ax=parseFloat(el.style.left)/100, ay=parseFloat(el.style.top)/100;
-    const d=Math.hypot(ax-player.x, ay-player.y);
+    const dxPx=(ax-player.x)*ww, dyPx=(ay-player.y)*wh;
+    const d=Math.hypot(dxPx, dyPx);
     if(d<bestD){ bestD=d; best=a; }
   });
-  return bestD<0.035?best:null;
+  return bestD < STEP_PX*1.5 ? best : null; // "adjacent" = about one tile away, in real pixels
 }
 function updateTalkBtn(){ document.getElementById("talkBtn").className=nearestAgent()?"ready":""; }
 function tryTalk(){ const n=nearestAgent(); if(n) openChat(n.id); }
