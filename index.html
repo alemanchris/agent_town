@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Agent Town</title>
+<style>
+  :root{
+    --bg:#1b2a1f; --panel:#26382c; --ink:#eee7d3; --amber:#e7a856;
+    --it:#7bbf6a; --hi:#e0708a;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Segoe UI',system-ui,sans-serif;}
+  #app{max-width:960px;margin:0 auto;padding:14px;}
+  .topbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+  .brand{font-weight:800;font-size:20px;}
+  .clock{font-size:13px;color:#c9c2a8;background:var(--panel);padding:6px 10px;border-radius:8px;}
+  #keyRow{display:flex;gap:6px;align-items:center;}
+  #groqKey{background:#00000030;border:1px solid #ffffff22;color:var(--ink);border-radius:6px;padding:5px 8px;font-size:12px;width:150px;}
+  .toolbar{display:flex;gap:6px;margin-bottom:8px;}
+  .toolBtn{border:1px solid #ffffff22;background:var(--panel);color:var(--ink);border-radius:8px;padding:6px 12px;font-size:12.5px;cursor:pointer;}
+
+  .viewport{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.4);background:#243a26;}
+  .world{position:absolute;width:280%;height:240%;}
+  .region{position:absolute;border-radius:16px;}
+  .road{position:absolute;background:#c9a876;opacity:.8;border-radius:6px;}
+  .zoneWrap{position:absolute;}
+  .roof{position:absolute;top:0;left:0;width:100%;height:38%;clip-path:polygon(50% 0%, 100% 55%, 100% 100%, 0 100%, 0 55%);}
+  .body{position:absolute;bottom:0;left:6%;width:88%;height:66%;border-radius:2px;box-shadow:inset 0 0 0 2px rgba(0,0,0,.18);}
+  .windows{position:absolute;bottom:6%;left:14%;width:72%;height:32%;background-image:repeating-linear-gradient(90deg,#fff6d0 0 10%, transparent 10% 22%);opacity:.55;border-radius:2px;}
+  .zoneLabel{position:absolute;bottom:-15px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;color:#2a2010;background:#ffffffc0;padding:1px 5px;border-radius:6px;white-space:nowrap;}
+  .regionLabel{position:absolute;top:6px;left:10px;font-size:11px;font-weight:800;color:#ffffffb0;letter-spacing:.5px;text-transform:uppercase;}
+
+  .sprite{position:absolute;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:18px;transition:left 2.2s ease-in-out, top 2.2s ease-in-out;cursor:pointer;z-index:5;}
+  .sprite.extra{cursor:default;opacity:.7;font-size:15px;z-index:2;transition:left 4.5s ease-in-out, top 4.5s ease-in-out;}
+  .sprite .under{position:absolute;bottom:-2px;width:18px;height:3px;border-radius:2px;}
+  .sprite .bubble{position:absolute;top:-20px;left:50%;transform:translateX(-50%);white-space:nowrap;background:var(--panel);border:1px solid #ffffff22;font-size:9px;padding:2px 5px;border-radius:6px;pointer-events:none;opacity:0;transition:opacity .3s;z-index:10;}
+
+  .legend{display:flex;gap:14px;margin-top:10px;font-size:12px;color:#c9c2a8;flex-wrap:wrap;}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;}
+  .controls{display:flex;justify-content:center;gap:16px;margin-top:14px;}
+  .dpad{display:grid;grid-template-columns:repeat(3,42px);grid-template-rows:repeat(3,42px);gap:4px;}
+  .dpad button{border:none;border-radius:10px;background:#3a4a3d;color:var(--ink);font-size:18px;cursor:pointer;}
+  #talkBtn{width:78px;height:78px;border-radius:18px;border:none;font-weight:800;cursor:pointer;background:#3a4a3d;color:#8a8a7a;}
+  #talkBtn.ready{background:var(--amber);color:#2a1f10;}
+
+  #overlay,#scheduleOverlay{position:fixed;inset:0;background:rgba(8,10,8,.6);display:none;align-items:flex-end;justify-content:center;z-index:50;}
+  #sheet,#scheduleSheet{width:100%;max-width:640px;max-height:85vh;background:var(--panel);border-radius:18px 18px 0 0;display:flex;flex-direction:column;box-shadow:0 -10px 50px rgba(0,0,0,.5);}
+  .sheetHead{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #ffffff14;}
+  .sheetHead .info{flex:1;}
+  .sheetHead .name{font-weight:800;}
+  .sheetHead .sub{font-size:12px;color:#c9c2a8;}
+  .closeBtn{border:none;background:#ffffff14;color:var(--ink);border-radius:8px;width:30px;height:30px;cursor:pointer;}
+  #msgs{padding:12px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;}
+  .msg{max-width:80%;padding:9px 12px;border-radius:14px;font-size:14px;line-height:1.5;white-space:pre-wrap;}
+  .msg.npc{align-self:flex-start;background:#ffffff10;}
+  .msg.me{align-self:flex-end;background:var(--amber);color:#2a1f10;}
+  .gloss{font-size:11px;opacity:.6;margin-top:4px;cursor:pointer;text-decoration:underline;}
+  .glossText{font-size:12px;opacity:.85;margin-top:3px;font-style:italic;display:none;}
+  .quest{margin:0 12px 8px;padding:8px 10px;border-radius:10px;background:#00000030;border:1px dashed var(--amber);font-size:12.5px;}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 8px;}
+  .chip{border:1px solid #ffffff33;background:transparent;color:var(--ink);border-radius:20px;padding:5px 10px;font-size:12px;cursor:pointer;}
+  .inputRow{display:flex;gap:8px;padding:12px;border-top:1px solid #ffffff14;}
+  .inputRow input{flex:1;background:#00000030;border:1px solid #ffffff22;border-radius:10px;padding:10px;color:var(--ink);font-size:14px;}
+  .inputRow button{border:none;background:var(--amber);color:#2a1f10;border-radius:10px;padding:0 16px;font-weight:800;cursor:pointer;}
+  #setupNote{font-size:11px;color:#c9c2a8;text-align:center;margin-top:10px;}
+
+  #scheduleBody{padding:12px;overflow-y:auto;}
+  .agentSched{margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #ffffff10;}
+  .agentSched h4{margin:0 0 6px;font-size:14px;display:flex;align-items:center;gap:6px;}
+  .block{font-size:12px;color:#d9d2bc;display:flex;gap:8px;padding:2px 0;}
+  .block .time{color:#a99fc0;min-width:86px;}
+  .block.ditch{color:var(--amber);}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="topbar">
+    <div class="brand">🌾 Agent Town</div>
+    <div class="clock" id="clock">Day 0 · 08:00</div>
+    <div id="keyRow">
+      <input id="groqKey" type="password" placeholder="Groq API key" />
+      <span style="font-size:11px;color:#c9c2a8;">saved in this browser only</span>
+    </div>
+  </div>
+  <div class="toolbar">
+    <button class="toolBtn" onclick="openSchedules()">📋 Today's Schedules</button>
+  </div>
+  <div class="viewport" id="viewport"><div class="world" id="world"></div></div>
+  <div class="legend">
+    <span><span class="dot" style="background:var(--it)"></span>Italian</span>
+    <span><span class="dot" style="background:var(--hi)"></span>Hindi</span>
+    <span>Faded wandering figures are just atmosphere — no memory, nothing to talk to.</span>
+  </div>
+  <div class="controls">
+    <div class="dpad">
+      <span></span><button onclick="move(0,-1)">↑</button><span></span>
+      <button onclick="move(-1,0)">←</button><span></span><button onclick="move(1,0)">→</button>
+      <span></span><button onclick="move(0,1)">↓</button><span></span>
+    </div>
+    <button id="talkBtn" onclick="tryTalk()">💬<br>Talk</button>
+  </div>
+  <div id="setupNote">Get a free key at console.groq.com — no card needed. Paste it above once; it stays in this browser.</div>
+</div>
+
+<div id="overlay" onclick="closeChat(event)">
+  <div id="sheet" onclick="event.stopPropagation()">
+    <div class="sheetHead">
+      <div id="sheetEmoji" style="font-size:26px;"></div>
+      <div class="info">
+        <div class="name" id="sheetName"></div>
+        <div class="sub" id="sheetSub"></div>
+      </div>
+      <button class="closeBtn" onclick="closeChat()">✕</button>
+    </div>
+    <div id="quest" class="quest" style="display:none;"></div>
+    <div id="msgs"></div>
+    <div class="chips" id="chips"></div>
+    <div class="inputRow">
+      <input id="userInput" placeholder="Type your reply…" onkeydown="if(event.key==='Enter')send()" />
+      <button onclick="send()">Send</button>
+    </div>
+  </div>
+</div>
+
+<div id="scheduleOverlay" onclick="closeSchedules(event)">
+  <div id="scheduleSheet" onclick="event.stopPropagation()">
+    <div class="sheetHead">
+      <div class="info"><div class="name">Today's Schedules</div><div class="sub">Resolved live — reflects any last-minute changes already</div></div>
+      <button class="closeBtn" onclick="closeSchedules()">✕</button>
+    </div>
+    <div id="scheduleBody"></div>
+  </div>
+</div>
+
+<script>
+const AGENT_IDS = ["kiran","sofia","meera","matteo","priya","luca","chiara","davide","arjun","giulia","marco","elena","devika","paolo","raj","lucia"];
+
+// ── One continuous world, laid out in regions (all in world %) ──────────
+const REGIONS = {
+  square:      { label:"Town Square",  bg:"#5f8f52", x:2,  y:2,  w:38, h:42 },
+  residential: { label:"Residential",  bg:"#4a6a4a", x:44, y:2,  w:54, h:42 },
+  museum:      { label:"Museum",       bg:"#3a3a4a", x:2,  y:48, w:26, h:26 },
+  outskirts:   { label:"Outskirts & Airport", bg:"#7a8a6a", x:32, y:48, w:34, h:26 },
+  dungeon:     { label:"Old Dungeon",  bg:"#241f24", x:70, y:48, w:28, h:26 },
+};
+const ROADS = [
+  {x:39,y:16,w:6,h:12}, {x:2,y:44,w:24,h:5}, {x:27,y:44,w:24,h:5}, {x:62,y:44,w:20,h:5},
+];
+
+const ZONES = [
+  { id:"cafe",     region:"square", label:"Café",     x:5,  y:10, w:9,  h:26, color:"#8a6a45" },
+  { id:"workshop", region:"square", label:"Workshop", x:16, y:10, w:8,  h:26, color:"#6b6058" },
+  { id:"academy",  region:"square", label:"Academy",  x:26, y:10, w:9,  h:26, color:"#4a5c72" },
+  { id:"garden",   region:"square", label:"Garden",   x:5,  y:26, w:9,  h:16, color:"#4a7a4a" },
+  { id:"market",   region:"square", label:"Market",   x:16, y:26, w:8,  h:16, color:"#8a7645" },
+  { id:"park",     region:"square", label:"Park",     x:26, y:26, w:9,  h:16, color:"#5a8a5a" },
+  { id:"hall",     region:"museum", label:"Entrance Hall", x:4, y:52, w:8, h:20, color:"#7a7a8a" },
+  { id:"gallery",  region:"museum", label:"Gallery",       x:14,y:52, w:9, h:20, color:"#6a6a8a" },
+  { id:"giftshop", region:"museum", label:"Gift Shop",     x:15,y:64, w:8, h:8,  color:"#8a7a6a" },
+  { id:"terminal", region:"outskirts", label:"Terminal", x:34, y:52, w:14, h:18, color:"#8a8a9a" },
+  { id:"runway",   region:"outskirts", label:"Runway",   x:50, y:52, w:14, h:18, color:"#555a5a" },
+  { id:"entrance", region:"dungeon", label:"Entrance", x:72, y:52, w:8,  h:18, color:"#3a3230" },
+  { id:"corridor", region:"dungeon", label:"Corridor", x:82, y:52, w:8,  h:18, color:"#332b28" },
+  { id:"vault",    region:"dungeon", label:"Old Vault",x:88, y:64, w:8,  h:8,  color:"#4a3a28" },
+  ...AGENT_IDS.map((id,i)=>({
+    id:"home_"+id, region:"residential", label:null,
+    x:46+(i%8)*6.6, y:6+Math.floor(i/8)*20, w:5.6, h:16,
+    color:["#8a6a4a","#6a7a8a","#8a7a5a","#7a6a8a"][i%4]
+  })),
+];
+function zoneById(id){ return ZONES.find(z=>z.id===id); }
+function zoneCenter(id, seedOffset){
+  const z = zoneById(id) || zoneById("home_"+id) || ZONES[0];
+  const jitterX = ((seedOffset*37)%100)/100 * (z.w/100) * 0.5;
+  const jitterY = ((seedOffset*53)%100)/100 * (z.h/100) * 0.5;
+  return { x:(z.x/100 + (z.w/100)*0.25 + jitterX), y:(z.y/100 + (z.h/100)*0.25 + jitterY) };
+}
+
+// ── Seeded RNG so "today" is stable, but different each wake cycle ──────
+function hashCode(s){ let h=0; for(let i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0; return h; }
+function seededRng(seedStr){
+  let s = hashCode(seedStr) || 1;
+  return function(){ s=(s*1664525+1013904223)>>>0; return s/4294967296; };
+}
+
+const DITCH_CHANCE = { kid:0.18, teen:0.22, young_adult:0.12, full_adult:0.08, senior:0.04, elder:0.02 };
+const DITCH_OPTIONS = {
+  academy: [ {zone:"park", act:"secretly skipped class to play"} ],
+  job: [ {zone:"park", act:"took an unplanned break instead of working"}, {zone:"market", act:"wandered off to the market instead of working"} ],
+};
+
+// Base block templates (start hour, end hour, zone-or-'job'/'home', activity, obligated?)
+function templateFor(agent){
+  const home = "home_"+agent.id;
+  if(agent.stage==="kid" || agent.stage==="teen") return [
+    {s:0,e:8,zone:home,act:"sleeping",ob:false},
+    {s:8,e:12,zone:"academy",act:"in class",ob:true,kind:"academy"},
+    {s:12,e:13,zone:home,act:"lunch at home",ob:false},
+    {s:13,e:17,zone:"park",act:"playing",ob:false},
+    {s:17,e:20,zone:home,act:"home with family",ob:false},
+    {s:20,e:24,zone:home,act:"sleeping",ob:false},
+  ];
+  if(agent.stage==="senior" || agent.stage==="elder") return [
+    {s:0,e:9,zone:home,act:"resting",ob:false},
+    {s:9,e:12,zone:"garden",act:"tending plants",ob:false},
+    {s:12,e:13,zone:"cafe",act:"having tea",ob:false},
+    {s:13,e:17,zone:home,act:"resting at home",ob:false},
+    {s:17,e:19,zone:"park",act:"a slow walk",ob:false},
+    {s:19,e:24,zone:home,act:"sleeping",ob:false},
+  ];
+  const job = agent.job || home;
+  const lunchSpot = job==="cafe" ? "market" : "cafe";
+  const eveningSpot = agent.id.length%2===0 ? "park" : "market";
+  return [
+    {s:0,e:9,zone:home,act:"getting ready",ob:false},
+    {s:9,e:12,zone:job,act:"working",ob:true,kind:"job"},
+    {s:12,e:13,zone:lunchSpot,act:"lunch break",ob:false},
+    {s:13,e:17,zone:job,act:"working",ob:true,kind:"job"},
+    {s:17,e:20,zone:eveningSpot,act:"unwinding",ob:false},
+    {s:20,e:24,zone:home,act:"home for the evening",ob:false},
+  ];
+}
+
+const scheduleCache = {}; // "agentId:simDay" -> resolved block array
+function buildDaySchedule(agent, simDay){
+  const key = agent.id+":"+simDay;
+  if(scheduleCache[key]) return scheduleCache[key];
+  const rng = seededRng(key);
+  const blocks = templateFor(agent).map(b=>({...b}));
+  // jitter internal boundaries by up to ±40 min, keep order & 30min min gap
+  for(let i=1;i<blocks.length;i++){
+    const jitter = (rng()*80-40)/60; // hours
+    let newBound = blocks[i-1].e + jitter;
+    newBound = Math.max(blocks[i-1].s+0.5, Math.min(blocks[i].e-0.5, newBound));
+    blocks[i-1].e = newBound; blocks[i].s = newBound;
+  }
+  // roll for spontaneous ditching on obligated blocks
+  blocks.forEach(b=>{
+    if(!b.ob) return;
+    const chance = DITCH_CHANCE[agent.stage] ?? 0.1;
+    if(rng() < chance){
+      const opts = DITCH_OPTIONS[b.kind] || [];
+      if(opts.length){
+        const pick = opts[Math.floor(rng()*opts.length)];
+        b.zone = pick.zone; b.act = pick.act; b.isDitch = true;
+      }
+    }
+  });
+  scheduleCache[key] = blocks;
+  return blocks;
+}
+function scheduleFor(agent, minuteOfDay){
+  const blocks = buildDaySchedule(agent, TOWN.simDay||0);
+  const h = minuteOfDay/60;
+  for(const b of blocks) if(h>=b.s && h<b.e) return b;
+  return blocks[blocks.length-1];
+}
+
+// ── State ────────────────────────────────────────────────────────────────
+let TOWN=null, simMinute=8*60;
+const REAL_SECONDS_PER_GAME_MINUTE=(90*60)/(24*60);
+let player={x:0.2,y:0.2}, active=null, chatHistory={}, currentQuest=null, lastZoneOf={}, extras=[];
+const EXTRA_PER_REGION={square:5,residential:8,museum:3,outskirts:4,dungeon:1};
+const EXTRA_EMOJI=["🚶","🧍","🧑‍🦱","🧑‍🦳","🐕","🚴"];
+
+async function loadTown(){
+  try{ const res=await fetch("data/agents.json?_="+Date.now()); TOWN=await res.json(); }
+  catch(e){ const res=await fetch("data/agents-seed.json?_="+Date.now()); TOWN=await res.json(); }
+  TOWN.agents.forEach(a=>{ const z=zoneById("home_"+a.id); if(z) z.label=a.name+"'s house"; });
+}
+
+function buildingHTML(z){
+  return `<div class="roof" style="background:${shade(z.color,-18)}"></div>
+    <div class="body" style="background:${z.color}"><div class="windows"></div></div>
+    <div class="zoneLabel">${z.label||""}</div>`;
+}
+function shade(hex,amt){
+  const n=parseInt(hex.slice(1),16);
+  let r=(n>>16)+amt,g=((n>>8)&0xff)+amt,b=(n&0xff)+amt;
+  r=Math.max(0,Math.min(255,r)); g=Math.max(0,Math.min(255,g)); b=Math.max(0,Math.min(255,b));
+  return "#"+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);
+}
+
+function renderWorld(){
+  const world = document.getElementById("world");
+  world.innerHTML = "";
+  Object.entries(REGIONS).forEach(([key,r])=>{
+    const el = document.createElement("div");
+    el.className="region";
+    el.style.left=r.x+"%"; el.style.top=r.y+"%"; el.style.width=r.w+"%"; el.style.height=r.h+"%";
+    el.style.background=r.bg;
+    el.innerHTML=`<div class="regionLabel">${r.label}</div>`;
+    world.appendChild(el);
+  });
+  ROADS.forEach(rd=>{
+    const el=document.createElement("div"); el.className="road";
+    el.style.left=rd.x+"%"; el.style.top=rd.y+"%"; el.style.width=rd.w+"%"; el.style.height=rd.h+"%";
+    world.appendChild(el);
+  });
+  ZONES.forEach(z=>{
+    const wrap=document.createElement("div"); wrap.className="zoneWrap";
+    wrap.style.left=z.x+"%"; wrap.style.top=z.y+"%"; wrap.style.width=z.w+"%"; wrap.style.height=z.h+"%";
+    wrap.innerHTML=buildingHTML(z);
+    world.appendChild(wrap);
+  });
+  const p=document.createElement("div"); p.id="playerSprite"; p.className="sprite";
+  p.style.left=(player.x*100)+"%"; p.style.top=(player.y*100)+"%";
+  p.innerHTML=`🧑‍🎓<div class="under" style="background:var(--amber)"></div>`;
+  world.appendChild(p);
+  TOWN.agents.forEach(a=>{
+    const s=document.createElement("div"); s.id="sprite-"+a.id; s.className="sprite"; s.title=a.name;
+    s.onclick=()=>openChat(a.id);
+    const langColor=a.lang==="it"?"var(--it)":"var(--hi)";
+    s.innerHTML=`${emojiFor(a)}<div class="under" style="background:${langColor}"></div><div class="bubble" id="bubble-${a.id}"></div>`;
+    world.appendChild(s);
+  });
+  extras=[];
+  Object.entries(EXTRA_PER_REGION).forEach(([regionKey,n])=>{
+    for(let i=0;i<n;i++){
+      const e=document.createElement("div"); e.className="sprite extra"; e.textContent=EXTRA_EMOJI[i%EXTRA_EMOJI.length];
+      const pos=randomPointInRegion(regionKey);
+      e.style.left=(pos.x*100)+"%"; e.style.top=(pos.y*100)+"%";
+      e.dataset.region = regionKey;
+      world.appendChild(e); extras.push(e);
+    }
+  });
+  tick(true);
+  updateCamera();
+}
+function randomPointInRegion(key){
+  const r = REGIONS[key];
+  return { x:(r.x + 4 + Math.random()*(r.w-8))/100, y:(r.y + 4 + Math.random()*(r.h-8))/100 };
+}
+function emojiFor(a){
+  if(a.stage==="kid") return "🧒";
+  if(a.stage==="teen") return a.lang==="hi"?"👦":"👧";
+  if(a.stage==="senior"||a.stage==="elder") return a.lang==="hi"?"🧓":"👴";
+  const jobEmoji={cafe:"👩‍🍳",workshop:"🧑‍🔧",garden:"🧘",market:"🧑‍🌾",park:"🧑‍🎨"};
+  return jobEmoji[a.job]||"🧑";
+}
+function updateCamera(){
+  const vp = document.getElementById("viewport").getBoundingClientRect();
+  const world = document.getElementById("world");
+  const ww = world.offsetWidth, wh = world.offsetHeight;
+  let left = vp.width/2 - player.x*ww;
+  let top = vp.height/2 - player.y*wh;
+  left = Math.min(0, Math.max(vp.width - ww, left));
+  top = Math.min(0, Math.max(vp.height - wh, top));
+  world.style.left = left+"px"; world.style.top = top+"px";
+}
+window.addEventListener("resize", updateCamera);
+
+function tick(force){
+  simMinute += force?0:1; if(simMinute>=1440) simMinute=0;
+  document.getElementById("clock").textContent=`Day ${TOWN.simDay||0} · ${String(Math.floor(simMinute/60)).padStart(2,"0")}:${String(simMinute%60).padStart(2,"0")}`;
+  TOWN.agents.forEach(a=>{
+    const sched=scheduleFor(a,simMinute);
+    const el=document.getElementById("sprite-"+a.id); if(!el) return;
+    const pos=zoneCenter(sched.zone, hashCode(a.id));
+    el.style.left=(pos.x*100)+"%"; el.style.top=(pos.y*100)+"%";
+    if(lastZoneOf[a.id]!==sched.zone){
+      const b=document.getElementById("bubble-"+a.id);
+      if(b){ b.textContent=(sched.isDitch?"😏 ":"")+sched.act; b.style.opacity=1; setTimeout(()=>{ if(b) b.style.opacity=0; },3000); }
+      lastZoneOf[a.id]=sched.zone;
+    }
+  });
+  updateTalkBtn();
+}
+setInterval(()=>{ if(TOWN) tick(false); }, REAL_SECONDS_PER_GAME_MINUTE*1000);
+setInterval(()=>{
+  extras.forEach(e=>{ const pos=randomPointInRegion(e.dataset.region); e.style.left=(pos.x*100)+"%"; e.style.top=(pos.y*100)+"%"; });
+}, 6000);
+
+function move(dx,dy){
+  if(active) return;
+  player.x=Math.min(0.98,Math.max(0.01,player.x+dx*0.018));
+  player.y=Math.min(0.98,Math.max(0.01,player.y+dy*0.018));
+  const p=document.getElementById("playerSprite");
+  p.style.left=(player.x*100)+"%"; p.style.top=(player.y*100)+"%";
+  updateCamera(); updateTalkBtn();
+}
+document.addEventListener("keydown",(e)=>{
+  const map={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]};
+  if(!active && map[e.key]) move(...map[e.key]);
+  else if(!active && (e.key==="e"||e.key===" ")) tryTalk();
+  else if(e.key==="Escape"){ closeChat(); closeSchedules(); }
+});
+let heldDir=null, heldInterval=null;
+function startHold(dx,dy){ move(dx,dy); clearInterval(heldInterval); heldInterval=setInterval(()=>move(dx,dy),140); }
+function stopHold(){ clearInterval(heldInterval); }
+document.querySelectorAll(".dpad button").forEach(()=>{}); // (click-based move already wired via onclick)
+
+function nearestAgent(){
+  let best=null,bestD=999;
+  TOWN.agents.forEach(a=>{
+    const el=document.getElementById("sprite-"+a.id); if(!el) return;
+    const ax=parseFloat(el.style.left)/100, ay=parseFloat(el.style.top)/100;
+    const d=Math.hypot(ax-player.x, ay-player.y);
+    if(d<bestD){ bestD=d; best=a; }
+  });
+  return bestD<0.035?best:null;
+}
+function updateTalkBtn(){ document.getElementById("talkBtn").className=nearestAgent()?"ready":""; }
+function tryTalk(){ const n=nearestAgent(); if(n) openChat(n.id); }
+
+// ── Schedule popup ───────────────────────────────────────────────────────
+function fmtHour(h){
+  const hh = Math.floor(h)%24, mm = Math.round((h%1)*60);
+  return String(hh).padStart(2,"0")+":"+String(mm).padStart(2,"0");
+}
+function openSchedules(){
+  const body=document.getElementById("scheduleBody"); body.innerHTML="";
+  TOWN.agents.slice().sort((a,b)=>a.name.localeCompare(b.name)).forEach(a=>{
+    const blocks=buildDaySchedule(a, TOWN.simDay||0);
+    const div=document.createElement("div"); div.className="agentSched";
+    const langColor = a.lang==="it"?"var(--it)":"var(--hi)";
+    div.innerHTML = `<h4>${emojiFor(a)} ${a.name} <span class="dot" style="background:${langColor}"></span></h4>` +
+      blocks.map(b=>`<div class="block${b.isDitch?" ditch":""}"><span class="time">${fmtHour(b.s)}–${fmtHour(b.e)}</span><span>${b.act}${b.isDitch?" (unplanned!)":""}</span></div>`).join("");
+    body.appendChild(div);
+  });
+  document.getElementById("scheduleOverlay").style.display="flex";
+}
+function closeSchedules(e){
+  if(e && e.target.id!=="scheduleOverlay") return;
+  document.getElementById("scheduleOverlay").style.display="none";
+}
+
+// ── Chat ─────────────────────────────────────────────────────────────────
+function openChat(id){
+  active=id; const a=TOWN.agents.find(x=>x.id===id);
+  document.getElementById("overlay").style.display="flex";
+  document.getElementById("sheetEmoji").textContent=emojiFor(a);
+  document.getElementById("sheetName").textContent=a.name;
+  const sched=scheduleFor(a,simMinute);
+  document.getElementById("sheetSub").textContent=`${a.lang==="it"?"Italian":"Hindi"} · currently ${sched.act}`;
+  currentQuest=null; document.getElementById("quest").style.display="none";
+  if(!chatHistory[id]) chatHistory[id]=[];
+  renderMsgs();
+  if(chatHistory[id].length===0) sendSystemGreeting(a,sched); else renderChips([]);
+}
+function closeChat(e){
+  if(e && e.target.id!=="overlay") return;
+  active=null; document.getElementById("overlay").style.display="none"; currentQuest=null;
+}
+function renderMsgs(){
+  const box=document.getElementById("msgs"); box.innerHTML="";
+  (chatHistory[active]||[]).forEach(m=>{
+    const d=document.createElement("div"); d.className="msg "+(m.role==="user"?"me":"npc");
+    d.innerHTML=m.text.replace(/\n/g,"<br>");
+    if(m.gloss){
+      const g=document.createElement("div"); g.className="gloss"; g.textContent="show translation";
+      const gt=document.createElement("div"); gt.className="glossText"; gt.textContent=m.gloss;
+      g.onclick=()=>{ gt.style.display=gt.style.display==="block"?"none":"block"; g.textContent=gt.style.display==="block"?"hide translation":"show translation"; };
+      d.appendChild(g); d.appendChild(gt);
+    }
+    box.appendChild(d);
+  });
+  box.scrollTop=box.scrollHeight;
+}
+function renderChips(list){
+  const c=document.getElementById("chips"); c.innerHTML="";
+  list.forEach(s=>{ const b=document.createElement("button"); b.className="chip"; b.textContent=s; b.onclick=()=>send(s); c.appendChild(b); });
+}
+function groqKey(){ return localStorage.getItem("groqKey")||""; }
+document.getElementById("groqKey").addEventListener("input",(e)=>localStorage.setItem("groqKey",e.target.value));
+window.addEventListener("DOMContentLoaded",()=>document.getElementById("groqKey").value=groqKey());
+async function callGroq(system,messages){
+  const key=groqKey();
+  if(!key) return "REPLY: (Paste a free Groq API key at the top to start talking!)\nSUGGESTIONS: ";
+  const res=await fetch("https://api.groq.com/openai/v1/chat/completions",{
+    method:"POST", headers:{"Content-Type":"application/json","Authorization":"Bearer "+key},
+    body:JSON.stringify({model:"llama-3.3-70b-versatile", max_tokens:300, temperature:0.95,
+      messages:[{role:"system",content:system}, ...messages]}),
+  });
+  const data=await res.json();
+  if(data.error) return "REPLY: (Groq error: "+data.error.message+")\nSUGGESTIONS: ";
+  return data.choices?.[0]?.message?.content?.trim()||"REPLY: ...\nSUGGESTIONS: ";
+}
+function buildSystem(agent,sched){
+  const langName=agent.lang==="it"?"Italian":"Hindi";
+  const scriptNote=agent.lang==="hi"?"Write Hindi using ROMANIZED transliteration (Latin letters), e.g. 'aap kaise hain'. Do not use Devanagari script.":"";
+  const ditchNote = sched.isDitch ? ` You are actually ${sched.act} right now instead of what you were supposed to be doing — a bit of a spontaneous, slightly guilty mood about it if it comes up naturally.` : "";
+  return `You are ${agent.name}, a ${agent.stage.replace("_"," ")} in a small town. Personality: ${agent.personality}.
+You are currently ${sched.act}.${ditchNote} Recent life context: ${agent.memoryDigest||"just an ordinary week"}.
+Speak ONLY in ${langName} to the learner, who is practicing. ${scriptNote}
+Keep replies to 1-2 short natural sentences, in character, never repeating the same greeting twice in a row.
+If it fits naturally and rarely, you may ask the learner for a tiny favor (a "quest").
+Format your ENTIRE response as exactly two lines, nothing else:
+REPLY: <your in-character reply in ${langName}, plus a short English translation in parentheses at the end>
+SUGGESTIONS: <3 short natural things the learner could say next, in ${langName}, separated by " | ">
+If offering a quest, add a third line: QUEST: <one short sentence in English describing the favor>`;
+}
+function parseModelOutput(raw){
+  const replyMatch=raw.match(/REPLY:\s*([\s\S]*?)(?:\nSUGGESTIONS:|$)/i);
+  const sugMatch=raw.match(/SUGGESTIONS:\s*(.*?)(?:\nQUEST:|$)/i);
+  const questMatch=raw.match(/QUEST:\s*(.*)/i);
+  const reply=replyMatch?replyMatch[1].trim():raw;
+  const suggestions=sugMatch?sugMatch[1].split("|").map(s=>s.trim()).filter(Boolean):[];
+  const quest=questMatch?questMatch[1].trim():null;
+  return {reply,suggestions,quest};
+}
+function splitGloss(text){
+  const m=text.match(/^(.*?)(\(([^)]+)\))\s*$/);
+  if(m) return {main:m[1].trim(), gloss:m[3].trim()};
+  return {main:text, gloss:null};
+}
+async function sendSystemGreeting(agent,sched){
+  const system=buildSystem(agent,sched);
+  const raw=await callGroq(system,[{role:"user",content:"(The learner just walked up to you. Greet them naturally, in character, based on what you're doing right now.)"}]);
+  handleModelReply(raw);
+}
+async function send(prefill){
+  const input=document.getElementById("userInput"); const text=prefill||input.value.trim(); if(!text) return;
+  input.value=""; chatHistory[active].push({role:"user",text}); renderMsgs(); renderChips([]);
+  const agent=TOWN.agents.find(a=>a.id===active); const sched=scheduleFor(agent,simMinute);
+  const system=buildSystem(agent,sched);
+  const history=chatHistory[active].map(m=>({role:m.role==="user"?"user":"assistant", content:m.raw||m.text}));
+  const raw=await callGroq(system,history); handleModelReply(raw);
+}
+function handleModelReply(raw){
+  const {reply,suggestions,quest}=parseModelOutput(raw);
+  const {main,gloss}=splitGloss(reply);
+  chatHistory[active].push({role:"assistant",text:main,gloss,raw});
+  renderMsgs(); renderChips(suggestions);
+  const qEl=document.getElementById("quest");
+  if(quest){ currentQuest=quest; qEl.style.display="block"; qEl.textContent="🗒️ "+quest+" (not saved — only lasts this visit)"; }
+  else if(!currentQuest) qEl.style.display="none";
+}
+
+loadTown().then(renderWorld);
+</script>
+</body>
+</html>
