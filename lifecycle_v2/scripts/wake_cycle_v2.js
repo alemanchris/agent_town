@@ -18,12 +18,12 @@ const SEED_PATH = path.join(ROOT, "data", "agents-seed-v2.json");
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 const GROQ_KEY = process.env.GROQ_API_KEY;
-const AGENT_MODEL = process.env.GROQ_AGENT_MODEL || "openai/gpt-oss-20b";
-const TOWN_MODEL = process.env.GROQ_TOWN_MODEL || "openai/gpt-oss-120b";
+const AGENT_MODEL = process.env.GROQ_AGENT_MODEL || "llama-3.3-70b-versatile";
+const TOWN_MODEL = process.env.GROQ_TOWN_MODEL || "llama-3.3-70b-versatile";
 
 const DAYS_PER_WAKE = 2;
 const LIFESPAN_DAYS = 56;
-const REQUEST_DELAY_MS = Math.max(10000, Number(process.env.REQUEST_DELAY_MS || 10000));
+const REQUEST_DELAY_MS = Math.max(1500, Number(process.env.REQUEST_DELAY_MS || 2500));
 
 const STAGES = [
   { name: "kid", max: 7 },
