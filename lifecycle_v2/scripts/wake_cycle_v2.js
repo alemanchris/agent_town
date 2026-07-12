@@ -346,7 +346,7 @@ Keep the entire answer under 200 tokens. Use exactly 4 schedule rows covering mo
       model: AGENT_MODEL,
       system,
       user,
-      maxTokens: 200,
+      maxTokens: 300,
       temperature: 0.85,
     });
 
@@ -430,8 +430,18 @@ Use only existing IDs. Patch schedules only when necessary for consistency.`;
 
   const user = JSON.stringify({
     simDay: state.simDay,
-    initialTownContext: townContext,
-    agents: state.agents.map((agent) => ({ id: agent.id, name: agent.name, relationships: agent.relationships, today: agent.today })),
+    townMood: townContext.townMood,
+    sharedEvents: (townContext.sharedEvents || []).map((e) => ({
+      id: e.id, summary: e.summary, location: e.location,
+      affectedAgents: e.affectedAgents,
+    })),
+    agents: state.agents.map((agent) => ({
+      id: agent.id,
+      name: agent.name,
+      mood: agent.today?.mood,
+      daySummary: String(agent.today?.daySummary || "").slice(0, 80),
+      locations: (agent.today?.schedule || []).map((s) => s.location),
+    })),
   });
 
   try {
