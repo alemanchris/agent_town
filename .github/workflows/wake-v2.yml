@@ -25,9 +25,8 @@ jobs:
       - name: Run lifecycle v2 wake
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          GROQ_AGENT_MODEL: openai/gpt-oss-20b
-          GROQ_TOWN_MODEL: openai/gpt-oss-120b
-          REQUEST_DELAY_MS: "2500"
+          GROQ_AGENT_MODEL: llama-3.3-70b-versatile
+          GROQ_TOWN_MODEL: llama-3.3-70b-versatile
         run: node lifecycle_v2/scripts/wake_cycle_v2.js
 
       - name: Commit updated lifecycle v2 state
