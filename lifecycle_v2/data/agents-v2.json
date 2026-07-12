@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "simDay": 4,
-  "lastWake": "2026-07-12T22:38:43.107Z",
+  "simDay": 6,
+  "lastWake": "2026-07-12T23:45:14.558Z",
   "namePool": {
     "it": [
       "Sofia",
@@ -31,26 +31,82 @@
     ]
   },
   "today": {
-    "simDay": 4,
-    "generatedAt": "2026-07-12T22:38:43.107Z",
+    "simDay": 6,
+    "generatedAt": "2026-07-12T23:45:14.558Z",
     "locked": true,
-    "townMood": "an ordinary day",
-    "townSummary": "An ordinary day with residents following their usual routines: students at the academy, workers in gardens, parks, workshops, markets, and cafes, and many spending free time in the town square. No notable events or rumors occurred.",
-    "sharedEvents": [],
-    "publicRumors": []
+    "townMood": "somber",
+    "townSummary": "The town completed another ordinary wake cycle.",
+    "sharedEvents": [
+      {
+        "id": "funeral_raj",
+        "type": "funeral",
+        "summary": "The town gathers to bid farewell to Raj",
+        "participants": [
+          "kiran",
+          "meera",
+          "priya",
+          "arjun",
+          "devika"
+        ],
+        "affectedAgents": [
+          "hi-neha-mrify7ge"
+        ],
+        "location": "funeral_ground",
+        "importance": 3
+      },
+      {
+        "id": "birth_celebration",
+        "type": "celebration",
+        "summary": "The town welcomes the new addition, Neha",
+        "participants": [
+          "kiran",
+          "meera",
+          "priya",
+          "arjun",
+          "devika"
+        ],
+        "affectedAgents": [
+          "hi-neha-mrify7ge"
+        ],
+        "location": "home_raj",
+        "importance": 2
+      }
+    ],
+    "publicRumors": [
+      {
+        "id": "rumor_raj_passing",
+        "text": "Raj has passed away, and the town is in mourning",
+        "sourceAgentId": null,
+        "aboutAgentIds": [
+          "raj"
+        ],
+        "truthStatus": "true"
+      },
+      {
+        "id": "rumor_neha_birth",
+        "text": "A new baby, Neha, has been born in the town",
+        "sourceAgentId": null,
+        "aboutAgentIds": [
+          "hi-neha-mrify7ge"
+        ],
+        "truthStatus": "true"
+      }
+    ]
   },
   "agents": [
     {
       "id": "kiran",
       "name": "Kiran",
       "lang": "hi",
-      "ageDays": 7,
-      "stage": "kid",
+      "ageDays": 9,
+      "stage": "teen",
       "home": "home_kiran",
       "job": null,
       "personality": "curious, playful, asks lots of questions",
-      "memoryDigest": "",
-      "aspirations": [],
+      "memoryDigest": "met new resident Neha",
+      "aspirations": [
+        "make friends"
+      ],
       "gossip": [],
       "relationships": {},
       "lifeHistory": [
@@ -63,63 +119,52 @@
           "simDay": 4,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 6,
+          "type": "daily_update",
+          "summary": "attended funeral and celebration"
         }
       ],
       "today": {
-        "simDay": 4,
-        "dateKey": "sim-4",
-        "generatedAt": "2026-07-12T22:38:43.107Z",
+        "simDay": 6,
+        "dateKey": "sim-6",
+        "generatedAt": "2026-07-12T23:45:14.558Z",
         "locked": true,
-        "mood": "neutral",
-        "daySummary": "A quiet and ordinary day.",
+        "mood": "curious",
+        "daySummary": "attended funeral and celebration",
         "privateDevelopments": [],
         "gossipToShare": [],
         "schedule": [
           {
             "start": "06:30",
-            "end": "08:00",
+            "end": "09:00",
             "location": "home",
-            "activity": "Morning routine and breakfast",
+            "activity": "breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "08:00",
+            "start": "09:00",
             "end": "12:00",
-            "location": "academy",
-            "activity": "Attending classes",
+            "location": "funeral_ground",
+            "activity": "funeral",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "13:00",
-            "location": "market",
-            "activity": "Lunch",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "13:00",
-            "end": "17:00",
-            "location": "academy",
-            "activity": "Attending classes",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "17:00",
-            "end": "19:00",
+            "end": "15:00",
             "location": "town_square",
-            "activity": "Free time",
+            "activity": "celebration",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "19:00",
+            "start": "15:00",
             "end": "23:00",
-            "location": "home",
-            "activity": "Dinner and evening at home",
+            "location": "town_square",
+            "activity": "social time",
             "status": "planned",
             "eventId": null
           }
@@ -131,15 +176,27 @@
       "id": "sofia",
       "name": "Sofia",
       "lang": "it",
-      "ageDays": 10,
+      "ageDays": 12,
       "stage": "teen",
       "home": "home_sofia",
       "job": null,
       "personality": "cheerful, loves drawing and animals",
-      "memoryDigest": "",
-      "aspirations": [],
+      "memoryDigest": "met Neha's family",
+      "aspirations": [
+        "learn art"
+      ],
       "gossip": [],
-      "relationships": {},
+      "relationships": {
+        "hi-neha-mrify7ge": {
+          "status": "acquaintance",
+          "closeness": 51,
+          "trust": 50,
+          "tension": 0,
+          "attraction": 0,
+          "lastChangeReason": "met at funeral and celebration",
+          "lastChangedSimDay": 6
+        }
+      },
       "lifeHistory": [
         {
           "simDay": 2,
@@ -150,63 +207,58 @@
           "simDay": 4,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 6,
+          "type": "daily_update",
+          "summary": "attended funeral and celebrated birth"
         }
       ],
       "today": {
-        "simDay": 4,
-        "dateKey": "sim-4",
-        "generatedAt": "2026-07-12T22:38:43.107Z",
+        "simDay": 6,
+        "dateKey": "sim-6",
+        "generatedAt": "2026-07-12T23:45:14.558Z",
         "locked": true,
-        "mood": "neutral",
-        "daySummary": "A quiet and ordinary day.",
+        "mood": "sad",
+        "daySummary": "attended funeral and celebrated birth",
         "privateDevelopments": [],
-        "gossipToShare": [],
+        "gossipToShare": [
+          {
+            "text": "Neha was born",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
         "schedule": [
           {
             "start": "06:30",
-            "end": "08:00",
+            "end": "09:00",
             "location": "home",
-            "activity": "Morning routine and breakfast",
+            "activity": "breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "08:00",
+            "start": "09:00",
             "end": "12:00",
-            "location": "academy",
-            "activity": "Attending classes",
+            "location": "funeral_ground",
+            "activity": "funeral",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "13:00",
-            "location": "market",
-            "activity": "Lunch",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "13:00",
-            "end": "17:00",
-            "location": "academy",
-            "activity": "Attending classes",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "17:00",
-            "end": "19:00",
+            "end": "15:00",
             "location": "town_square",
-            "activity": "Free time",
+            "activity": "celebration",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "19:00",
+            "start": "15:00",
             "end": "23:00",
             "location": "home",
-            "activity": "Dinner and evening at home",
+            "activity": "rest",
             "status": "planned",
             "eventId": null
           }
@@ -218,13 +270,15 @@
       "id": "meera",
       "name": "Meera",
       "lang": "hi",
-      "ageDays": 13,
-      "stage": "teen",
+      "ageDays": 15,
+      "stage": "young_adult",
       "home": "home_meera",
       "job": "academy",
       "personality": "a bit shy, loves music, studying hard",
-      "memoryDigest": "",
-      "aspirations": [],
+      "memoryDigest": "said goodbye to Raj",
+      "aspirations": [
+        "learn music"
+      ],
       "gossip": [],
       "relationships": {},
       "lifeHistory": [
@@ -237,63 +291,58 @@
           "simDay": 4,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 6,
+          "type": "daily_update",
+          "summary": "attended funeral"
         }
       ],
       "today": {
-        "simDay": 4,
-        "dateKey": "sim-4",
-        "generatedAt": "2026-07-12T22:38:43.107Z",
+        "simDay": 6,
+        "dateKey": "sim-6",
+        "generatedAt": "2026-07-12T23:45:14.558Z",
         "locked": true,
-        "mood": "neutral",
-        "daySummary": "A quiet and ordinary day.",
+        "mood": "sad",
+        "daySummary": "attended funeral",
         "privateDevelopments": [],
-        "gossipToShare": [],
+        "gossipToShare": [
+          {
+            "text": "Neha is born",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
         "schedule": [
           {
             "start": "06:30",
-            "end": "08:00",
+            "end": "09:00",
             "location": "home",
-            "activity": "Morning routine and breakfast",
+            "activity": "breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "08:00",
-            "end": "12:00",
-            "location": "academy",
-            "activity": "Attending classes",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "12:00",
+            "start": "09:00",
             "end": "13:00",
-            "location": "market",
-            "activity": "Lunch",
+            "location": "academy",
+            "activity": "study",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
-            "end": "17:00",
-            "location": "academy",
-            "activity": "Attending classes",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "17:00",
-            "end": "19:00",
+            "end": "18:00",
             "location": "town_square",
-            "activity": "Free time",
+            "activity": "social time",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "19:00",
+            "start": "18:00",
             "end": "23:00",
             "location": "home",
-            "activity": "Dinner and evening at home",
+            "activity": "rest",
             "status": "planned",
             "eventId": null
           }
@@ -305,13 +354,15 @@
       "id": "matteo",
       "name": "Matteo",
       "lang": "it",
-      "ageDays": 16,
+      "ageDays": 18,
       "stage": "young_adult",
       "home": "home_matteo",
       "job": "academy",
       "personality": "energetic, into sports, a little cheeky",
-      "memoryDigest": "",
-      "aspirations": [],
+      "memoryDigest": "said goodbye to Raj",
+      "aspirations": [
+        "play sports"
+      ],
       "gossip": [],
       "relationships": {},
       "lifeHistory": [
@@ -324,63 +375,58 @@
           "simDay": 4,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 6,
+          "type": "daily_update",
+          "summary": "attended funeral"
         }
       ],
       "today": {
-        "simDay": 4,
-        "dateKey": "sim-4",
-        "generatedAt": "2026-07-12T22:38:43.107Z",
+        "simDay": 6,
+        "dateKey": "sim-6",
+        "generatedAt": "2026-07-12T23:45:14.558Z",
         "locked": true,
-        "mood": "neutral",
-        "daySummary": "A quiet and ordinary day.",
+        "mood": "sad",
+        "daySummary": "attended funeral",
         "privateDevelopments": [],
-        "gossipToShare": [],
+        "gossipToShare": [
+          {
+            "text": "Neha had a baby",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
         "schedule": [
           {
             "start": "06:30",
-            "end": "08:00",
+            "end": "09:00",
             "location": "home",
-            "activity": "Morning routine and breakfast",
+            "activity": "breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "08:00",
-            "end": "12:00",
-            "location": "academy",
-            "activity": "Attending classes",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "12:00",
+            "start": "09:00",
             "end": "13:00",
-            "location": "market",
-            "activity": "Lunch",
+            "location": "academy",
+            "activity": "study",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
-            "end": "17:00",
-            "location": "academy",
-            "activity": "Attending classes",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "17:00",
-            "end": "19:00",
+            "end": "18:00",
             "location": "town_square",
-            "activity": "Free time",
+            "activity": "social time",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "19:00",
+            "start": "18:00",
             "end": "23:00",
             "location": "home",
-            "activity": "Dinner and evening at home",
+            "activity": "evening",
             "status": "planned",
             "eventId": null
           }
@@ -392,13 +438,15 @@
       "id": "priya",
       "name": "Priya",
       "lang": "hi",
-      "ageDays": 20,
+      "ageDays": 22,
       "stage": "young_adult",
       "home": "home_priya",
       "job": "garden",
       "personality": "calm meditation guide, warm and patient",
-      "memoryDigest": "",
-      "aspirations": [],
+      "memoryDigest": "said goodbye to Raj",
+      "aspirations": [
+        "help Neha's family"
+      ],
       "gossip": [],
       "relationships": {},
       "lifeHistory": [
@@ -411,63 +459,58 @@
           "simDay": 4,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 6,
+          "type": "daily_update",
+          "summary": "attended funeral and celebrated new birth"
         }
       ],
       "today": {
-        "simDay": 4,
-        "dateKey": "sim-4",
-        "generatedAt": "2026-07-12T22:38:43.107Z",
+        "simDay": 6,
+        "dateKey": "sim-6",
+        "generatedAt": "2026-07-12T23:45:14.558Z",
         "locked": true,
-        "mood": "neutral",
-        "daySummary": "A quiet and ordinary day.",
+        "mood": "reflective",
+        "daySummary": "attended funeral and celebrated new birth",
         "privateDevelopments": [],
-        "gossipToShare": [],
+        "gossipToShare": [
+          {
+            "text": "Neha's birth brings joy",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
         "schedule": [
           {
             "start": "06:30",
-            "end": "08:00",
+            "end": "09:00",
             "location": "home",
-            "activity": "Morning routine and breakfast",
+            "activity": "breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "08:00",
+            "start": "09:00",
             "end": "12:00",
-            "location": "garden",
-            "activity": "Working",
+            "location": "funeral_ground",
+            "activity": "funeral",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "13:00",
-            "location": "market",
-            "activity": "Lunch",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "13:00",
-            "end": "17:00",
-            "location": "garden",
-            "activity": "Working",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "17:00",
-            "end": "19:00",
+            "end": "15:00",
             "location": "town_square",
-            "activity": "Free time",
+            "activity": "celebration",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "19:00",
+            "start": "15:00",
             "end": "23:00",
-            "location": "home",
-            "activity": "Dinner and evening at home",
+            "location": "garden",
+            "activity": "work",
             "status": "planned",
             "eventId": null
           }
@@ -479,13 +522,15 @@
       "id": "luca",
       "name": "Luca",
       "lang": "it",
-      "ageDays": 23,
+      "ageDays": 25,
       "stage": "young_adult",
       "home": "home_luca",
       "job": "park",
       "personality": "sketches constantly, dreamy, romantic streak",
-      "memoryDigest": "",
-      "aspirations": [],
+      "memoryDigest": "said goodbye to Raj",
+      "aspirations": [
+        "find love"
+      ],
       "gossip": [],
       "relationships": {},
       "lifeHistory": [
@@ -498,63 +543,58 @@
           "simDay": 4,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 6,
+          "type": "daily_update",
+          "summary": "attended funeral"
         }
       ],
       "today": {
-        "simDay": 4,
-        "dateKey": "sim-4",
-        "generatedAt": "2026-07-12T22:38:43.107Z",
+        "simDay": 6,
+        "dateKey": "sim-6",
+        "generatedAt": "2026-07-12T23:45:14.558Z",
         "locked": true,
-        "mood": "neutral",
-        "daySummary": "A quiet and ordinary day.",
+        "mood": "melancholic",
+        "daySummary": "attended funeral",
         "privateDevelopments": [],
-        "gossipToShare": [],
+        "gossipToShare": [
+          {
+            "text": "Neha had a baby",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
         "schedule": [
           {
             "start": "06:30",
-            "end": "08:00",
+            "end": "09:00",
             "location": "home",
-            "activity": "Morning routine and breakfast",
+            "activity": "breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "08:00",
-            "end": "12:00",
-            "location": "park",
-            "activity": "Working",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "12:00",
+            "start": "09:00",
             "end": "13:00",
-            "location": "market",
-            "activity": "Lunch",
+            "location": "park",
+            "activity": "work",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
-            "end": "17:00",
-            "location": "park",
-            "activity": "Working",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "17:00",
-            "end": "19:00",
+            "end": "18:00",
             "location": "town_square",
-            "activity": "Free time",
+            "activity": "social time",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "19:00",
+            "start": "18:00",
             "end": "23:00",
             "location": "home",
-            "activity": "Dinner and evening at home",
+            "activity": "evening",
             "status": "planned",
             "eventId": null
           }
@@ -566,13 +606,15 @@
       "id": "chiara",
       "name": "Chiara",
       "lang": "it",
-      "ageDays": 26,
+      "ageDays": 28,
       "stage": "young_adult",
       "home": "home_chiara",
       "job": "market",
       "personality": "chatty, knows everyone's business, kind",
-      "memoryDigest": "",
-      "aspirations": [],
+      "memoryDigest": "Raj's funeral",
+      "aspirations": [
+        "make friends"
+      ],
       "gossip": [],
       "relationships": {},
       "lifeHistory": [
@@ -585,63 +627,58 @@
           "simDay": 4,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 6,
+          "type": "daily_update",
+          "summary": "attended funeral"
         }
       ],
       "today": {
-        "simDay": 4,
-        "dateKey": "sim-4",
-        "generatedAt": "2026-07-12T22:38:43.107Z",
+        "simDay": 6,
+        "dateKey": "sim-6",
+        "generatedAt": "2026-07-12T23:45:14.558Z",
         "locked": true,
-        "mood": "neutral",
-        "daySummary": "A quiet and ordinary day.",
+        "mood": "somber",
+        "daySummary": "attended funeral",
         "privateDevelopments": [],
-        "gossipToShare": [],
+        "gossipToShare": [
+          {
+            "text": "Neha had a baby",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
         "schedule": [
           {
             "start": "06:30",
-            "end": "08:00",
+            "end": "09:00",
             "location": "home",
-            "activity": "Morning routine and breakfast",
+            "activity": "breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "08:00",
-            "end": "12:00",
-            "location": "market",
-            "activity": "Working",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "12:00",
+            "start": "09:00",
             "end": "13:00",
             "location": "market",
-            "activity": "Lunch",
+            "activity": "work",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
-            "end": "17:00",
-            "location": "market",
-            "activity": "Working",
+            "end": "15:00",
+            "location": "funeral_ground",
+            "activity": "funeral",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "17:00",
-            "end": "19:00",
-            "location": "town_square",
-            "activity": "Free time",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "19:00",
+            "start": "18:00",
             "end": "23:00",
-            "location": "home",
-            "activity": "Dinner and evening at home",
+            "location": "town_square",
+            "activity": "social time",
             "status": "planned",
             "eventId": null
           }
@@ -653,13 +690,15 @@
       "id": "davide",
       "name": "Davide",
       "lang": "it",
-      "ageDays": 29,
+      "ageDays": 31,
       "stage": "full_adult",
       "home": "home_davide",
       "job": "workshop",
       "personality": "quiet craftsman, focused, dry humor",
-      "memoryDigest": "",
-      "aspirations": [],
+      "memoryDigest": "met Kiran at market",
+      "aspirations": [
+        "improve crafting skills"
+      ],
       "gossip": [],
       "relationships": {},
       "lifeHistory": [
@@ -672,63 +711,58 @@
           "simDay": 4,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 6,
+          "type": "daily_update",
+          "summary": "usual day"
         }
       ],
       "today": {
-        "simDay": 4,
-        "dateKey": "sim-4",
-        "generatedAt": "2026-07-12T22:38:43.107Z",
+        "simDay": 6,
+        "dateKey": "sim-6",
+        "generatedAt": "2026-07-12T23:45:14.558Z",
         "locked": true,
         "mood": "neutral",
-        "daySummary": "A quiet and ordinary day.",
+        "daySummary": "usual day",
         "privateDevelopments": [],
-        "gossipToShare": [],
+        "gossipToShare": [
+          {
+            "text": "Neha had a baby",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
         "schedule": [
           {
             "start": "06:30",
-            "end": "08:00",
+            "end": "09:00",
             "location": "home",
-            "activity": "Morning routine and breakfast",
+            "activity": "breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "08:00",
-            "end": "12:00",
-            "location": "workshop",
-            "activity": "Working",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "12:00",
+            "start": "09:00",
             "end": "13:00",
             "location": "market",
-            "activity": "Lunch",
+            "activity": "work",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
-            "end": "17:00",
-            "location": "workshop",
-            "activity": "Working",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "17:00",
-            "end": "19:00",
+            "end": "18:00",
             "location": "town_square",
-            "activity": "Free time",
+            "activity": "social time",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "19:00",
+            "start": "18:00",
             "end": "23:00",
             "location": "home",
-            "activity": "Dinner and evening at home",
+            "activity": "evening",
             "status": "planned",
             "eventId": null
           }
@@ -740,13 +774,15 @@
       "id": "arjun",
       "name": "Arjun",
       "lang": "hi",
-      "ageDays": 33,
+      "ageDays": 35,
       "stage": "full_adult",
       "home": "home_arjun",
       "job": "park",
       "personality": "upbeat yoga instructor, motivational",
-      "memoryDigest": "",
-      "aspirations": [],
+      "memoryDigest": "Neha's birth",
+      "aspirations": [
+        "teach yoga"
+      ],
       "gossip": [],
       "relationships": {},
       "lifeHistory": [
@@ -759,63 +795,58 @@
           "simDay": 4,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 6,
+          "type": "daily_update",
+          "summary": "attended funeral and celebrated birth"
         }
       ],
       "today": {
-        "simDay": 4,
-        "dateKey": "sim-4",
-        "generatedAt": "2026-07-12T22:38:43.107Z",
+        "simDay": 6,
+        "dateKey": "sim-6",
+        "generatedAt": "2026-07-12T23:45:14.558Z",
         "locked": true,
-        "mood": "neutral",
-        "daySummary": "A quiet and ordinary day.",
+        "mood": "upbeat",
+        "daySummary": "attended funeral and celebrated birth",
         "privateDevelopments": [],
-        "gossipToShare": [],
+        "gossipToShare": [
+          {
+            "text": "Neha's arrival",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
         "schedule": [
           {
             "start": "06:30",
-            "end": "08:00",
+            "end": "09:00",
             "location": "home",
-            "activity": "Morning routine and breakfast",
+            "activity": "breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "08:00",
+            "start": "09:00",
             "end": "12:00",
             "location": "park",
-            "activity": "Working",
+            "activity": "work",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "13:00",
-            "location": "market",
-            "activity": "Lunch",
+            "end": "14:00",
+            "location": "funeral_ground",
+            "activity": "funeral",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "13:00",
-            "end": "17:00",
-            "location": "park",
-            "activity": "Working",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "17:00",
-            "end": "19:00",
-            "location": "town_square",
-            "activity": "Free time",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "19:00",
+            "start": "18:00",
             "end": "23:00",
-            "location": "home",
-            "activity": "Dinner and evening at home",
+            "location": "town_square",
+            "activity": "social time",
             "status": "planned",
             "eventId": null
           }
@@ -827,13 +858,15 @@
       "id": "giulia",
       "name": "Giulia",
       "lang": "it",
-      "ageDays": 36,
+      "ageDays": 38,
       "stage": "full_adult",
       "home": "home_giulia",
       "job": "cafe",
       "personality": "warm barista, remembers everyone's order",
-      "memoryDigest": "",
-      "aspirations": [],
+      "memoryDigest": "met Neha's family",
+      "aspirations": [
+        "learn a new coffee recipe"
+      ],
       "gossip": [],
       "relationships": {},
       "lifeHistory": [
@@ -846,63 +879,52 @@
           "simDay": 4,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 6,
+          "type": "daily_update",
+          "summary": "attended funeral and celebration"
         }
       ],
       "today": {
-        "simDay": 4,
-        "dateKey": "sim-4",
-        "generatedAt": "2026-07-12T22:38:43.107Z",
+        "simDay": 6,
+        "dateKey": "sim-6",
+        "generatedAt": "2026-07-12T23:45:14.558Z",
         "locked": true,
         "mood": "neutral",
-        "daySummary": "A quiet and ordinary day.",
+        "daySummary": "attended funeral and celebration",
         "privateDevelopments": [],
         "gossipToShare": [],
         "schedule": [
           {
             "start": "06:30",
-            "end": "08:00",
+            "end": "09:00",
             "location": "home",
-            "activity": "Morning routine and breakfast",
+            "activity": "breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "08:00",
-            "end": "12:00",
-            "location": "cafe",
-            "activity": "Working",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "12:00",
+            "start": "09:00",
             "end": "13:00",
-            "location": "market",
-            "activity": "Lunch",
+            "location": "cafe",
+            "activity": "work",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
-            "end": "17:00",
-            "location": "cafe",
-            "activity": "Working",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "17:00",
-            "end": "19:00",
+            "end": "18:00",
             "location": "town_square",
-            "activity": "Free time",
+            "activity": "social time",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "19:00",
+            "start": "18:00",
             "end": "23:00",
             "location": "home",
-            "activity": "Dinner and evening at home",
+            "activity": "evening",
             "status": "planned",
             "eventId": null
           }
@@ -914,13 +936,15 @@
       "id": "marco",
       "name": "Marco",
       "lang": "it",
-      "ageDays": 39,
+      "ageDays": 41,
       "stage": "full_adult",
       "home": "home_marco",
       "job": "workshop",
       "personality": "builds furniture, steady, a little guarded",
-      "memoryDigest": "",
-      "aspirations": [],
+      "memoryDigest": "met Neha's family",
+      "aspirations": [
+        "learn woodworking"
+      ],
       "gossip": [],
       "relationships": {},
       "lifeHistory": [
@@ -933,63 +957,58 @@
           "simDay": 4,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 6,
+          "type": "daily_update",
+          "summary": "attended funeral and celebration"
         }
       ],
       "today": {
-        "simDay": 4,
-        "dateKey": "sim-4",
-        "generatedAt": "2026-07-12T22:38:43.107Z",
+        "simDay": 6,
+        "dateKey": "sim-6",
+        "generatedAt": "2026-07-12T23:45:14.558Z",
         "locked": true,
         "mood": "neutral",
-        "daySummary": "A quiet and ordinary day.",
+        "daySummary": "attended funeral and celebration",
         "privateDevelopments": [],
-        "gossipToShare": [],
+        "gossipToShare": [
+          {
+            "text": "Neha's birth",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
         "schedule": [
           {
             "start": "06:30",
-            "end": "08:00",
+            "end": "09:00",
             "location": "home",
-            "activity": "Morning routine and breakfast",
+            "activity": "breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "08:00",
+            "start": "09:00",
             "end": "12:00",
-            "location": "workshop",
-            "activity": "Working",
+            "location": "funeral_ground",
+            "activity": "funeral",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "13:00",
-            "location": "market",
-            "activity": "Lunch",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "13:00",
-            "end": "17:00",
-            "location": "workshop",
-            "activity": "Working",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "17:00",
-            "end": "19:00",
+            "end": "15:00",
             "location": "town_square",
-            "activity": "Free time",
+            "activity": "celebration",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "19:00",
+            "start": "15:00",
             "end": "23:00",
-            "location": "home",
-            "activity": "Dinner and evening at home",
+            "location": "workshop",
+            "activity": "work",
             "status": "planned",
             "eventId": null
           }
@@ -1001,15 +1020,27 @@
       "id": "elena",
       "name": "Elena",
       "lang": "it",
-      "ageDays": 43,
+      "ageDays": 45,
       "stage": "senior",
       "home": "home_elena",
       "job": "market",
       "personality": "runs the market stall, sharp wit, generous",
-      "memoryDigest": "",
-      "aspirations": [],
+      "memoryDigest": "said goodbye to Raj",
+      "aspirations": [
+        "support Neha"
+      ],
       "gossip": [],
-      "relationships": {},
+      "relationships": {
+        "hi-neha-mrify7ge": {
+          "status": "acquaintance",
+          "closeness": 51,
+          "trust": 50,
+          "tension": 0,
+          "attraction": 1,
+          "lastChangeReason": "new resident",
+          "lastChangedSimDay": 6
+        }
+      },
       "lifeHistory": [
         {
           "simDay": 2,
@@ -1020,63 +1051,58 @@
           "simDay": 4,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 6,
+          "type": "daily_update",
+          "summary": "attended funeral and celebration"
         }
       ],
       "today": {
-        "simDay": 4,
-        "dateKey": "sim-4",
-        "generatedAt": "2026-07-12T22:38:43.107Z",
+        "simDay": 6,
+        "dateKey": "sim-6",
+        "generatedAt": "2026-07-12T23:45:14.558Z",
         "locked": true,
-        "mood": "neutral",
-        "daySummary": "A quiet and ordinary day.",
+        "mood": "somber",
+        "daySummary": "attended funeral and celebration",
         "privateDevelopments": [],
-        "gossipToShare": [],
+        "gossipToShare": [
+          {
+            "text": "Neha's birth",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
         "schedule": [
           {
             "start": "06:30",
-            "end": "08:00",
+            "end": "09:00",
             "location": "home",
-            "activity": "Morning routine and breakfast",
+            "activity": "breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "08:00",
+            "start": "09:00",
             "end": "12:00",
-            "location": "market",
-            "activity": "Working",
+            "location": "funeral_ground",
+            "activity": "funeral",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "13:00",
-            "location": "market",
-            "activity": "Lunch",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "13:00",
-            "end": "17:00",
-            "location": "market",
-            "activity": "Working",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "17:00",
-            "end": "19:00",
+            "end": "15:00",
             "location": "town_square",
-            "activity": "Free time",
+            "activity": "celebration",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "19:00",
+            "start": "15:00",
             "end": "23:00",
-            "location": "home",
-            "activity": "Dinner and evening at home",
+            "location": "market",
+            "activity": "work",
             "status": "planned",
             "eventId": null
           }
@@ -1088,13 +1114,15 @@
       "id": "devika",
       "name": "Devika",
       "lang": "hi",
-      "ageDays": 47,
+      "ageDays": 49,
       "stage": "senior",
       "home": "home_devika",
       "job": "garden",
       "personality": "wise, tells long stories, loves tea",
-      "memoryDigest": "",
-      "aspirations": [],
+      "memoryDigest": "Raj's farewell",
+      "aspirations": [
+        "drink tea"
+      ],
       "gossip": [],
       "relationships": {},
       "lifeHistory": [
@@ -1107,63 +1135,58 @@
           "simDay": 4,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 6,
+          "type": "daily_update",
+          "summary": "attended funeral"
         }
       ],
       "today": {
-        "simDay": 4,
-        "dateKey": "sim-4",
-        "generatedAt": "2026-07-12T22:38:43.107Z",
+        "simDay": 6,
+        "dateKey": "sim-6",
+        "generatedAt": "2026-07-12T23:45:14.558Z",
         "locked": true,
-        "mood": "neutral",
-        "daySummary": "A quiet and ordinary day.",
+        "mood": "somber",
+        "daySummary": "attended funeral",
         "privateDevelopments": [],
-        "gossipToShare": [],
+        "gossipToShare": [
+          {
+            "text": "Neha born",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
         "schedule": [
           {
             "start": "06:30",
-            "end": "08:00",
+            "end": "09:00",
             "location": "home",
-            "activity": "Morning routine and breakfast",
+            "activity": "breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "08:00",
+            "start": "09:00",
             "end": "12:00",
-            "location": "garden",
-            "activity": "Working",
+            "location": "funeral_ground",
+            "activity": "funeral",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "13:00",
-            "location": "market",
-            "activity": "Lunch",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "13:00",
-            "end": "17:00",
+            "end": "15:00",
             "location": "garden",
-            "activity": "Working",
+            "activity": "work",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "17:00",
-            "end": "19:00",
-            "location": "town_square",
-            "activity": "Free time",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "19:00",
+            "start": "15:00",
             "end": "23:00",
             "location": "home",
-            "activity": "Dinner and evening at home",
+            "activity": "rest",
             "status": "planned",
             "eventId": null
           }
@@ -1175,13 +1198,15 @@
       "id": "paolo",
       "name": "Paolo",
       "lang": "it",
-      "ageDays": 51,
+      "ageDays": 53,
       "stage": "elder",
       "home": "home_paolo",
       "job": "cafe",
       "personality": "retired teacher, philosophical, teases gently",
-      "memoryDigest": "",
-      "aspirations": [],
+      "memoryDigest": "Raj's funeral",
+      "aspirations": [
+        "visit Neha"
+      ],
       "gossip": [],
       "relationships": {},
       "lifeHistory": [
@@ -1194,150 +1219,58 @@
           "simDay": 4,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 6,
+          "type": "daily_update",
+          "summary": "attended funeral"
         }
       ],
       "today": {
-        "simDay": 4,
-        "dateKey": "sim-4",
-        "generatedAt": "2026-07-12T22:38:43.107Z",
+        "simDay": 6,
+        "dateKey": "sim-6",
+        "generatedAt": "2026-07-12T23:45:14.558Z",
         "locked": true,
-        "mood": "neutral",
-        "daySummary": "A quiet and ordinary day.",
+        "mood": "somber",
+        "daySummary": "attended funeral",
         "privateDevelopments": [],
-        "gossipToShare": [],
-        "schedule": [
+        "gossipToShare": [
           {
-            "start": "06:30",
-            "end": "08:00",
-            "location": "home",
-            "activity": "Morning routine and breakfast",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "08:00",
-            "end": "12:00",
-            "location": "cafe",
-            "activity": "Working",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "12:00",
-            "end": "13:00",
-            "location": "market",
-            "activity": "Lunch",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "13:00",
-            "end": "17:00",
-            "location": "cafe",
-            "activity": "Working",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "17:00",
-            "end": "19:00",
-            "location": "town_square",
-            "activity": "Free time",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "19:00",
-            "end": "23:00",
-            "location": "home",
-            "activity": "Dinner and evening at home",
-            "status": "planned",
-            "eventId": null
+            "text": "Neha had a baby",
+            "aboutAgentIds": [],
+            "confidence": 0.5
           }
         ],
-        "sharedEventIds": []
-      }
-    },
-    {
-      "id": "raj",
-      "name": "Raj",
-      "lang": "hi",
-      "ageDays": 54,
-      "stage": "elder",
-      "home": "home_raj",
-      "job": null,
-      "personality": "gentle elder, reflective, gives advice",
-      "memoryDigest": "",
-      "aspirations": [],
-      "gossip": [],
-      "relationships": {},
-      "lifeHistory": [
-        {
-          "simDay": 2,
-          "type": "daily_update",
-          "summary": "A quiet and ordinary day."
-        },
-        {
-          "simDay": 4,
-          "type": "daily_update",
-          "summary": "A quiet and ordinary day."
-        }
-      ],
-      "today": {
-        "simDay": 4,
-        "dateKey": "sim-4",
-        "generatedAt": "2026-07-12T22:38:43.107Z",
-        "locked": true,
-        "mood": "neutral",
-        "daySummary": "A quiet and ordinary day.",
-        "privateDevelopments": [],
-        "gossipToShare": [],
         "schedule": [
           {
             "start": "06:30",
-            "end": "08:00",
+            "end": "09:00",
             "location": "home",
-            "activity": "Morning routine and breakfast",
+            "activity": "breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "08:00",
+            "start": "09:00",
             "end": "12:00",
-            "location": "town_square",
-            "activity": "Spending time in town",
+            "location": "funeral_ground",
+            "activity": "funeral",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "13:00",
-            "location": "market",
-            "activity": "Lunch",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "13:00",
-            "end": "17:00",
-            "location": "town_square",
-            "activity": "Spending time in town",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "17:00",
-            "end": "19:00",
-            "location": "town_square",
-            "activity": "Free time",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "19:00",
-            "end": "23:00",
+            "end": "15:00",
             "location": "home",
-            "activity": "Dinner and evening at home",
+            "activity": "rest",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "15:00",
+            "end": "23:00",
+            "location": "town_square",
+            "activity": "social time",
             "status": "planned",
             "eventId": null
           }
@@ -1349,13 +1282,15 @@
       "id": "it-tommaso-mridknmr",
       "name": "Tommaso",
       "lang": "it",
-      "ageDays": 0,
+      "ageDays": 2,
       "stage": "kid",
       "home": "home_lucia",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Born into the town after Nonna Lucia's death.",
-      "aspirations": [],
+      "memoryDigest": "saw funeral",
+      "aspirations": [
+        "make friends"
+      ],
       "gossip": [],
       "relationships": {},
       "lifeHistory": [
@@ -1368,12 +1303,88 @@
           "simDay": 4,
           "type": "daily_update",
           "summary": "A newborn's first quiet day."
+        },
+        {
+          "simDay": 6,
+          "type": "daily_update",
+          "summary": "explored town"
         }
       ],
       "today": {
-        "simDay": 4,
-        "dateKey": "sim-4",
-        "generatedAt": "2026-07-12T22:38:43.107Z",
+        "simDay": 6,
+        "dateKey": "sim-6",
+        "generatedAt": "2026-07-12T23:45:14.558Z",
+        "locked": true,
+        "mood": "curious",
+        "daySummary": "explored town",
+        "privateDevelopments": [],
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "06:30",
+            "end": "09:00",
+            "location": "home",
+            "activity": "breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "09:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "play",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "18:00",
+            "location": "town_square",
+            "activity": "social time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "18:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "evening",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
+        "sharedEventIds": []
+      }
+    },
+    {
+      "id": "hi-neha-mrify7ge",
+      "name": "Neha",
+      "lang": "hi",
+      "ageDays": 0,
+      "stage": "kid",
+      "home": "home_raj",
+      "job": null,
+      "personality": "a blank slate — still discovering who they are",
+      "memoryDigest": "Born into the town after Raj's death.",
+      "aspirations": [],
+      "gossip": [],
+      "relationships": {},
+      "lifeHistory": [
+        {
+          "simDay": 6,
+          "type": "birth",
+          "summary": "Born into home_raj."
+        },
+        {
+          "simDay": 6,
+          "type": "daily_update",
+          "summary": "A newborn's first quiet day."
+        }
+      ],
+      "today": {
+        "simDay": 6,
+        "dateKey": "sim-6",
+        "generatedAt": "2026-07-12T23:45:14.558Z",
         "locked": true,
         "mood": "newborn",
         "daySummary": "A newborn's first quiet day.",
@@ -1389,26 +1400,29 @@
             "eventId": null
           }
         ],
-        "sharedEventIds": []
+        "sharedEventIds": [
+          "funeral_raj",
+          "birth_celebration"
+        ]
       }
     }
   ],
   "lastDeaths": [
     {
-      "id": "lucia",
-      "name": "Nonna Lucia",
-      "lang": "it",
-      "ageDays": 57,
-      "simDay": 4
+      "id": "raj",
+      "name": "Raj",
+      "lang": "hi",
+      "ageDays": 56,
+      "simDay": 6
     }
   ],
   "lastBirths": [
     {
-      "id": "it-tommaso-mridknmr",
-      "name": "Tommaso",
-      "lang": "it",
-      "home": "home_lucia",
-      "simDay": 4
+      "id": "hi-neha-mrify7ge",
+      "name": "Neha",
+      "lang": "hi",
+      "home": "home_raj",
+      "simDay": 6
     }
   ]
 }
