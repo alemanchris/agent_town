@@ -1,0 +1,39 @@
+name: Wake the Town v2
+
+on:
+  schedule:
+    # Monday, Wednesday and Friday at 08:00 UTC
+    - cron: "0 8 * * 1,3,5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  wake-v2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run lifecycle v2 wake
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_AGENT_MODEL: openai/gpt-oss-20b
+          GROQ_TOWN_MODEL: openai/gpt-oss-120b
+          REQUEST_DELAY_MS: "2500"
+        run: node lifecycle_v2/scripts/wake_cycle_v2.js
+
+      - name: Commit updated lifecycle v2 state
+        run: |
+          git config user.name "agent-town-v2-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add lifecycle_v2/data/agents-v2.json
+          git diff --cached --quiet && echo "No changes" || git commit -m "Lifecycle v2 wake: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push
