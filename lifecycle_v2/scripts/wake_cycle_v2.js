@@ -315,7 +315,7 @@ async function individualAgentCall(agent, state, townContext) {
   const system = `Simulate one resident for one day in a persistent town.
 Return one compact JSON object only, using exactly these short keys:
 {"m":"mood","d":"short day summary","mem":"short new memory","a":"one aspiration","g":"one short gossip or empty","r":[{"t":"agent_id","c":0,"tr":0,"te":0,"at":0,"why":"short reason"}],"s":[["06:30","09:00","home","breakfast"],["09:00","13:00","market","work"],["13:00","18:00","town_square","social time"],["18:00","23:00","home","evening"]]}.
-Keep the entire answer under 200 tokens. Use exactly 4 schedule rows covering morning to night. Use only supplied agent IDs and these locations: ${VALID_LOCATIONS.join(", ")}. Omit r entries when no relationship changes occur.`;
+Keep the entire answer under 350 tokens. Use exactly 4 schedule rows covering morning to night. Use only supplied agent IDs and these locations: ${VALID_LOCATIONS.join(", ")}. Omit r entries when no relationship changes occur.`;
 
   const user = JSON.stringify({
     day: state.simDay,
@@ -346,7 +346,7 @@ Keep the entire answer under 200 tokens. Use exactly 4 schedule rows covering mo
       model: AGENT_MODEL,
       system,
       user,
-      maxTokens: 300,
+      maxTokens: 400,
       temperature: 0.85,
     });
 
