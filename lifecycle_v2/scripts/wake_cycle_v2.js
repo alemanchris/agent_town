@@ -23,7 +23,7 @@ const TOWN_MODEL = process.env.GROQ_TOWN_MODEL || "llama-3.3-70b-versatile";
 
 const DAYS_PER_WAKE = 2;
 const LIFESPAN_DAYS = 56;
-const REQUEST_DELAY_MS = Math.max(1500, Number(process.env.REQUEST_DELAY_MS || 2500));
+// No artificial delays needed — free tier allows 30 req/min, we use 18 per wake
 
 const STAGES = [
   { name: "kid", max: 7 },
@@ -39,9 +39,9 @@ const VALID_LOCATIONS = [
   "town_square", "clinic", "cathedral", "funeral_ground", "road"
 ];
 
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+// No delays between normal calls — we're well under Groq's 30 req/min free tier.
+// sleep() is kept only for the retry backoff on genuine 429/5xx responses.
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, Number(value) || 0));
@@ -515,21 +515,28 @@ async function main() {
   console.log(`Wake ${state.simDay}: initial town call`);
   const townContext = await initialTownCall(state);
   state.today = { ...townContext, simDay: state.simDay, generatedAt: state.lastWake, locked: false, townSummary: "" };
-  await sleep(REQUEST_DELAY_MS);
 
   const knownIds = new Set(state.agents.map((a) => a.id));
 
-  for (let i = 0; i < state.agents.length; i += 1) {
-    const agent = state.agents[i];
-    console.log(`Wake ${state.simDay}: agent ${i + 1}/${state.agents.length} — ${agent.name}`);
-    const generated = agent.ageDays === 0
-      ? {
+  // All 16 agent calls fire in parallel — we're using ~18 of the 30 req/min free-tier allowance,
+  // so there's no need to wait between calls at all.
+  console.log(`Wake ${state.simDay}: ${state.agents.length} agent calls (parallel)`);
+  const allGenerated = await Promise.all(
+    state.agents.map((agent, i) => {
+      if (agent.ageDays === 0) {
+        return Promise.resolve({
           mood: "newborn", daySummary: "A newborn's first quiet day.", memoryDigest: agent.memoryDigest,
           aspirations: [], privateDevelopments: [], gossipToShare: [], relationshipIntentions: [],
           schedule: [{ start: "00:00", end: "23:59", location: "home", activity: "Being cared for at home", status: "planned", eventId: null }],
-        }
-      : await individualAgentCall(agent, state, townContext);
+        });
+      }
+      return individualAgentCall(agent, state, townContext);
+    })
+  );
 
+  for (let i = 0; i < state.agents.length; i += 1) {
+    const agent = state.agents[i];
+    const generated = allGenerated[i];
     agent.memoryDigest = generated.memoryDigest;
     agent.aspirations = generated.aspirations;
     agent.today = {
@@ -546,11 +553,9 @@ async function main() {
         .filter((event) => Array.isArray(event.affectedAgents) && event.affectedAgents.includes(agent.id))
         .map((event) => event.id),
     };
-
     agent.lifeHistory.push({ simDay: state.simDay, type: "daily_update", summary: generated.daySummary });
     agent.lifeHistory = agent.lifeHistory.slice(-40);
     applyRelationshipIntentions(agent, generated.relationshipIntentions, knownIds, state.simDay);
-    await sleep(REQUEST_DELAY_MS);
   }
 
   console.log(`Wake ${state.simDay}: final town call`);
