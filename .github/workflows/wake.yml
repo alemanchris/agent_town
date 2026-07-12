@@ -1,9 +1,9 @@
 name: Wake the Town
 
 on:
-  schedule:
+ # schedule:
     # Mon, Wed, Fri at 08:00 UTC — adjust to taste
-    - cron: "0 8 * * 1,3,5"
+ #   - cron: "0 8 * * 1,3,5"
   workflow_dispatch: {} # lets you trigger it manually from the Actions tab too
 
 permissions:
