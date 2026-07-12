@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "simDay": 0,
-  "lastWake": null,
+  "simDay": 2,
+  "lastWake": "2026-07-12T18:50:10.506Z",
   "namePool": {
     "it": [
       "Sofia",
@@ -31,18 +31,81 @@
     ]
   },
   "today": {
-    "locked": false,
-    "townMood": "not generated yet",
-    "townSummary": "",
-    "sharedEvents": [],
-    "publicRumors": []
+    "simDay": 2,
+    "generatedAt": "2026-07-12T18:50:10.506Z",
+    "locked": true,
+    "townMood": "calm",
+    "townSummary": "The town completed another ordinary wake cycle.",
+    "sharedEvents": [
+      {
+        "id": "event_001",
+        "type": "argument",
+        "summary": "Matteo and Luca had a brief disagreement over a football game while jogging in the park.",
+        "participants": [
+          "matteo",
+          "luca"
+        ],
+        "affectedAgents": [
+          "matteo",
+          "luca"
+        ],
+        "location": "park",
+        "importance": 1
+      },
+      {
+        "id": "event_002",
+        "type": "community_gathering",
+        "summary": "Devika led a short meditation session in the garden, joined by Priya and curious kid Kiran.",
+        "participants": [
+          "devika",
+          "priya",
+          "kiran"
+        ],
+        "affectedAgents": [
+          "devika",
+          "priya",
+          "kiran"
+        ],
+        "location": "garden",
+        "importance": 1
+      }
+    ],
+    "publicRumors": [
+      {
+        "id": "rumor_001",
+        "text": "People are saying Raj might be moving to the city soon.",
+        "sourceAgentId": null,
+        "aboutAgentIds": [
+          "raj"
+        ],
+        "truthStatus": "unknown"
+      },
+      {
+        "id": "rumor_002",
+        "text": "There are whispers that Elena's market stall will close next month.",
+        "sourceAgentId": null,
+        "aboutAgentIds": [
+          "elena"
+        ],
+        "truthStatus": "false"
+      },
+      {
+        "id": "rumor_003",
+        "text": "Kids claim Kiran discovered a hidden pond behind the park bench.",
+        "sourceAgentId": "kiran",
+        "aboutAgentIds": [
+          "kiran"
+        ],
+        "truthStatus": "mixed"
+      }
+    ]
   },
   "agents": [
     {
       "id": "kiran",
       "name": "Kiran",
       "lang": "hi",
-      "ageDays": 3,
+      "ageDays": 5,
       "stage": "kid",
       "home": "home_kiran",
       "job": null,
@@ -51,22 +114,83 @@
       "aspirations": [],
       "gossip": [],
       "relationships": {},
-      "lifeHistory": [],
+      "lifeHistory": [
+        {
+          "simDay": 2,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
+        }
+      ],
       "today": {
-        "locked": false,
+        "simDay": 2,
+        "dateKey": "sim-2",
+        "generatedAt": "2026-07-12T18:50:10.506Z",
+        "locked": true,
         "mood": "neutral",
-        "daySummary": "",
-        "schedule": [],
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
-        "sharedEventIds": []
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "06:30",
+            "end": "08:00",
+            "location": "home",
+            "activity": "Morning routine and breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "08:00",
+            "end": "12:00",
+            "location": "academy",
+            "activity": "Attending classes",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "academy",
+            "activity": "Attending classes",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
+        "sharedEventIds": [
+          "event_002"
+        ]
       }
     },
     {
       "id": "sofia",
       "name": "Sofia",
       "lang": "it",
-      "ageDays": 6,
-      "stage": "kid",
+      "ageDays": 8,
+      "stage": "teen",
       "home": "home_sofia",
       "job": null,
       "personality": "cheerful, loves drawing and animals",
@@ -74,13 +198,72 @@
       "aspirations": [],
       "gossip": [],
       "relationships": {},
-      "lifeHistory": [],
+      "lifeHistory": [
+        {
+          "simDay": 2,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
+        }
+      ],
       "today": {
-        "locked": false,
+        "simDay": 2,
+        "dateKey": "sim-2",
+        "generatedAt": "2026-07-12T18:50:10.506Z",
+        "locked": true,
         "mood": "neutral",
-        "daySummary": "",
-        "schedule": [],
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "06:30",
+            "end": "08:00",
+            "location": "home",
+            "activity": "Morning routine and breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "08:00",
+            "end": "12:00",
+            "location": "academy",
+            "activity": "Attending classes",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "academy",
+            "activity": "Attending classes",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
         "sharedEventIds": []
       }
     },
@@ -88,7 +271,7 @@
       "id": "meera",
       "name": "Meera",
       "lang": "hi",
-      "ageDays": 9,
+      "ageDays": 11,
       "stage": "teen",
       "home": "home_meera",
       "job": "academy",
@@ -97,13 +280,72 @@
       "aspirations": [],
       "gossip": [],
       "relationships": {},
-      "lifeHistory": [],
+      "lifeHistory": [
+        {
+          "simDay": 2,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
+        }
+      ],
       "today": {
-        "locked": false,
+        "simDay": 2,
+        "dateKey": "sim-2",
+        "generatedAt": "2026-07-12T18:50:10.506Z",
+        "locked": true,
         "mood": "neutral",
-        "daySummary": "",
-        "schedule": [],
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "06:30",
+            "end": "08:00",
+            "location": "home",
+            "activity": "Morning routine and breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "08:00",
+            "end": "12:00",
+            "location": "academy",
+            "activity": "Attending classes",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "academy",
+            "activity": "Attending classes",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
         "sharedEventIds": []
       }
     },
@@ -111,7 +353,7 @@
       "id": "matteo",
       "name": "Matteo",
       "lang": "it",
-      "ageDays": 12,
+      "ageDays": 14,
       "stage": "teen",
       "home": "home_matteo",
       "job": "academy",
@@ -120,21 +362,82 @@
       "aspirations": [],
       "gossip": [],
       "relationships": {},
-      "lifeHistory": [],
+      "lifeHistory": [
+        {
+          "simDay": 2,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
+        }
+      ],
       "today": {
-        "locked": false,
+        "simDay": 2,
+        "dateKey": "sim-2",
+        "generatedAt": "2026-07-12T18:50:10.506Z",
+        "locked": true,
         "mood": "neutral",
-        "daySummary": "",
-        "schedule": [],
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
-        "sharedEventIds": []
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "06:30",
+            "end": "08:00",
+            "location": "home",
+            "activity": "Morning routine and breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "08:00",
+            "end": "12:00",
+            "location": "academy",
+            "activity": "Attending classes",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "academy",
+            "activity": "Attending classes",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
+        "sharedEventIds": [
+          "event_001"
+        ]
       }
     },
     {
       "id": "priya",
       "name": "Priya",
       "lang": "hi",
-      "ageDays": 16,
+      "ageDays": 18,
       "stage": "young_adult",
       "home": "home_priya",
       "job": "garden",
@@ -143,21 +446,82 @@
       "aspirations": [],
       "gossip": [],
       "relationships": {},
-      "lifeHistory": [],
+      "lifeHistory": [
+        {
+          "simDay": 2,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
+        }
+      ],
       "today": {
-        "locked": false,
+        "simDay": 2,
+        "dateKey": "sim-2",
+        "generatedAt": "2026-07-12T18:50:10.506Z",
+        "locked": true,
         "mood": "neutral",
-        "daySummary": "",
-        "schedule": [],
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
-        "sharedEventIds": []
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "06:30",
+            "end": "08:00",
+            "location": "home",
+            "activity": "Morning routine and breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "08:00",
+            "end": "12:00",
+            "location": "garden",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "garden",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
+        "sharedEventIds": [
+          "event_002"
+        ]
       }
     },
     {
       "id": "luca",
       "name": "Luca",
       "lang": "it",
-      "ageDays": 19,
+      "ageDays": 21,
       "stage": "young_adult",
       "home": "home_luca",
       "job": "park",
@@ -166,21 +530,82 @@
       "aspirations": [],
       "gossip": [],
       "relationships": {},
-      "lifeHistory": [],
+      "lifeHistory": [
+        {
+          "simDay": 2,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
+        }
+      ],
       "today": {
-        "locked": false,
+        "simDay": 2,
+        "dateKey": "sim-2",
+        "generatedAt": "2026-07-12T18:50:10.506Z",
+        "locked": true,
         "mood": "neutral",
-        "daySummary": "",
-        "schedule": [],
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
-        "sharedEventIds": []
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "06:30",
+            "end": "08:00",
+            "location": "home",
+            "activity": "Morning routine and breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "08:00",
+            "end": "12:00",
+            "location": "park",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "park",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
+        "sharedEventIds": [
+          "event_001"
+        ]
       }
     },
     {
       "id": "chiara",
       "name": "Chiara",
       "lang": "it",
-      "ageDays": 22,
+      "ageDays": 24,
       "stage": "young_adult",
       "home": "home_chiara",
       "job": "market",
@@ -189,13 +614,72 @@
       "aspirations": [],
       "gossip": [],
       "relationships": {},
-      "lifeHistory": [],
+      "lifeHistory": [
+        {
+          "simDay": 2,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
+        }
+      ],
       "today": {
-        "locked": false,
+        "simDay": 2,
+        "dateKey": "sim-2",
+        "generatedAt": "2026-07-12T18:50:10.506Z",
+        "locked": true,
         "mood": "neutral",
-        "daySummary": "",
-        "schedule": [],
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "06:30",
+            "end": "08:00",
+            "location": "home",
+            "activity": "Morning routine and breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "08:00",
+            "end": "12:00",
+            "location": "market",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "market",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
         "sharedEventIds": []
       }
     },
@@ -203,7 +687,7 @@
       "id": "davide",
       "name": "Davide",
       "lang": "it",
-      "ageDays": 25,
+      "ageDays": 27,
       "stage": "young_adult",
       "home": "home_davide",
       "job": "workshop",
@@ -212,13 +696,72 @@
       "aspirations": [],
       "gossip": [],
       "relationships": {},
-      "lifeHistory": [],
+      "lifeHistory": [
+        {
+          "simDay": 2,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
+        }
+      ],
       "today": {
-        "locked": false,
+        "simDay": 2,
+        "dateKey": "sim-2",
+        "generatedAt": "2026-07-12T18:50:10.506Z",
+        "locked": true,
         "mood": "neutral",
-        "daySummary": "",
-        "schedule": [],
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "06:30",
+            "end": "08:00",
+            "location": "home",
+            "activity": "Morning routine and breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "08:00",
+            "end": "12:00",
+            "location": "workshop",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "workshop",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
         "sharedEventIds": []
       }
     },
@@ -226,7 +769,7 @@
       "id": "arjun",
       "name": "Arjun",
       "lang": "hi",
-      "ageDays": 29,
+      "ageDays": 31,
       "stage": "full_adult",
       "home": "home_arjun",
       "job": "park",
@@ -235,13 +778,72 @@
       "aspirations": [],
       "gossip": [],
       "relationships": {},
-      "lifeHistory": [],
+      "lifeHistory": [
+        {
+          "simDay": 2,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
+        }
+      ],
       "today": {
-        "locked": false,
+        "simDay": 2,
+        "dateKey": "sim-2",
+        "generatedAt": "2026-07-12T18:50:10.506Z",
+        "locked": true,
         "mood": "neutral",
-        "daySummary": "",
-        "schedule": [],
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "06:30",
+            "end": "08:00",
+            "location": "home",
+            "activity": "Morning routine and breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "08:00",
+            "end": "12:00",
+            "location": "park",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "park",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
         "sharedEventIds": []
       }
     },
@@ -249,7 +851,7 @@
       "id": "giulia",
       "name": "Giulia",
       "lang": "it",
-      "ageDays": 32,
+      "ageDays": 34,
       "stage": "full_adult",
       "home": "home_giulia",
       "job": "cafe",
@@ -258,13 +860,72 @@
       "aspirations": [],
       "gossip": [],
       "relationships": {},
-      "lifeHistory": [],
+      "lifeHistory": [
+        {
+          "simDay": 2,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
+        }
+      ],
       "today": {
-        "locked": false,
+        "simDay": 2,
+        "dateKey": "sim-2",
+        "generatedAt": "2026-07-12T18:50:10.506Z",
+        "locked": true,
         "mood": "neutral",
-        "daySummary": "",
-        "schedule": [],
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "06:30",
+            "end": "08:00",
+            "location": "home",
+            "activity": "Morning routine and breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "08:00",
+            "end": "12:00",
+            "location": "cafe",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "cafe",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
         "sharedEventIds": []
       }
     },
@@ -272,7 +933,7 @@
       "id": "marco",
       "name": "Marco",
       "lang": "it",
-      "ageDays": 35,
+      "ageDays": 37,
       "stage": "full_adult",
       "home": "home_marco",
       "job": "workshop",
@@ -281,13 +942,72 @@
       "aspirations": [],
       "gossip": [],
       "relationships": {},
-      "lifeHistory": [],
+      "lifeHistory": [
+        {
+          "simDay": 2,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
+        }
+      ],
       "today": {
-        "locked": false,
+        "simDay": 2,
+        "dateKey": "sim-2",
+        "generatedAt": "2026-07-12T18:50:10.506Z",
+        "locked": true,
         "mood": "neutral",
-        "daySummary": "",
-        "schedule": [],
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "06:30",
+            "end": "08:00",
+            "location": "home",
+            "activity": "Morning routine and breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "08:00",
+            "end": "12:00",
+            "location": "workshop",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "workshop",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
         "sharedEventIds": []
       }
     },
@@ -295,7 +1015,7 @@
       "id": "elena",
       "name": "Elena",
       "lang": "it",
-      "ageDays": 39,
+      "ageDays": 41,
       "stage": "full_adult",
       "home": "home_elena",
       "job": "market",
@@ -304,13 +1024,72 @@
       "aspirations": [],
       "gossip": [],
       "relationships": {},
-      "lifeHistory": [],
+      "lifeHistory": [
+        {
+          "simDay": 2,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
+        }
+      ],
       "today": {
-        "locked": false,
+        "simDay": 2,
+        "dateKey": "sim-2",
+        "generatedAt": "2026-07-12T18:50:10.506Z",
+        "locked": true,
         "mood": "neutral",
-        "daySummary": "",
-        "schedule": [],
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "06:30",
+            "end": "08:00",
+            "location": "home",
+            "activity": "Morning routine and breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "08:00",
+            "end": "12:00",
+            "location": "market",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "market",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
         "sharedEventIds": []
       }
     },
@@ -318,7 +1097,7 @@
       "id": "devika",
       "name": "Devika",
       "lang": "hi",
-      "ageDays": 43,
+      "ageDays": 45,
       "stage": "senior",
       "home": "home_devika",
       "job": "garden",
@@ -327,21 +1106,82 @@
       "aspirations": [],
       "gossip": [],
       "relationships": {},
-      "lifeHistory": [],
+      "lifeHistory": [
+        {
+          "simDay": 2,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
+        }
+      ],
       "today": {
-        "locked": false,
+        "simDay": 2,
+        "dateKey": "sim-2",
+        "generatedAt": "2026-07-12T18:50:10.506Z",
+        "locked": true,
         "mood": "neutral",
-        "daySummary": "",
-        "schedule": [],
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
-        "sharedEventIds": []
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "06:30",
+            "end": "08:00",
+            "location": "home",
+            "activity": "Morning routine and breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "08:00",
+            "end": "12:00",
+            "location": "garden",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "garden",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
+        "sharedEventIds": [
+          "event_002"
+        ]
       }
     },
     {
       "id": "paolo",
       "name": "Paolo",
       "lang": "it",
-      "ageDays": 47,
+      "ageDays": 49,
       "stage": "senior",
       "home": "home_paolo",
       "job": "cafe",
@@ -350,13 +1190,72 @@
       "aspirations": [],
       "gossip": [],
       "relationships": {},
-      "lifeHistory": [],
+      "lifeHistory": [
+        {
+          "simDay": 2,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
+        }
+      ],
       "today": {
-        "locked": false,
+        "simDay": 2,
+        "dateKey": "sim-2",
+        "generatedAt": "2026-07-12T18:50:10.506Z",
+        "locked": true,
         "mood": "neutral",
-        "daySummary": "",
-        "schedule": [],
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "06:30",
+            "end": "08:00",
+            "location": "home",
+            "activity": "Morning routine and breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "08:00",
+            "end": "12:00",
+            "location": "cafe",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "cafe",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
         "sharedEventIds": []
       }
     },
@@ -364,7 +1263,7 @@
       "id": "raj",
       "name": "Raj",
       "lang": "hi",
-      "ageDays": 50,
+      "ageDays": 52,
       "stage": "elder",
       "home": "home_raj",
       "job": null,
@@ -373,13 +1272,72 @@
       "aspirations": [],
       "gossip": [],
       "relationships": {},
-      "lifeHistory": [],
+      "lifeHistory": [
+        {
+          "simDay": 2,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
+        }
+      ],
       "today": {
-        "locked": false,
+        "simDay": 2,
+        "dateKey": "sim-2",
+        "generatedAt": "2026-07-12T18:50:10.506Z",
+        "locked": true,
         "mood": "neutral",
-        "daySummary": "",
-        "schedule": [],
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "06:30",
+            "end": "08:00",
+            "location": "home",
+            "activity": "Morning routine and breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "08:00",
+            "end": "12:00",
+            "location": "town_square",
+            "activity": "Spending time in town",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "town_square",
+            "activity": "Spending time in town",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
         "sharedEventIds": []
       }
     },
@@ -387,7 +1345,7 @@
       "id": "lucia",
       "name": "Nonna Lucia",
       "lang": "it",
-      "ageDays": 53,
+      "ageDays": 55,
       "stage": "elder",
       "home": "home_lucia",
       "job": null,
@@ -396,15 +1354,76 @@
       "aspirations": [],
       "gossip": [],
       "relationships": {},
-      "lifeHistory": [],
+      "lifeHistory": [
+        {
+          "simDay": 2,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
+        }
+      ],
       "today": {
-        "locked": false,
+        "simDay": 2,
+        "dateKey": "sim-2",
+        "generatedAt": "2026-07-12T18:50:10.506Z",
+        "locked": true,
         "mood": "neutral",
-        "daySummary": "",
-        "schedule": [],
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "06:30",
+            "end": "08:00",
+            "location": "home",
+            "activity": "Morning routine and breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "08:00",
+            "end": "12:00",
+            "location": "town_square",
+            "activity": "Spending time in town",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "town_square",
+            "activity": "Spending time in town",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
         "sharedEventIds": []
       }
     }
-  ]
+  ],
+  "lastDeaths": [],
+  "lastBirths": []
 }
