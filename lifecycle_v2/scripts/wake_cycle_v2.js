@@ -23,7 +23,7 @@ const TOWN_MODEL = process.env.GROQ_TOWN_MODEL || "openai/gpt-oss-120b";
 
 const DAYS_PER_WAKE = 2;
 const LIFESPAN_DAYS = 56;
-const REQUEST_DELAY_MS = Number(process.env.REQUEST_DELAY_MS || 2500);
+const REQUEST_DELAY_MS = Math.max(10000, Number(process.env.REQUEST_DELAY_MS || 10000));
 
 const STAGES = [
   { name: "kid", max: 7 },
@@ -158,32 +158,103 @@ function extractJson(text) {
   }
 }
 
-async function askGroqJson({ model, system, user, maxTokens, temperature }) {
+async function askGroqJson({
+  model,
+  system,
+  user,
+  maxTokens,
+  temperature,
+  maxAttempts = 4,
+}) {
   if (!GROQ_KEY) throw new Error("GROQ_API_KEY is not configured");
 
-  const response = await fetch(GROQ_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${GROQ_KEY}`,
-    },
-    body: JSON.stringify({
-      model,
-      max_tokens: maxTokens,
-      temperature,
-      messages: [
-        { role: "system", content: system },
-        { role: "user", content: user },
-      ],
-    }),
-  });
+  let lastError = null;
 
-  const raw = await response.text();
-  if (!response.ok) throw new Error(`Groq HTTP ${response.status}: ${raw.slice(0, 500)}`);
-  const data = JSON.parse(raw);
-  const content = data.choices?.[0]?.message?.content;
-  if (!content) throw new Error("Groq returned empty content");
-  return extractJson(content);
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    try {
+      const response = await fetch(GROQ_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${GROQ_KEY}`,
+        },
+        body: JSON.stringify({
+          model,
+          max_tokens: maxTokens,
+          temperature,
+          response_format: { type: "json_object" },
+          messages: [
+            { role: "system", content: system },
+            { role: "user", content: user },
+          ],
+        }),
+      });
+
+      const raw = await response.text();
+
+      if (!response.ok) {
+        const error = new Error(
+          `Groq HTTP ${response.status}: ${raw.slice(0, 500)}`
+        );
+
+        if (response.status === 429 || response.status >= 500) {
+          const retryAfterHeader = Number(
+            response.headers.get("retry-after") || 0
+          );
+
+          const retryMatch = raw.match(
+            /try again in\s+([0-9.]+)\s*(ms|s)?/i
+          );
+
+          let retryMs = retryAfterHeader > 0
+            ? retryAfterHeader * 1000
+            : 0;
+
+          if (retryMatch) {
+            const amount = Number(retryMatch[1]);
+            retryMs = retryMatch[2]?.toLowerCase() === "ms"
+              ? amount
+              : amount * 1000;
+          }
+
+          retryMs = Math.max(retryMs, 5000 * attempt);
+
+          console.warn(
+            `Groq retry ${attempt}/${maxAttempts} after ${Math.ceil(retryMs)} ms`
+          );
+
+          lastError = error;
+          await sleep(retryMs);
+          continue;
+        }
+
+        throw error;
+      }
+
+      const data = JSON.parse(raw);
+      const content = data.choices?.[0]?.message?.content;
+
+      if (!content) {
+        throw new Error("Groq returned empty content");
+      }
+
+      return extractJson(content);
+    } catch (error) {
+      lastError = error;
+
+      if (attempt >= maxAttempts) {
+        break;
+      }
+
+      const retryMs = 3000 * attempt;
+      console.warn(
+        `Groq response retry ${attempt}/${maxAttempts}: ${error.message}`
+      );
+      await sleep(retryMs);
+    }
+  }
+
+  throw lastError || new Error("Groq request failed");
 }
 
 function fallbackSchedule(agent) {
@@ -229,7 +300,7 @@ Most days should be ordinary. Use zero to three meaningful shared events. Events
   });
 
   try {
-    const result = await askGroqJson({ model: TOWN_MODEL, system, user, maxTokens: 1400, temperature: 0.95 });
+    const result = await askGroqJson({ model: TOWN_MODEL, system, user, maxTokens: 400, temperature: 0.85 });
     return {
       townMood: String(result.townMood || "an ordinary day"),
       sharedEvents: Array.isArray(result.sharedEvents) ? result.sharedEvents : [],
@@ -242,30 +313,84 @@ Most days should be ordinary. Use zero to three meaningful shared events. Events
 }
 
 async function individualAgentCall(agent, state, townContext) {
-  const system = `You simulate one autonomous resident for one full day. Their choices are random before generation, but the resulting schedule is locked for the day.
-They may follow or deviate from obligations: skip class, call in sick, leave work early, respond to family news, pursue aspirations, gossip, complain, reconcile, or change plans. Stay consistent with shared events and relationships. Do not invent agent IDs.
-Return JSON only with: {"mood":"...","daySummary":"...","memoryDigest":"...","aspirations":["..."],"privateDevelopments":["..."],"gossipToShare":[{"text":"...","aboutAgentIds":["agent_id"],"confidence":0.5}],"relationshipIntentions":[{"targetAgentId":"agent_id","closenessDelta":0,"trustDelta":0,"tensionDelta":0,"attractionDelta":0,"reason":"..."}],"schedule":[{"start":"06:30","end":"08:00","location":"home","activity":"...","status":"planned|changed|skipped|emergency","eventId":null}]}.
-Schedule must cover morning through night in 5-8 non-overlapping entries. Use only these locations: ${VALID_LOCATIONS.join(", ")}. Keep memoryDigest compact and in English.`;
+  const system = `Simulate one resident for one day in a persistent town.
+Return one compact JSON object only, using exactly these short keys:
+{"m":"mood","d":"short day summary","mem":"short new memory","a":"one aspiration","g":"one short gossip or empty","r":[{"t":"agent_id","c":0,"tr":0,"te":0,"at":0,"why":"short reason"}],"s":[["06:30","09:00","home","breakfast"],["09:00","13:00","market","work"],["13:00","18:00","town_square","social time"],["18:00","23:00","home","evening"]]}.
+Keep the entire answer under 200 tokens. Use exactly 4 schedule rows covering morning to night. Use only supplied agent IDs and these locations: ${VALID_LOCATIONS.join(", ")}. Omit r entries when no relationship changes occur.`;
 
   const user = JSON.stringify({
-    simDay: state.simDay,
-    agent: compactAgent(agent),
-    normalObligation: agent.job ? `Usually goes to ${agent.job}` : (agent.stage === "kid" || agent.stage === "teen") ? "Usually attends academy" : "No fixed work obligation",
-    townContext,
-    otherResidents: state.agents.filter((a) => a.id !== agent.id).map((a) => ({ id: a.id, name: a.name, stage: a.stage, job: a.job })),
+    day: state.simDay,
+    self: {
+      id: agent.id,
+      name: agent.name,
+      lang: agent.lang,
+      stage: agent.stage,
+      job: agent.job,
+      personality: agent.personality,
+      memory: String(agent.memoryDigest || "").slice(-240),
+      aspiration: agent.aspirations?.[0] || "",
+    },
+    townMood: townContext.townMood,
+    events: (townContext.sharedEvents || []).slice(0, 2).map((event) => ({
+      id: event.id,
+      summary: event.summary,
+      location: event.location,
+      affectedAgents: event.affectedAgents,
+    })),
+    residents: state.agents
+      .filter((other) => other.id !== agent.id)
+      .map((other) => ({ id: other.id, name: other.name })),
   });
 
   try {
-    const result = await askGroqJson({ model: AGENT_MODEL, system, user, maxTokens: 1150, temperature: 1.05 });
+    const result = await askGroqJson({
+      model: AGENT_MODEL,
+      system,
+      user,
+      maxTokens: 200,
+      temperature: 0.85,
+    });
+
+    const compactSchedule = Array.isArray(result.s)
+      ? result.s.map((row) => ({
+          start: String(row?.[0] || "08:00"),
+          end: String(row?.[1] || "09:00"),
+          location: String(row?.[2] || "town_square"),
+          activity: String(row?.[3] || "Continuing the day"),
+          status: "planned",
+          eventId: null,
+        }))
+      : [];
+
+    const relationshipIntentions = Array.isArray(result.r)
+      ? result.r.slice(0, 2).map((item) => ({
+          targetAgentId: String(item.t || ""),
+          closenessDelta: Number(item.c || 0),
+          trustDelta: Number(item.tr || 0),
+          tensionDelta: Number(item.te || 0),
+          attractionDelta: Number(item.at || 0),
+          reason: String(item.why || "ordinary interaction"),
+        }))
+      : [];
+
+    const aspiration = String(result.a || "").trim();
+    const gossip = String(result.g || "").trim();
+
     return {
-      mood: String(result.mood || "neutral"),
-      daySummary: String(result.daySummary || "An ordinary day."),
-      memoryDigest: String(result.memoryDigest || agent.memoryDigest).slice(0, 1800),
-      aspirations: Array.isArray(result.aspirations) ? result.aspirations.slice(0, 4) : agent.aspirations,
-      privateDevelopments: Array.isArray(result.privateDevelopments) ? result.privateDevelopments.slice(0, 4) : [],
-      gossipToShare: Array.isArray(result.gossipToShare) ? result.gossipToShare.slice(0, 5) : [],
-      relationshipIntentions: Array.isArray(result.relationshipIntentions) ? result.relationshipIntentions.slice(0, 8) : [],
-      schedule: normalizeSchedule(agent, result.schedule),
+      mood: String(result.m || "neutral").slice(0, 40),
+      daySummary: String(result.d || "An ordinary day.").slice(0, 220),
+      memoryDigest: String(
+        result.mem || agent.memoryDigest
+      ).slice(0, 500),
+      aspirations: aspiration
+        ? [aspiration]
+        : agent.aspirations.slice(0, 1),
+      privateDevelopments: [],
+      gossipToShare: gossip
+        ? [{ text: gossip, aboutAgentIds: [], confidence: 0.5 }]
+        : [],
+      relationshipIntentions,
+      schedule: normalizeSchedule(agent, compactSchedule),
     };
   } catch (error) {
     console.error(`Agent call failed for ${agent.name}:`, error.message);
@@ -311,7 +436,7 @@ Use only existing IDs. Patch schedules only when necessary for consistency.`;
   });
 
   try {
-    return await askGroqJson({ model: TOWN_MODEL, system, user, maxTokens: 1900, temperature: 0.65 });
+    return await askGroqJson({ model: TOWN_MODEL, system, user, maxTokens: 500, temperature: 0.55 });
   } catch (error) {
     console.error("Final town call failed:", error.message);
     return {
