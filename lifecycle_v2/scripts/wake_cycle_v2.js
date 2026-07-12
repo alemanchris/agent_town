@@ -182,7 +182,6 @@ async function askGroqJson({
           model,
           max_tokens: maxTokens,
           temperature,
-          response_format: { type: "json_object" },
           messages: [
             { role: "system", content: system },
             { role: "user", content: user },
@@ -518,21 +517,31 @@ async function main() {
 
   const knownIds = new Set(state.agents.map((a) => a.id));
 
-  // All 16 agent calls fire in parallel — we're using ~18 of the 30 req/min free-tier allowance,
-  // so there's no need to wait between calls at all.
-  console.log(`Wake ${state.simDay}: ${state.agents.length} agent calls (parallel)`);
-  const allGenerated = await Promise.all(
-    state.agents.map((agent, i) => {
-      if (agent.ageDays === 0) {
-        return Promise.resolve({
-          mood: "newborn", daySummary: "A newborn's first quiet day.", memoryDigest: agent.memoryDigest,
-          aspirations: [], privateDevelopments: [], gossipToShare: [], relationshipIntentions: [],
-          schedule: [{ start: "00:00", end: "23:59", location: "home", activity: "Being cared for at home", status: "planned", eventId: null }],
-        });
-      }
-      return individualAgentCall(agent, state, townContext);
-    })
-  );
+  // Free tier TPM limit is 8,000 tokens/min. Each agent call uses ~735 tokens.
+  // Batches of 4 = ~2,940 tokens per burst. 5s pause between batches is safe.
+  // Total wake time: ~25 seconds instead of timing out.
+  const BATCH_SIZE = 4;
+  const BATCH_PAUSE_MS = 5000;
+  const allGenerated = [];
+
+  for (let b = 0; b < state.agents.length; b += BATCH_SIZE) {
+    const batch = state.agents.slice(b, b + BATCH_SIZE);
+    console.log(`Wake ${state.simDay}: agents ${b + 1}–${Math.min(b + BATCH_SIZE, state.agents.length)} of ${state.agents.length}`);
+    const batchResults = await Promise.all(
+      batch.map((agent) => {
+        if (agent.ageDays === 0) {
+          return Promise.resolve({
+            mood: "newborn", daySummary: "A newborn's first quiet day.", memoryDigest: agent.memoryDigest,
+            aspirations: [], privateDevelopments: [], gossipToShare: [], relationshipIntentions: [],
+            schedule: [{ start: "00:00", end: "23:59", location: "home", activity: "Being cared for at home", status: "planned", eventId: null }],
+          });
+        }
+        return individualAgentCall(agent, state, townContext);
+      })
+    );
+    allGenerated.push(...batchResults);
+    if (b + BATCH_SIZE < state.agents.length) await sleep(BATCH_PAUSE_MS);
+  }
 
   for (let i = 0; i < state.agents.length; i += 1) {
     const agent = state.agents[i];
