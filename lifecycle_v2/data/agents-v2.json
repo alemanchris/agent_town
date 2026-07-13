@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "simDay": 10,
-  "lastWake": "2026-07-13T00:00:45.933Z",
+  "simDay": 12,
+  "lastWake": "2026-07-13T00:27:15.492Z",
   "namePool": {
     "it": [
       "Sofia",
@@ -31,61 +31,29 @@
     ]
   },
   "today": {
-    "simDay": 10,
-    "generatedAt": "2026-07-13T00:00:45.933Z",
+    "simDay": 12,
+    "generatedAt": "2026-07-13T00:27:15.492Z",
     "locked": true,
-    "townMood": "somber",
-    "townSummary": "The town completed another ordinary wake cycle.",
+    "townMood": "neutral",
+    "townSummary": "It's an ordinary day in the town with no significant events.",
     "sharedEvents": [
       {
-        "id": "paolo-funeral",
-        "type": "funeral",
-        "summary": "Paolo's funeral is being held at the funeral ground",
-        "participants": [
-          "kiran",
-          "sofia",
-          "meera",
-          "matteo",
-          "priya",
-          "luca",
-          "chiara",
-          "davide",
-          "arjun",
-          "giulia",
-          "marco",
-          "elena",
-          "devika",
-          "it-tommaso-mridknmr",
-          "hi-neha-mrify7ge",
-          "it-vittoria-mrigi63y"
-        ],
-        "affectedAgents": [
-          "it-vittoria-mrigi63y"
-        ],
-        "location": "funeral_ground",
-        "importance": 3
-      },
-      {
-        "id": "vittoria-birth",
-        "type": "birth",
-        "summary": "Vittoria is born at home_paolo",
-        "participants": [
-          "it-vittoria-mrigi63y"
-        ],
-        "affectedAgents": [
-          "it-vittoria-mrigi63y"
-        ],
-        "location": "home_paolo",
-        "importance": 2
+        "id": "event1",
+        "type": "ordinary day",
+        "summary": "A normal day in the town",
+        "participants": [],
+        "affectedAgents": [],
+        "location": "town_square",
+        "importance": 0
       }
     ],
     "publicRumors": [
       {
-        "id": "paolo-death",
-        "text": "Paolo has passed away",
+        "id": "rumor1",
+        "text": "The garden is looking particularly beautiful today",
         "sourceAgentId": null,
         "aboutAgentIds": [
-          "paolo"
+          "priya"
         ],
         "truthStatus": "true"
       }
@@ -96,14 +64,14 @@
       "id": "kiran",
       "name": "Kiran",
       "lang": "hi",
-      "ageDays": 13,
-      "stage": "teen",
+      "ageDays": 15,
+      "stage": "young_adult",
       "home": "home_kiran",
       "job": null,
       "personality": "curious, playful, asks lots of questions",
-      "memoryDigest": "saw Vittoria's birth announcement",
+      "memoryDigest": "met new friend Emma",
       "aspirations": [
-        "make friends"
+        "become a scientist"
       ],
       "gossip": [
         {
@@ -142,53 +110,58 @@
           "simDay": 10,
           "type": "daily_update",
           "summary": "attended funeral and explored town"
+        },
+        {
+          "simDay": 12,
+          "type": "daily_update",
+          "summary": "learned new things"
         }
       ],
       "today": {
-        "simDay": 10,
-        "dateKey": "sim-10",
-        "generatedAt": "2026-07-13T00:00:45.933Z",
+        "simDay": 12,
+        "dateKey": "sim-12",
+        "generatedAt": "2026-07-13T00:27:15.492Z",
         "locked": true,
-        "mood": "curious",
-        "daySummary": "attended funeral and explored town",
+        "mood": "excited",
+        "daySummary": "learned new things",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Vittoria was born",
+            "text": "Vittoria is pregnant",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
         ],
         "schedule": [
           {
-            "start": "06:30",
+            "start": "08:00",
             "end": "09:00",
             "location": "home",
-            "activity": "breakfast",
+            "activity": "eat breakfast",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "12:00",
-            "location": "funeral_ground",
-            "activity": "funeral",
+            "location": "academy",
+            "activity": "learn math",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "15:00",
-            "location": "market",
-            "activity": "lunch and explore",
+            "end": "13:00",
+            "location": "cafe",
+            "activity": "eat lunch",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "15:00",
-            "end": "23:00",
-            "location": "town_square",
-            "activity": "social time",
+            "end": "17:00",
+            "location": "garden",
+            "activity": "plant flowers",
             "status": "planned",
             "eventId": null
           }
@@ -200,14 +173,14 @@
       "id": "sofia",
       "name": "Sofia",
       "lang": "it",
-      "ageDays": 16,
+      "ageDays": 18,
       "stage": "young_adult",
       "home": "home_sofia",
       "job": null,
       "personality": "cheerful, loves drawing and animals",
-      "memoryDigest": "saw Vittoria's birth announcement",
+      "memoryDigest": "Met new puppy",
       "aspirations": [
-        "learn art"
+        "Become artist"
       ],
       "gossip": [
         {
@@ -266,53 +239,52 @@
           "simDay": 10,
           "type": "daily_update",
           "summary": "attended Paolo's funeral"
+        },
+        {
+          "simDay": 12,
+          "type": "daily_update",
+          "summary": "Relaxed at home"
         }
       ],
       "today": {
-        "simDay": 10,
-        "dateKey": "sim-10",
-        "generatedAt": "2026-07-13T00:00:45.933Z",
+        "simDay": 12,
+        "dateKey": "sim-12",
+        "generatedAt": "2026-07-13T00:27:15.492Z",
         "locked": true,
-        "mood": "melancholic",
-        "daySummary": "attended Paolo's funeral",
+        "mood": "Happy today",
+        "daySummary": "Relaxed at home",
         "privateDevelopments": [],
-        "gossipToShare": [
-          {
-            "text": "Priya might be grieving",
-            "aboutAgentIds": [],
-            "confidence": 0.5
-          }
-        ],
+        "gossipToShare": [],
         "schedule": [
           {
-            "start": "06:30",
+            "start": "08:00",
             "end": "09:00",
             "location": "home",
-            "activity": "breakfast",
+            "activity": "Breakfast time",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "09:00",
-            "end": "12:00",
-            "location": "funeral_ground",
-            "activity": "Paolo's funeral",
+            "start": "09:30",
+            "end": "11:00",
+            "location": "garden",
+            "activity": "Walk dog",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "12:00",
-            "end": "15:00",
-            "location": "market",
-            "activity": "social time",
+            "start": "11:30",
+            "end": "12:30",
+            "location": "cafe",
+            "activity": "Drink coffee",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "18:00",
-            "end": "23:00",
-            "location": "home",
-            "activity": "evening",
+            "start": "14:00",
+            "end": "16:00",
+            "location": "workshop",
+            "activity": "Paint art",
             "status": "planned",
             "eventId": null
           }
@@ -324,14 +296,14 @@
       "id": "meera",
       "name": "Meera",
       "lang": "hi",
-      "ageDays": 19,
+      "ageDays": 21,
       "stage": "young_adult",
       "home": "home_meera",
       "job": "academy",
       "personality": "a bit shy, loves music, studying hard",
-      "memoryDigest": "saw Vittoria's family mourn",
+      "memoryDigest": "met new student friend",
       "aspirations": [
-        "learn music"
+        "become top student"
       ],
       "gossip": [],
       "relationships": {
@@ -379,53 +351,52 @@
           "simDay": 10,
           "type": "daily_update",
           "summary": "attended funeral"
+        },
+        {
+          "simDay": 12,
+          "type": "daily_update",
+          "summary": "usual day routine"
         }
       ],
       "today": {
-        "simDay": 10,
-        "dateKey": "sim-10",
-        "generatedAt": "2026-07-13T00:00:45.933Z",
+        "simDay": 12,
+        "dateKey": "sim-12",
+        "generatedAt": "2026-07-13T00:27:15.492Z",
         "locked": true,
-        "mood": "sad",
-        "daySummary": "attended funeral",
+        "mood": "calm",
+        "daySummary": "usual day routine",
         "privateDevelopments": [],
-        "gossipToShare": [
-          {
-            "text": "Vittoria's family is grieving",
-            "aboutAgentIds": [],
-            "confidence": 0.5
-          }
-        ],
+        "gossipToShare": [],
         "schedule": [
           {
-            "start": "06:30",
+            "start": "08:00",
             "end": "09:00",
             "location": "home",
-            "activity": "breakfast",
+            "activity": "breakfast time",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "12:00",
-            "location": "funeral_ground",
-            "activity": "funeral",
+            "location": "academy",
+            "activity": "study lessons",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "15:00",
-            "location": "academy",
-            "activity": "study",
+            "end": "13:00",
+            "location": "cafe",
+            "activity": "lunch break",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "18:00",
-            "end": "23:00",
-            "location": "home",
-            "activity": "rest",
+            "start": "15:00",
+            "end": "17:00",
+            "location": "garden",
+            "activity": "relax walk",
             "status": "planned",
             "eventId": null
           }
@@ -437,7 +408,7 @@
       "id": "matteo",
       "name": "Matteo",
       "lang": "it",
-      "ageDays": 22,
+      "ageDays": 24,
       "stage": "young_adult",
       "home": "home_matteo",
       "job": "academy",
@@ -483,53 +454,68 @@
           "simDay": 10,
           "type": "daily_update",
           "summary": "attended funeral"
+        },
+        {
+          "simDay": 12,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 10,
-        "dateKey": "sim-10",
-        "generatedAt": "2026-07-13T00:00:45.933Z",
+        "simDay": 12,
+        "dateKey": "sim-12",
+        "generatedAt": "2026-07-13T00:27:15.492Z",
         "locked": true,
-        "mood": "sad",
-        "daySummary": "attended funeral",
+        "mood": "neutral",
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
-        "gossipToShare": [
-          {
-            "text": "Vittoria had a baby",
-            "aboutAgentIds": [],
-            "confidence": 0.5
-          }
-        ],
+        "gossipToShare": [],
         "schedule": [
           {
             "start": "06:30",
-            "end": "09:00",
+            "end": "08:00",
             "location": "home",
-            "activity": "breakfast",
+            "activity": "Morning routine and breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "09:00",
+            "start": "08:00",
             "end": "12:00",
-            "location": "funeral_ground",
-            "activity": "funeral",
+            "location": "academy",
+            "activity": "Attending classes",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "15:00",
+            "end": "13:00",
             "location": "market",
-            "activity": "lunch",
+            "activity": "Lunch",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "15:00",
+            "start": "13:00",
+            "end": "17:00",
+            "location": "academy",
+            "activity": "Attending classes",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
             "end": "23:00",
             "location": "home",
-            "activity": "rest",
+            "activity": "Dinner and evening at home",
             "status": "planned",
             "eventId": null
           }
@@ -541,14 +527,14 @@
       "id": "priya",
       "name": "Priya",
       "lang": "hi",
-      "ageDays": 26,
+      "ageDays": 28,
       "stage": "young_adult",
       "home": "home_priya",
       "job": "garden",
       "personality": "calm meditation guide, warm and patient",
-      "memoryDigest": "saw funeral at funeral_ground",
+      "memoryDigest": "met new gardener",
       "aspirations": [
-        "help Neha's family"
+        "become guide master"
       ],
       "gossip": [],
       "relationships": {
@@ -587,47 +573,52 @@
           "simDay": 10,
           "type": "daily_update",
           "summary": "attended funeral and worked in garden"
+        },
+        {
+          "simDay": 12,
+          "type": "daily_update",
+          "summary": "normal day"
         }
       ],
       "today": {
-        "simDay": 10,
-        "dateKey": "sim-10",
-        "generatedAt": "2026-07-13T00:00:45.933Z",
+        "simDay": 12,
+        "dateKey": "sim-12",
+        "generatedAt": "2026-07-13T00:27:15.492Z",
         "locked": true,
-        "mood": "reflective",
-        "daySummary": "attended funeral and worked in garden",
+        "mood": "calm",
+        "daySummary": "normal day",
         "privateDevelopments": [],
         "gossipToShare": [],
         "schedule": [
           {
-            "start": "06:30",
-            "end": "09:00",
+            "start": "06:00",
+            "end": "07:00",
             "location": "home",
-            "activity": "breakfast",
+            "activity": "meditate deeply",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "09:00",
+            "start": "07:00",
             "end": "12:00",
             "location": "garden",
-            "activity": "work",
+            "activity": "tend flowers",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "14:00",
-            "location": "funeral_ground",
-            "activity": "funeral",
+            "end": "13:00",
+            "location": "cafe",
+            "activity": "eat lunch",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "18:00",
-            "end": "23:00",
-            "location": "home",
-            "activity": "rest",
+            "start": "15:00",
+            "end": "17:00",
+            "location": "garden",
+            "activity": "water plants",
             "status": "planned",
             "eventId": null
           }
@@ -639,14 +630,14 @@
       "id": "luca",
       "name": "Luca",
       "lang": "it",
-      "ageDays": 29,
+      "ageDays": 31,
       "stage": "full_adult",
       "home": "home_luca",
       "job": "park",
       "personality": "sketches constantly, dreamy, romantic streak",
-      "memoryDigest": "saw Vittoria born",
+      "memoryDigest": "drew sunset landscape",
       "aspirations": [
-        "find love"
+        "become artist"
       ],
       "gossip": [],
       "relationships": {
@@ -685,53 +676,58 @@
           "simDay": 10,
           "type": "daily_update",
           "summary": "attended funeral"
+        },
+        {
+          "simDay": 12,
+          "type": "daily_update",
+          "summary": "relaxing day outdoors"
         }
       ],
       "today": {
-        "simDay": 10,
-        "dateKey": "sim-10",
-        "generatedAt": "2026-07-13T00:00:45.933Z",
+        "simDay": 12,
+        "dateKey": "sim-12",
+        "generatedAt": "2026-07-13T00:27:15.492Z",
         "locked": true,
-        "mood": "melancholic",
-        "daySummary": "attended funeral",
+        "mood": "calmly happy",
+        "daySummary": "relaxing day outdoors",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Vittoria was born",
+            "text": "Vittoria smiling",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
         ],
         "schedule": [
           {
-            "start": "06:30",
+            "start": "08:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "breakfast",
+            "location": "park",
+            "activity": "walk dog",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "09:00",
-            "end": "12:00",
-            "location": "funeral_ground",
-            "activity": "funeral",
+            "start": "09:30",
+            "end": "11:00",
+            "location": "cafe",
+            "activity": "drink coffee",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "15:00",
-            "location": "park",
-            "activity": "work",
+            "end": "13:30",
+            "location": "home",
+            "activity": "eat lunch",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "18:00",
-            "end": "23:00",
-            "location": "home",
-            "activity": "evening",
+            "start": "14:00",
+            "end": "16:00",
+            "location": "garden",
+            "activity": "sketch flowers",
             "status": "planned",
             "eventId": null
           }
@@ -743,7 +739,7 @@
       "id": "chiara",
       "name": "Chiara",
       "lang": "it",
-      "ageDays": 32,
+      "ageDays": 34,
       "stage": "full_adult",
       "home": "home_chiara",
       "job": "market",
@@ -789,53 +785,68 @@
           "simDay": 10,
           "type": "daily_update",
           "summary": "attended funeral and worked at market"
+        },
+        {
+          "simDay": 12,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 10,
-        "dateKey": "sim-10",
-        "generatedAt": "2026-07-13T00:00:45.933Z",
+        "simDay": 12,
+        "dateKey": "sim-12",
+        "generatedAt": "2026-07-13T00:27:15.492Z",
         "locked": true,
         "mood": "neutral",
-        "daySummary": "attended funeral and worked at market",
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
-        "gossipToShare": [
-          {
-            "text": "Vittoria was born",
-            "aboutAgentIds": [],
-            "confidence": 0.5
-          }
-        ],
+        "gossipToShare": [],
         "schedule": [
           {
             "start": "06:30",
-            "end": "09:00",
+            "end": "08:00",
             "location": "home",
-            "activity": "breakfast",
+            "activity": "Morning routine and breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "09:00",
+            "start": "08:00",
             "end": "12:00",
-            "location": "funeral_ground",
-            "activity": "funeral",
+            "location": "market",
+            "activity": "Working",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "17:00",
+            "end": "13:00",
             "location": "market",
-            "activity": "work",
+            "activity": "Lunch",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "18:00",
-            "end": "23:00",
+            "start": "13:00",
+            "end": "17:00",
+            "location": "market",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
             "location": "town_square",
-            "activity": "social time",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
             "status": "planned",
             "eventId": null
           }
@@ -847,7 +858,7 @@
       "id": "davide",
       "name": "Davide",
       "lang": "it",
-      "ageDays": 35,
+      "ageDays": 37,
       "stage": "full_adult",
       "home": "home_davide",
       "job": "workshop",
@@ -883,47 +894,68 @@
           "simDay": 10,
           "type": "daily_update",
           "summary": "attended funeral and worked"
+        },
+        {
+          "simDay": 12,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 10,
-        "dateKey": "sim-10",
-        "generatedAt": "2026-07-13T00:00:45.933Z",
+        "simDay": 12,
+        "dateKey": "sim-12",
+        "generatedAt": "2026-07-13T00:27:15.492Z",
         "locked": true,
         "mood": "neutral",
-        "daySummary": "attended funeral and worked",
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
         "gossipToShare": [],
         "schedule": [
           {
             "start": "06:30",
-            "end": "09:00",
+            "end": "08:00",
             "location": "home",
-            "activity": "breakfast",
+            "activity": "Morning routine and breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "09:00",
-            "end": "11:00",
-            "location": "funeral_ground",
-            "activity": "funeral",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "11:00",
-            "end": "18:00",
+            "start": "08:00",
+            "end": "12:00",
             "location": "workshop",
-            "activity": "work",
+            "activity": "Working",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "18:00",
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "workshop",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
             "end": "23:00",
             "location": "home",
-            "activity": "evening",
+            "activity": "Dinner and evening at home",
             "status": "planned",
             "eventId": null
           }
@@ -935,7 +967,7 @@
       "id": "arjun",
       "name": "Arjun",
       "lang": "hi",
-      "ageDays": 39,
+      "ageDays": 41,
       "stage": "full_adult",
       "home": "home_arjun",
       "job": "park",
@@ -981,53 +1013,68 @@
           "simDay": 10,
           "type": "daily_update",
           "summary": "attended funeral and worked at park"
+        },
+        {
+          "simDay": 12,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 10,
-        "dateKey": "sim-10",
-        "generatedAt": "2026-07-13T00:00:45.933Z",
+        "simDay": 12,
+        "dateKey": "sim-12",
+        "generatedAt": "2026-07-13T00:27:15.492Z",
         "locked": true,
-        "mood": "somber",
-        "daySummary": "attended funeral and worked at park",
+        "mood": "neutral",
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
-        "gossipToShare": [
-          {
-            "text": "Vittoria was born",
-            "aboutAgentIds": [],
-            "confidence": 0.5
-          }
-        ],
+        "gossipToShare": [],
         "schedule": [
           {
             "start": "06:30",
-            "end": "09:00",
+            "end": "08:00",
             "location": "home",
-            "activity": "breakfast",
+            "activity": "Morning routine and breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "09:00",
+            "start": "08:00",
             "end": "12:00",
             "location": "park",
-            "activity": "work",
+            "activity": "Working",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "14:00",
-            "location": "funeral_ground",
-            "activity": "funeral",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "18:00",
+            "start": "13:00",
+            "end": "17:00",
+            "location": "park",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
             "end": "23:00",
             "location": "home",
-            "activity": "evening",
+            "activity": "Dinner and evening at home",
             "status": "planned",
             "eventId": null
           }
@@ -1039,14 +1086,14 @@
       "id": "giulia",
       "name": "Giulia",
       "lang": "it",
-      "ageDays": 42,
-      "stage": "full_adult",
+      "ageDays": 44,
+      "stage": "senior",
       "home": "home_giulia",
       "job": "cafe",
       "personality": "warm barista, remembers everyone's order",
-      "memoryDigest": "saw Priya at the market",
+      "memoryDigest": "Met new customer John",
       "aspirations": [
-        "learn a new coffee recipe"
+        "Learn new coffee recipe"
       ],
       "gossip": [],
       "relationships": {},
@@ -1075,53 +1122,58 @@
           "simDay": 10,
           "type": "daily_update",
           "summary": "attended work and social events"
+        },
+        {
+          "simDay": 12,
+          "type": "daily_update",
+          "summary": "Normal day at cafe"
         }
       ],
       "today": {
-        "simDay": 10,
-        "dateKey": "sim-10",
-        "generatedAt": "2026-07-13T00:00:45.933Z",
+        "simDay": 12,
+        "dateKey": "sim-12",
+        "generatedAt": "2026-07-13T00:27:15.492Z",
         "locked": true,
-        "mood": "neutral",
-        "daySummary": "attended work and social events",
+        "mood": "Happy Today",
+        "daySummary": "Normal day at cafe",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Priya seems busy lately",
+            "text": "Priya dating Alex",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
         ],
         "schedule": [
           {
-            "start": "06:30",
+            "start": "08:00",
             "end": "09:00",
             "location": "home",
-            "activity": "breakfast",
+            "activity": "woke up",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
-            "end": "13:00",
+            "end": "12:00",
             "location": "cafe",
-            "activity": "work",
+            "activity": "served coffee",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "13:00",
-            "end": "18:00",
+            "start": "12:00",
+            "end": "13:00",
             "location": "market",
-            "activity": "social time",
+            "activity": "bought lunch",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "18:00",
-            "end": "23:00",
-            "location": "home",
-            "activity": "evening",
+            "start": "17:00",
+            "end": "18:00",
+            "location": "park",
+            "activity": "walked dog",
             "status": "planned",
             "eventId": null
           }
@@ -1133,14 +1185,14 @@
       "id": "marco",
       "name": "Marco",
       "lang": "it",
-      "ageDays": 45,
+      "ageDays": 47,
       "stage": "senior",
       "home": "home_marco",
       "job": "workshop",
       "personality": "builds furniture, steady, a little guarded",
-      "memoryDigest": "saw Priya at funeral",
+      "memoryDigest": "ate breakfast alone",
       "aspirations": [
-        "learn woodworking"
+        "build furniture"
       ],
       "gossip": [],
       "relationships": {},
@@ -1169,53 +1221,52 @@
           "simDay": 10,
           "type": "daily_update",
           "summary": "attended funeral and worked"
+        },
+        {
+          "simDay": 12,
+          "type": "daily_update",
+          "summary": "usual routine"
         }
       ],
       "today": {
-        "simDay": 10,
-        "dateKey": "sim-10",
-        "generatedAt": "2026-07-13T00:00:45.933Z",
+        "simDay": 12,
+        "dateKey": "sim-12",
+        "generatedAt": "2026-07-13T00:27:15.492Z",
         "locked": true,
-        "mood": "somber",
-        "daySummary": "attended funeral and worked",
+        "mood": "calm",
+        "daySummary": "usual routine",
         "privateDevelopments": [],
-        "gossipToShare": [
-          {
-            "text": "Vittoria was born",
-            "aboutAgentIds": [],
-            "confidence": 0.5
-          }
-        ],
+        "gossipToShare": [],
         "schedule": [
           {
-            "start": "06:30",
+            "start": "08:00",
             "end": "09:00",
             "location": "home",
-            "activity": "breakfast",
+            "activity": "eat breakfast",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "12:00",
-            "location": "funeral_ground",
-            "activity": "Paolo's funeral",
+            "location": "workshop",
+            "activity": "build chair",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "17:00",
-            "location": "workshop",
-            "activity": "work",
+            "end": "13:00",
+            "location": "cafe",
+            "activity": "have lunch",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "17:00",
-            "end": "23:00",
-            "location": "home",
-            "activity": "rest",
+            "start": "13:00",
+            "end": "17:00",
+            "location": "workshop",
+            "activity": "make table",
             "status": "planned",
             "eventId": null
           }
@@ -1227,8 +1278,8 @@
       "id": "elena",
       "name": "Elena",
       "lang": "it",
-      "ageDays": 49,
-      "stage": "senior",
+      "ageDays": 51,
+      "stage": "elder",
       "home": "home_elena",
       "job": "market",
       "personality": "runs the market stall, sharp wit, generous",
@@ -1282,53 +1333,68 @@
           "simDay": 10,
           "type": "daily_update",
           "summary": "attended funeral and worked at market"
+        },
+        {
+          "simDay": 12,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 10,
-        "dateKey": "sim-10",
-        "generatedAt": "2026-07-13T00:00:45.933Z",
+        "simDay": 12,
+        "dateKey": "sim-12",
+        "generatedAt": "2026-07-13T00:27:15.492Z",
         "locked": true,
-        "mood": "reflective",
-        "daySummary": "attended funeral and worked at market",
+        "mood": "neutral",
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
-        "gossipToShare": [
-          {
-            "text": "heard Luca talking about new market ideas",
-            "aboutAgentIds": [],
-            "confidence": 0.5
-          }
-        ],
+        "gossipToShare": [],
         "schedule": [
           {
             "start": "06:30",
-            "end": "09:00",
+            "end": "08:00",
             "location": "home",
-            "activity": "breakfast",
+            "activity": "Morning routine and breakfast",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "09:00",
-            "end": "11:00",
-            "location": "funeral_ground",
-            "activity": "funeral",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "11:00",
-            "end": "18:00",
+            "start": "08:00",
+            "end": "12:00",
             "location": "market",
-            "activity": "work",
+            "activity": "Working",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "18:00",
-            "end": "23:00",
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "market",
+            "activity": "Working",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
             "location": "town_square",
-            "activity": "social time",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
             "status": "planned",
             "eventId": null
           }
@@ -1340,14 +1406,14 @@
       "id": "devika",
       "name": "Devika",
       "lang": "hi",
-      "ageDays": 53,
+      "ageDays": 55,
       "stage": "elder",
       "home": "home_devika",
       "job": "garden",
       "personality": "wise, tells long stories, loves tea",
-      "memoryDigest": "saw funeral at funeral_ground",
+      "memoryDigest": "drank tea with friends",
       "aspirations": [
-        "drink tea"
+        "share wisdom freely"
       ],
       "gossip": [],
       "relationships": {
@@ -1386,53 +1452,52 @@
           "simDay": 10,
           "type": "daily_update",
           "summary": "attended funeral"
+        },
+        {
+          "simDay": 12,
+          "type": "daily_update",
+          "summary": "relaxing at home"
         }
       ],
       "today": {
-        "simDay": 10,
-        "dateKey": "sim-10",
-        "generatedAt": "2026-07-13T00:00:45.933Z",
+        "simDay": 12,
+        "dateKey": "sim-12",
+        "generatedAt": "2026-07-13T00:27:15.492Z",
         "locked": true,
-        "mood": "sad",
-        "daySummary": "attended funeral",
+        "mood": "peaceful",
+        "daySummary": "relaxing at home",
         "privateDevelopments": [],
-        "gossipToShare": [
-          {
-            "text": "Vittoria is born",
-            "aboutAgentIds": [],
-            "confidence": 0.5
-          }
-        ],
+        "gossipToShare": [],
         "schedule": [
           {
-            "start": "06:30",
+            "start": "08:00",
             "end": "09:00",
             "location": "home",
-            "activity": "breakfast",
+            "activity": "drinking tea",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "12:00",
-            "location": "funeral_ground",
-            "activity": "funeral",
+            "location": "garden",
+            "activity": "tending flowers",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "15:00",
-            "location": "garden",
-            "activity": "work",
+            "end": "13:00",
+            "location": "cafe",
+            "activity": "eating lunch",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "18:00",
-            "end": "23:00",
-            "location": "home",
-            "activity": "evening",
+            "start": "14:00",
+            "end": "16:00",
+            "location": "town_square",
+            "activity": "telling stories",
             "status": "planned",
             "eventId": null
           }
@@ -1444,14 +1509,14 @@
       "id": "it-tommaso-mridknmr",
       "name": "Tommaso",
       "lang": "it",
-      "ageDays": 6,
-      "stage": "kid",
+      "ageDays": 8,
+      "stage": "teen",
       "home": "home_lucia",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "saw Vittoria's family at the funeral",
+      "memoryDigest": "met new friend",
       "aspirations": [
-        "make friends"
+        "learn new skill"
       ],
       "gossip": [],
       "relationships": {
@@ -1499,53 +1564,52 @@
           "simDay": 10,
           "type": "daily_update",
           "summary": "attended funeral and met new people"
+        },
+        {
+          "simDay": 12,
+          "type": "daily_update",
+          "summary": "normal day ahead"
         }
       ],
       "today": {
-        "simDay": 10,
-        "dateKey": "sim-10",
-        "generatedAt": "2026-07-13T00:00:45.933Z",
+        "simDay": 12,
+        "dateKey": "sim-12",
+        "generatedAt": "2026-07-13T00:27:15.492Z",
         "locked": true,
-        "mood": "curious",
-        "daySummary": "attended funeral and met new people",
+        "mood": "excited",
+        "daySummary": "normal day ahead",
         "privateDevelopments": [],
-        "gossipToShare": [
-          {
-            "text": "Vittoria was born today",
-            "aboutAgentIds": [],
-            "confidence": 0.5
-          }
-        ],
+        "gossipToShare": [],
         "schedule": [
           {
-            "start": "06:30",
+            "start": "08:00",
             "end": "09:00",
             "location": "home",
-            "activity": "breakfast",
+            "activity": "eat breakfast",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "12:00",
-            "location": "funeral_ground",
-            "activity": "Paolo's funeral",
+            "location": "academy",
+            "activity": "attend class",
             "status": "planned",
             "eventId": null
           },
           {
-            "start": "12:00",
-            "end": "15:00",
-            "location": "market",
-            "activity": "lunch and socializing",
+            "start": "13:00",
+            "end": "14:30",
+            "location": "cafe",
+            "activity": "eat lunch",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "15:00",
-            "end": "23:00",
-            "location": "home",
-            "activity": "rest and reflection",
+            "end": "17:00",
+            "location": "park",
+            "activity": "play soccer",
             "status": "planned",
             "eventId": null
           }
@@ -1557,14 +1621,14 @@
       "id": "hi-neha-mrify7ge",
       "name": "Neha",
       "lang": "hi",
-      "ageDays": 4,
+      "ageDays": 6,
       "stage": "kid",
       "home": "home_raj",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "saw funeral at funeral ground",
+      "memoryDigest": "made new friend",
       "aspirations": [
-        "make friends"
+        "be happy always"
       ],
       "gossip": [],
       "relationships": {
@@ -1598,53 +1662,52 @@
           "simDay": 10,
           "type": "daily_update",
           "summary": "attended funeral"
+        },
+        {
+          "simDay": 12,
+          "type": "daily_update",
+          "summary": "played all day"
         }
       ],
       "today": {
-        "simDay": 10,
-        "dateKey": "sim-10",
-        "generatedAt": "2026-07-13T00:00:45.933Z",
+        "simDay": 12,
+        "dateKey": "sim-12",
+        "generatedAt": "2026-07-13T00:27:15.492Z",
         "locked": true,
-        "mood": "sad",
-        "daySummary": "attended funeral",
+        "mood": "excited",
+        "daySummary": "played all day",
         "privateDevelopments": [],
-        "gossipToShare": [
-          {
-            "text": "Priya was sad at funeral",
-            "aboutAgentIds": [],
-            "confidence": 0.5
-          }
-        ],
+        "gossipToShare": [],
         "schedule": [
           {
-            "start": "06:30",
+            "start": "08:00",
             "end": "09:00",
             "location": "home",
-            "activity": "breakfast",
+            "activity": "eat breakfast",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "12:00",
-            "location": "funeral_ground",
-            "activity": "funeral",
+            "location": "park",
+            "activity": "play outside",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "12:00",
-            "end": "15:00",
-            "location": "town_square",
-            "activity": "lunch",
+            "end": "13:00",
+            "location": "home",
+            "activity": "eat lunch",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "15:00",
-            "end": "23:00",
-            "location": "home",
-            "activity": "rest",
+            "end": "17:00",
+            "location": "garden",
+            "activity": "pick flowers",
             "status": "planned",
             "eventId": null
           }
@@ -1656,13 +1719,15 @@
       "id": "it-vittoria-mrigi63y",
       "name": "Vittoria",
       "lang": "it",
-      "ageDays": 0,
+      "ageDays": 2,
       "stage": "kid",
       "home": "home_paolo",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Born into the town after Paolo's death.",
-      "aspirations": [],
+      "memoryDigest": "made new friend",
+      "aspirations": [
+        "be a hero"
+      ],
       "gossip": [],
       "relationships": {},
       "lifeHistory": [
@@ -1675,50 +1740,60 @@
           "simDay": 10,
           "type": "daily_update",
           "summary": "A newborn's first quiet day."
+        },
+        {
+          "simDay": 12,
+          "type": "daily_update",
+          "summary": "playful day outside"
         }
       ],
       "today": {
-        "simDay": 10,
-        "dateKey": "sim-10",
-        "generatedAt": "2026-07-13T00:00:45.933Z",
+        "simDay": 12,
+        "dateKey": "sim-12",
+        "generatedAt": "2026-07-13T00:27:15.492Z",
         "locked": true,
-        "mood": "newborn",
-        "daySummary": "A newborn's first quiet day.",
+        "mood": "happy",
+        "daySummary": "playful day outside",
         "privateDevelopments": [],
         "gossipToShare": [],
         "schedule": [
           {
-            "start": "00:00",
-            "end": "23:59",
+            "start": "08:00",
+            "end": "09:00",
             "location": "home",
-            "activity": "Being cared for at home",
+            "activity": "eat breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "09:00",
+            "end": "12:00",
+            "location": "park",
+            "activity": "play tag",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "home",
+            "activity": "eat lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "15:00",
+            "end": "17:00",
+            "location": "garden",
+            "activity": "pick flowers",
             "status": "planned",
             "eventId": null
           }
         ],
-        "sharedEventIds": [
-          "paolo-funeral",
-          "vittoria-birth"
-        ]
+        "sharedEventIds": []
       }
     }
   ],
-  "lastDeaths": [
-    {
-      "id": "paolo",
-      "name": "Paolo",
-      "lang": "it",
-      "ageDays": 57,
-      "simDay": 10
-    }
-  ],
-  "lastBirths": [
-    {
-      "id": "it-vittoria-mrigi63y",
-      "name": "Vittoria",
-      "lang": "it",
-      "home": "home_paolo",
-      "simDay": 10
-    }
-  ]
+  "lastDeaths": [],
+  "lastBirths": []
 }
