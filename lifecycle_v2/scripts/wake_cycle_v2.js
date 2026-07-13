@@ -312,17 +312,24 @@ Most days should be ordinary. Use zero to three meaningful shared events. Events
 }
 
 async function individualAgentCall(agent, state, townContext) {
-  const system = `Simulate one town resident's day. Return ONLY this JSON, no extra text:
-{"m":"mood (5 words max)","d":"day summary (10 words max)","mem":"new memory (10 words max)","a":"aspiration (8 words max)","g":"gossip or empty string","s":[["HH:MM","HH:MM","location","activity (4 words max"],["HH:MM","HH:MM","location","activity"],["HH:MM","HH:MM","location","activity"],["HH:MM","HH:MM","location","activity"]]}
-Exactly 4 schedule entries. Locations must be one of: ${VALID_LOCATIONS.join(", ")}.`;
+  // Flat parallel arrays of short plain strings — this is the safe structure.
+  // Nested arrays-of-arrays with long free text inside them is what caused the
+  // truncation bugs; a flat array of short strings gives the model nothing
+  // complicated to lose track of, while still letting it write real,
+  // personality-specific content instead of a hardcoded lookup table.
+  const system = `You are simulating a village resident for one day. Reply with ONLY a JSON object, no explanation:
+{"m":"mood (2-4 words)","d":"day summary (1 sentence)","mem":"new memory (1 sentence)","a":"current aspiration (1 short sentence)","g":"gossip sentence or empty string","locs":["loc1","loc2","loc3","loc4"],"acts":["activity 1 (3-6 words)","activity 2","activity 3","activity 4"]}
+locs = exactly 4 locations in order through the day, each one of: ${VALID_LOCATIONS.join(",")}.
+acts = exactly 4 short activity descriptions, one per location, in character with this resident's personality. Keep each field short — do not write paragraphs.`;
 
   const user = JSON.stringify({
     day: state.simDay,
     name: agent.name,
     stage: agent.stage,
     job: agent.job || "none",
-    personality: String(agent.personality || "").slice(0, 60),
-    memory: String(agent.memoryDigest || "").slice(-120),
+    personality: String(agent.personality || "").slice(0, 80),
+    memory: String(agent.memoryDigest || "").slice(-150),
+    aspiration: agent.aspirations?.[0] || "",
     townMood: String(townContext.townMood || "").slice(0, 40),
     event: (townContext.sharedEvents || [])[0]?.summary?.slice(0, 60) || "",
   });
@@ -332,46 +339,34 @@ Exactly 4 schedule entries. Locations must be one of: ${VALID_LOCATIONS.join(", 
       model: AGENT_MODEL,
       system,
       user,
-      maxTokens: 400,
+      maxTokens: 320,
       temperature: 0.85,
     });
 
-    const compactSchedule = Array.isArray(result.s)
-      ? result.s.map((row) => ({
-          start: String(row?.[0] || "08:00"),
-          end: String(row?.[1] || "09:00"),
-          location: String(row?.[2] || "town_square"),
-          activity: String(row?.[3] || "Continuing the day"),
-          status: "planned",
-          eventId: null,
-        }))
-      : [];
+    const locs = Array.isArray(result.locs) ? result.locs.slice(0, 4) : [];
+    const acts = Array.isArray(result.acts) ? result.acts.slice(0, 4) : [];
+    const times = [["06:00","09:00"],["09:00","13:00"],["13:00","18:00"],["18:00","23:00"]];
+    const compactSchedule = locs.map((loc, i) => ({
+      start: times[i]?.[0] || "08:00",
+      end: times[i]?.[1] || "12:00",
+      location: VALID_LOCATIONS.includes(String(loc)) ? String(loc) : "town_square",
+      activity: String(acts[i] || "Going about the day").slice(0, 60),
+      status: "planned",
+      eventId: null,
+    }));
 
-    const relationshipIntentions = Array.isArray(result.r)
-      ? result.r.slice(0, 2).map((item) => ({
-          targetAgentId: String(item.t || ""),
-          closenessDelta: Number(item.c || 0),
-          trustDelta: Number(item.tr || 0),
-          tensionDelta: Number(item.te || 0),
-          attractionDelta: Number(item.at || 0),
-          reason: String(item.why || "ordinary interaction"),
-        }))
-      : [];
-
-    const aspiration = String(result.a || "").trim();
     const gossip = String(result.g || "").trim();
+    const aspiration = String(result.a || "").trim();
 
     return {
-      mood: String(result.m || "neutral").slice(0, 30),
-      daySummary: String(result.d || "An ordinary day.").slice(0, 80),
-      memoryDigest: String(result.mem || agent.memoryDigest).slice(0, 120),
-      aspirations: aspiration ? [aspiration.slice(0, 60)] : agent.aspirations.slice(0, 1),
+      mood: String(result.m || "neutral").slice(0, 40),
+      daySummary: String(result.d || "An ordinary day.").slice(0, 200),
+      memoryDigest: String(result.mem || agent.memoryDigest).slice(0, 300),
+      aspirations: aspiration ? [aspiration.slice(0, 150)] : agent.aspirations.slice(0, 1),
       privateDevelopments: [],
-      gossipToShare: gossip
-        ? [{ text: gossip, aboutAgentIds: [], confidence: 0.5 }]
-        : [],
-      relationshipIntentions,
-      schedule: normalizeSchedule(agent, compactSchedule),
+      gossipToShare: gossip ? [{ text: gossip.slice(0, 150), aboutAgentIds: [], confidence: 0.5 }] : [],
+      relationshipIntentions: [],
+      schedule: compactSchedule.length ? normalizeSchedule(agent, compactSchedule) : fallbackSchedule(agent),
     };
   } catch (error) {
     console.error(`Agent call failed for ${agent.name}:`, error.message);
