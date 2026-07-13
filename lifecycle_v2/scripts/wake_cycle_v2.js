@@ -312,33 +312,19 @@ Most days should be ordinary. Use zero to three meaningful shared events. Events
 }
 
 async function individualAgentCall(agent, state, townContext) {
-  const system = `Simulate one resident for one day in a persistent town.
-Return one compact JSON object only, using exactly these short keys:
-{"m":"mood","d":"short day summary","mem":"short new memory","a":"one aspiration","g":"one short gossip or empty","r":[{"t":"agent_id","c":0,"tr":0,"te":0,"at":0,"why":"short reason"}],"s":[["06:30","09:00","home","breakfast"],["09:00","13:00","market","work"],["13:00","18:00","town_square","social time"],["18:00","23:00","home","evening"]]}.
-Keep the entire answer under 350 tokens. Use exactly 4 schedule rows covering morning to night. Use only supplied agent IDs and these locations: ${VALID_LOCATIONS.join(", ")}. Omit r entries when no relationship changes occur.`;
+  const system = `Simulate one town resident's day. Return ONLY this JSON, no extra text:
+{"m":"mood (5 words max)","d":"day summary (10 words max)","mem":"new memory (10 words max)","a":"aspiration (8 words max)","g":"gossip or empty string","s":[["HH:MM","HH:MM","location","activity (4 words max"],["HH:MM","HH:MM","location","activity"],["HH:MM","HH:MM","location","activity"],["HH:MM","HH:MM","location","activity"]]}
+Exactly 4 schedule entries. Locations must be one of: ${VALID_LOCATIONS.join(", ")}.`;
 
   const user = JSON.stringify({
     day: state.simDay,
-    self: {
-      id: agent.id,
-      name: agent.name,
-      lang: agent.lang,
-      stage: agent.stage,
-      job: agent.job,
-      personality: agent.personality,
-      memory: String(agent.memoryDigest || "").slice(-240),
-      aspiration: agent.aspirations?.[0] || "",
-    },
-    townMood: townContext.townMood,
-    events: (townContext.sharedEvents || []).slice(0, 2).map((event) => ({
-      id: event.id,
-      summary: event.summary,
-      location: event.location,
-      affectedAgents: event.affectedAgents,
-    })),
-    residents: state.agents
-      .filter((other) => other.id !== agent.id)
-      .map((other) => ({ id: other.id, name: other.name })),
+    name: agent.name,
+    stage: agent.stage,
+    job: agent.job || "none",
+    personality: String(agent.personality || "").slice(0, 60),
+    memory: String(agent.memoryDigest || "").slice(-120),
+    townMood: String(townContext.townMood || "").slice(0, 40),
+    event: (townContext.sharedEvents || [])[0]?.summary?.slice(0, 60) || "",
   });
 
   try {
@@ -376,14 +362,10 @@ Keep the entire answer under 350 tokens. Use exactly 4 schedule rows covering mo
     const gossip = String(result.g || "").trim();
 
     return {
-      mood: String(result.m || "neutral").slice(0, 40),
-      daySummary: String(result.d || "An ordinary day.").slice(0, 220),
-      memoryDigest: String(
-        result.mem || agent.memoryDigest
-      ).slice(0, 500),
-      aspirations: aspiration
-        ? [aspiration]
-        : agent.aspirations.slice(0, 1),
+      mood: String(result.m || "neutral").slice(0, 30),
+      daySummary: String(result.d || "An ordinary day.").slice(0, 80),
+      memoryDigest: String(result.mem || agent.memoryDigest).slice(0, 120),
+      aspirations: aspiration ? [aspiration.slice(0, 60)] : agent.aspirations.slice(0, 1),
       privateDevelopments: [],
       gossipToShare: gossip
         ? [{ text: gossip, aboutAgentIds: [], confidence: 0.5 }]
@@ -424,65 +406,50 @@ function applyRelationshipIntentions(agent, intentions, knownIds, simDay) {
 }
 
 async function finalTownCall(state, townContext) {
-  const system = `You are the final continuity editor for a persistent town. Review independently generated agent days and reconcile only real contradictions in shared events, schedules, gossip, and relationships while preserving randomness.
-Return JSON only with: {"townSummary":"...","sharedEvents":[...],"relationshipUpdates":[{"sourceAgentId":"...","targetAgentId":"...","closenessDelta":0,"trustDelta":0,"tensionDelta":0,"attractionDelta":0,"reason":"..."}],"gossipUpdates":[{"recipientAgentId":"...","text":"...","sourceAgentId":null,"aboutAgentIds":["..."],"truthStatus":"true|false|mixed|unknown"}],"schedulePatches":[{"agentId":"...","reason":"...","schedule":[...]}]}.
-Use only existing IDs. Patch schedules only when necessary for consistency.`;
+  const system = `You reconcile a town's shared events with agent schedules. Some agents must attend funerals, births, or celebrations.
+Return ONLY this JSON, no extra text:
+{"townSummary":"1-2 sentences","patches":[{"id":"agent_id","loc":"location"}]}
+Only include patches for agents who MUST change location due to a shared event. Use only these locations: ${VALID_LOCATIONS.join(", ")}.`;
 
   const user = JSON.stringify({
     simDay: state.simDay,
     townMood: townContext.townMood,
-    sharedEvents: (townContext.sharedEvents || []).map((e) => ({
-      id: e.id, summary: e.summary, location: e.location,
-      affectedAgents: e.affectedAgents,
+    events: (townContext.sharedEvents || []).map((e) => ({
+      type: e.type,
+      summary: e.summary,
+      location: e.location,
+      mustAttend: e.affectedAgents || [],
     })),
-    agents: state.agents.map((agent) => ({
-      id: agent.id,
-      name: agent.name,
-      mood: agent.today?.mood,
-      daySummary: String(agent.today?.daySummary || "").slice(0, 80),
-      locations: (agent.today?.schedule || []).map((s) => s.location),
+    agents: state.agents.map((a) => ({
+      id: a.id,
+      name: a.name,
+      mood: a.today?.mood || "neutral",
     })),
   });
 
   try {
-    return await askGroqJson({ model: TOWN_MODEL, system, user, maxTokens: 500, temperature: 0.55 });
+    const result = await askGroqJson({ model: TOWN_MODEL, system, user, maxTokens: 200, temperature: 0.5 });
+    return result;
   } catch (error) {
     console.error("Final town call failed:", error.message);
-    return {
-      townSummary: "The town completed another ordinary wake cycle.",
-      sharedEvents: townContext.sharedEvents,
-      relationshipUpdates: [], gossipUpdates: [], schedulePatches: [],
-    };
+    return { townSummary: "The town completed another ordinary wake cycle.", patches: [] };
   }
 }
 
 function applyFinalTownResult(state, result) {
+  // Apply location patches for shared events (funerals, births, celebrations)
+  // The model only returns {id, loc} — we inject that as the agent's first schedule slot
   const byId = new Map(state.agents.map((a) => [a.id, a]));
-  const knownIds = new Set(byId.keys());
-
-  for (const update of Array.isArray(result.relationshipUpdates) ? result.relationshipUpdates : []) {
-    const source = byId.get(update.sourceAgentId);
-    if (source) applyRelationshipIntentions(source, [update], knownIds, state.simDay);
-  }
-
-  for (const gossip of Array.isArray(result.gossipUpdates) ? result.gossipUpdates : []) {
-    const recipient = byId.get(gossip.recipientAgentId);
-    if (!recipient) continue;
-    recipient.gossip.push({
-      simDay: state.simDay,
-      text: String(gossip.text || ""),
-      sourceAgentId: gossip.sourceAgentId || null,
-      aboutAgentIds: Array.isArray(gossip.aboutAgentIds) ? gossip.aboutAgentIds : [],
-      truthStatus: gossip.truthStatus || "unknown",
-    });
-    recipient.gossip = recipient.gossip.slice(-20);
-  }
-
-  for (const patch of Array.isArray(result.schedulePatches) ? result.schedulePatches : []) {
-    const agent = byId.get(patch.agentId);
-    if (!agent) continue;
-    agent.today.schedule = normalizeSchedule(agent, patch.schedule);
-    agent.today.reconciliationReason = String(patch.reason || "shared-event consistency");
+  for (const patch of Array.isArray(result.patches) ? result.patches : []) {
+    const agent = byId.get(String(patch.id || ""));
+    if (!agent || !patch.loc) continue;
+    if (!VALID_LOCATIONS.includes(patch.loc)) continue;
+    // Override the first schedule slot to the event location
+    if (agent.today?.schedule?.length) {
+      agent.today.schedule[0].location = patch.loc;
+      agent.today.schedule[0].activity = "Attending a town event";
+      agent.today.reconciled = true;
+    }
   }
 
   state.today = {
@@ -491,7 +458,7 @@ function applyFinalTownResult(state, result) {
     locked: true,
     townMood: state.today?.townMood || "",
     townSummary: String(result.townSummary || "The town completed another wake."),
-    sharedEvents: Array.isArray(result.sharedEvents) ? result.sharedEvents : [],
+    sharedEvents: state.today?.sharedEvents || [],
     publicRumors: state.today?.publicRumors || [],
   };
 }
