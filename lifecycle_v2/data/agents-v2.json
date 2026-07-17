@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "simDay": 18,
-  "lastWake": "2026-07-15T10:02:55.130Z",
+  "simDay": 20,
+  "lastWake": "2026-07-17T09:57:17.366Z",
   "namePool": {
     "it": [
       "Sofia",
@@ -31,27 +31,54 @@
     ]
   },
   "today": {
-    "simDay": 18,
-    "generatedAt": "2026-07-15T10:02:55.130Z",
+    "simDay": 20,
+    "generatedAt": "2026-07-17T09:57:17.366Z",
     "locked": true,
-    "townMood": "an ordinary day",
-    "townSummary": "It's an ordinary day in the town with no events scheduled. Agents are going about their daily activities with various moods and emotions.",
-    "sharedEvents": [],
-    "publicRumors": []
+    "townMood": "neutral",
+    "townSummary": "The town is having a neutral day with a celebration at the garden for Priya's successful gardening week. Agents Kiran, Sofia, and Chiara must attend the celebration.",
+    "sharedEvents": [
+      {
+        "id": "event_1",
+        "type": "celebration",
+        "summary": "Priya is celebrating a successful gardening week at the garden",
+        "participants": [
+          "priya"
+        ],
+        "affectedAgents": [
+          "kiran",
+          "sofia",
+          "chiara"
+        ],
+        "location": "garden",
+        "importance": 1
+      }
+    ],
+    "publicRumors": [
+      {
+        "id": "rumor_1",
+        "text": "Meera and Matteo were seen together at the academy again",
+        "sourceAgentId": null,
+        "aboutAgentIds": [
+          "meera",
+          "matteo"
+        ],
+        "truthStatus": "true"
+      }
+    ]
   },
   "agents": [
     {
       "id": "kiran",
       "name": "Kiran",
       "lang": "hi",
-      "ageDays": 21,
+      "ageDays": 23,
       "stage": "young_adult",
       "home": "home_kiran",
       "job": null,
       "personality": "curious, playful, asks lots of questions",
-      "memoryDigest": "Discovered a rare flower species in the garden",
+      "memoryDigest": "Learned about flower arrangement from Priya",
       "aspirations": [
-        "Learn from the botanist"
+        "Meet the botanist soon"
       ],
       "gossip": [
         {
@@ -110,19 +137,24 @@
           "simDay": 18,
           "type": "daily_update",
           "summary": "Spent the day learning about plants and exploring the village"
+        },
+        {
+          "simDay": 20,
+          "type": "daily_update",
+          "summary": "Attended Priya's gardening celebration at the garden"
         }
       ],
       "today": {
-        "simDay": 18,
-        "dateKey": "sim-18",
-        "generatedAt": "2026-07-15T10:02:55.130Z",
+        "simDay": 20,
+        "dateKey": "sim-20",
+        "generatedAt": "2026-07-17T09:57:17.366Z",
         "locked": true,
-        "mood": "Excited and Curious",
-        "daySummary": "Spent the day learning about plants and exploring the village",
+        "mood": "Excited Curious",
+        "daySummary": "Attended Priya's gardening celebration at the garden",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Heard the cafe owner is looking for a new helper",
+            "text": "Priya's garden is flourishing",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -131,51 +163,54 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "Read botany books",
+            "location": "garden",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "academy",
-            "activity": "Attend lecture series",
+            "location": "garden",
+            "activity": "Ask Priya questions",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "garden",
-            "activity": "Explore flower beds",
+            "location": "market",
+            "activity": "Buy gardening tools",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "park",
-            "activity": "Play with kids",
+            "location": "cafe",
+            "activity": "Discuss botany books",
             "status": "planned",
             "eventId": null
           }
         ],
-        "sharedEventIds": []
+        "sharedEventIds": [
+          "event_1"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "sofia",
       "name": "Sofia",
       "lang": "it",
-      "ageDays": 24,
+      "ageDays": 26,
       "stage": "young_adult",
       "home": "home_sofia",
       "job": null,
       "personality": "cheerful, loves drawing and animals",
-      "memoryDigest": "Saw a beautiful bird in the garden",
+      "memoryDigest": "Priya gave me a bouquet of flowers",
       "aspirations": [
-        "Finish the bird painting"
+        "Finish bird painting"
       ],
       "gossip": [
         {
@@ -254,19 +289,24 @@
           "simDay": 18,
           "type": "daily_update",
           "summary": "Spent the day drawing and exploring"
+        },
+        {
+          "simDay": 20,
+          "type": "daily_update",
+          "summary": "Visited Priya's garden celebration"
         }
       ],
       "today": {
-        "simDay": 18,
-        "dateKey": "sim-18",
-        "generatedAt": "2026-07-15T10:02:55.130Z",
+        "simDay": 20,
+        "dateKey": "sim-20",
+        "generatedAt": "2026-07-17T09:57:17.366Z",
         "locked": true,
-        "mood": "Happy and creative",
-        "daySummary": "Spent the day drawing and exploring",
+        "mood": "Happy today",
+        "daySummary": "Visited Priya's garden celebration",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Heard the cafe has a new cat",
+            "text": "Heard Priya's garden is the best in town",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -275,8 +315,8 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "Drawing flowers",
+            "location": "garden",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
@@ -284,7 +324,7 @@
             "start": "09:00",
             "end": "13:00",
             "location": "garden",
-            "activity": "Watching birds",
+            "activity": "Celebrating Priya",
             "status": "planned",
             "eventId": null
           },
@@ -292,34 +332,37 @@
             "start": "13:00",
             "end": "18:00",
             "location": "cafe",
-            "activity": "Petting cats",
+            "activity": "Drinking coffee",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "park",
-            "activity": "Sketching trees",
+            "location": "town_square",
+            "activity": "Watching performers",
             "status": "planned",
             "eventId": null
           }
         ],
-        "sharedEventIds": []
+        "sharedEventIds": [
+          "event_1"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "meera",
       "name": "Meera",
       "lang": "hi",
-      "ageDays": 27,
-      "stage": "young_adult",
+      "ageDays": 29,
+      "stage": "full_adult",
       "home": "home_meera",
       "job": "academy",
       "personality": "a bit shy, loves music, studying hard",
-      "memoryDigest": "Discovered a new composer",
+      "memoryDigest": "Met a talented young singer",
       "aspirations": [
-        "Practice piano daily"
+        "Master piano concerto"
       ],
       "gossip": [],
       "relationships": {
@@ -387,39 +430,50 @@
           "simDay": 18,
           "type": "daily_update",
           "summary": "Attended music classes at academy"
+        },
+        {
+          "simDay": 20,
+          "type": "daily_update",
+          "summary": "Attended Priya's gardening celebration"
         }
       ],
       "today": {
-        "simDay": 18,
-        "dateKey": "sim-18",
-        "generatedAt": "2026-07-15T10:02:55.130Z",
+        "simDay": 20,
+        "dateKey": "sim-20",
+        "generatedAt": "2026-07-17T09:57:17.366Z",
         "locked": true,
-        "mood": "feeling focused",
-        "daySummary": "Attended music classes at academy",
+        "mood": "Happy and calm",
+        "daySummary": "Attended Priya's gardening celebration",
         "privateDevelopments": [],
-        "gossipToShare": [],
+        "gossipToShare": [
+          {
+            "text": "Priya's gardening skills are impressive",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
         "schedule": [
           {
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "Woke up early",
+            "activity": "Packed lunch quickly",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "academy",
-            "activity": "Practiced scales",
+            "location": "garden",
+            "activity": "Congratulated Priya",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "garden",
-            "activity": "Read a book",
+            "location": "academy",
+            "activity": "Studied music theory",
             "status": "planned",
             "eventId": null
           },
@@ -427,7 +481,7 @@
             "start": "18:00",
             "end": "23:00",
             "location": "cafe",
-            "activity": "Sipped coffee",
+            "activity": "Drank coffee alone",
             "status": "planned",
             "eventId": null
           }
@@ -439,12 +493,12 @@
       "id": "matteo",
       "name": "Matteo",
       "lang": "it",
-      "ageDays": 30,
+      "ageDays": 32,
       "stage": "full_adult",
       "home": "home_matteo",
       "job": "academy",
       "personality": "energetic, into sports, a little cheeky",
-      "memoryDigest": "Met a new friend at the cafe",
+      "memoryDigest": "Priya's gardening skills are impressive",
       "aspirations": [
         "Join sports team soon"
       ],
@@ -505,19 +559,24 @@
           "simDay": 18,
           "type": "daily_update",
           "summary": "Spent the day at work and play"
+        },
+        {
+          "simDay": 20,
+          "type": "daily_update",
+          "summary": "Attended Priya's gardening celebration"
         }
       ],
       "today": {
-        "simDay": 18,
-        "dateKey": "sim-18",
-        "generatedAt": "2026-07-15T10:02:55.130Z",
+        "simDay": 20,
+        "dateKey": "sim-20",
+        "generatedAt": "2026-07-17T09:57:17.366Z",
         "locked": true,
-        "mood": "Excited and Happy",
-        "daySummary": "Spent the day at work and play",
+        "mood": "excited and happy",
+        "daySummary": "Attended Priya's gardening celebration",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Heard the cafe owner is dating a teacher",
+            "text": "Priya's garden is the talk of the town",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -527,7 +586,7 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "Taught lively lesson",
+            "activity": "had breakfast",
             "status": "planned",
             "eventId": null
           },
@@ -535,23 +594,23 @@
             "start": "09:00",
             "end": "13:00",
             "location": "academy",
-            "activity": "Drank coffee quickly",
+            "activity": "taught classes",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "cafe",
-            "activity": "Ran into friend",
+            "location": "garden",
+            "activity": "cheered Priya",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "park",
-            "activity": "Played soccer freely",
+            "location": "town_square",
+            "activity": "played soccer",
             "status": "planned",
             "eventId": null
           }
@@ -563,14 +622,14 @@
       "id": "priya",
       "name": "Priya",
       "lang": "hi",
-      "ageDays": 34,
+      "ageDays": 36,
       "stage": "full_adult",
       "home": "home_priya",
       "job": "garden",
       "personality": "calm meditation guide, warm and patient",
-      "memoryDigest": "Taught a child to breathe deeply",
+      "memoryDigest": "Received thanks from a gardener",
       "aspirations": [
-        "Master meditation techniques"
+        "Teach meditation class"
       ],
       "gossip": [],
       "relationships": {
@@ -629,19 +688,24 @@
           "simDay": 18,
           "type": "daily_update",
           "summary": "Spent the day guiding meditation sessions"
+        },
+        {
+          "simDay": 20,
+          "type": "daily_update",
+          "summary": "Celebrated gardening success"
         }
       ],
       "today": {
-        "simDay": 18,
-        "dateKey": "sim-18",
-        "generatedAt": "2026-07-15T10:02:55.130Z",
+        "simDay": 20,
+        "dateKey": "sim-20",
+        "generatedAt": "2026-07-17T09:57:17.366Z",
         "locked": true,
-        "mood": "Peaceful morning",
-        "daySummary": "Spent the day guiding meditation sessions",
+        "mood": "very happy",
+        "daySummary": "Celebrated gardening success",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "The cafe's new tea is soothing",
+            "text": "The harvest festival is near",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -650,24 +714,24 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "Meditated at dawn",
+            "location": "garden",
+            "activity": "watering plants",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "garden",
-            "activity": "Guided group session",
+            "location": "cafe",
+            "activity": "drinking tea",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "cafe",
-            "activity": "Sipped herbal tea",
+            "location": "home",
+            "activity": "meditating alone",
             "status": "planned",
             "eventId": null
           },
@@ -675,7 +739,7 @@
             "start": "18:00",
             "end": "23:00",
             "location": "town_square",
-            "activity": "Watched sunset calmly",
+            "activity": "sharing stories",
             "status": "planned",
             "eventId": null
           }
@@ -687,14 +751,14 @@
       "id": "luca",
       "name": "Luca",
       "lang": "it",
-      "ageDays": 37,
+      "ageDays": 39,
       "stage": "full_adult",
       "home": "home_luca",
       "job": "park",
       "personality": "sketches constantly, dreamy, romantic streak",
-      "memoryDigest": "Saw a beautiful sunset on the road",
+      "memoryDigest": "Met Priya at her garden party",
       "aspirations": [
-        "Complete park artwork"
+        "Finish park mural"
       ],
       "gossip": [],
       "relationships": {
@@ -753,19 +817,24 @@
           "simDay": 18,
           "type": "daily_update",
           "summary": "Spent the day sketching in the park"
+        },
+        {
+          "simDay": 20,
+          "type": "daily_update",
+          "summary": "Spent day sketching at work"
         }
       ],
       "today": {
-        "simDay": 18,
-        "dateKey": "sim-18",
-        "generatedAt": "2026-07-15T10:02:55.130Z",
+        "simDay": 20,
+        "dateKey": "sim-20",
+        "generatedAt": "2026-07-17T09:57:17.366Z",
         "locked": true,
-        "mood": "feeling inspired",
-        "daySummary": "Spent the day sketching in the park",
+        "mood": "romantic thoughts",
+        "daySummary": "Spent day sketching at work",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Heard the cafe owner is looking for new artists",
+            "text": "Priya's garden is flourishing",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -775,15 +844,15 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "Drinking coffee",
+            "activity": "sketched sunrise",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "cafe",
-            "activity": "Sketching flowers",
+            "location": "garden",
+            "activity": "drew Priya's flowers",
             "status": "planned",
             "eventId": null
           },
@@ -791,15 +860,15 @@
             "start": "13:00",
             "end": "18:00",
             "location": "park",
-            "activity": "Watching sunset",
+            "activity": "painted park scenery",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "road",
-            "activity": "Walking home",
+            "location": "cafe",
+            "activity": "chatted with strangers",
             "status": "planned",
             "eventId": null
           }
@@ -811,14 +880,14 @@
       "id": "chiara",
       "name": "Chiara",
       "lang": "it",
-      "ageDays": 40,
+      "ageDays": 42,
       "stage": "full_adult",
       "home": "home_chiara",
       "job": "market",
       "personality": "chatty, knows everyone's business, kind",
-      "memoryDigest": "Met a new face in town today",
+      "memoryDigest": "Priya's gardening success is inspiring",
       "aspirations": [
-        "Attend Sophia's wedding"
+        "Meet Sophia's fiancé"
       ],
       "gossip": [],
       "relationships": {
@@ -877,19 +946,24 @@
           "simDay": 18,
           "type": "daily_update",
           "summary": "Spent the day socializing with townspeople"
+        },
+        {
+          "simDay": 20,
+          "type": "daily_update",
+          "summary": "Helped with market preparations today"
         }
       ],
       "today": {
-        "simDay": 18,
-        "dateKey": "sim-18",
-        "generatedAt": "2026-07-15T10:02:55.130Z",
+        "simDay": 20,
+        "dateKey": "sim-20",
+        "generatedAt": "2026-07-17T09:57:17.366Z",
         "locked": true,
-        "mood": "Feeling quite chatty",
-        "daySummary": "Spent the day socializing with townspeople",
+        "mood": "Excited chatter",
+        "daySummary": "Helped with market preparations today",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Did you hear about the bakery's new owner?",
+            "text": "Did you hear about the new family moving in?",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -898,8 +972,8 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "Selling fresh produce",
+            "location": "garden",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
@@ -907,42 +981,45 @@
             "start": "09:00",
             "end": "13:00",
             "location": "market",
-            "activity": "Greeting regular customers",
+            "activity": "Sold goods to locals",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "cafe",
-            "activity": "Drinking coffee with friends",
+            "location": "garden",
+            "activity": "Admired Priya's plants",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "town_square",
-            "activity": "Chatting with locals",
+            "location": "cafe",
+            "activity": "Gossiped with friends",
             "status": "planned",
             "eventId": null
           }
         ],
-        "sharedEventIds": []
+        "sharedEventIds": [
+          "event_1"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "davide",
       "name": "Davide",
       "lang": "it",
-      "ageDays": 43,
+      "ageDays": 45,
       "stage": "senior",
       "home": "home_davide",
       "job": "workshop",
       "personality": "quiet craftsman, focused, dry humor",
-      "memoryDigest": "Met a skilled woodcarver",
+      "memoryDigest": "Improved table-making skills",
       "aspirations": [
-        "Master woodworking tools"
+        "Craft perfect chair"
       ],
       "gossip": [],
       "relationships": {},
@@ -991,19 +1068,24 @@
           "simDay": 18,
           "type": "daily_update",
           "summary": "Worked on a new project"
+        },
+        {
+          "simDay": 20,
+          "type": "daily_update",
+          "summary": "Worked on woodworking projects"
         }
       ],
       "today": {
-        "simDay": 18,
-        "dateKey": "sim-18",
-        "generatedAt": "2026-07-15T10:02:55.130Z",
+        "simDay": 20,
+        "dateKey": "sim-20",
+        "generatedAt": "2026-07-17T09:57:17.366Z",
         "locked": true,
-        "mood": "calm focused",
-        "daySummary": "Worked on a new project",
+        "mood": "Focused calm",
+        "daySummary": "Worked on woodworking projects",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Heard the cafe owner is struggling",
+            "text": "Priya's garden is thriving",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1013,7 +1095,7 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "crafted wooden chair",
+            "activity": "Sanded wood pieces",
             "status": "planned",
             "eventId": null
           },
@@ -1021,7 +1103,7 @@
             "start": "09:00",
             "end": "13:00",
             "location": "workshop",
-            "activity": "fixed broken tools",
+            "activity": "Built chair frame",
             "status": "planned",
             "eventId": null
           },
@@ -1029,15 +1111,15 @@
             "start": "13:00",
             "end": "18:00",
             "location": "garden",
-            "activity": "pruned apple trees",
+            "activity": "Admired Priya's crops",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "town_square",
-            "activity": "watched street performers",
+            "location": "cafe",
+            "activity": "Drank silent coffee",
             "status": "planned",
             "eventId": null
           }
@@ -1049,14 +1131,14 @@
       "id": "arjun",
       "name": "Arjun",
       "lang": "hi",
-      "ageDays": 47,
+      "ageDays": 49,
       "stage": "senior",
       "home": "home_arjun",
       "job": "park",
       "personality": "upbeat yoga instructor, motivational",
-      "memoryDigest": "Helped a student master a new pose",
+      "memoryDigest": "Encouraged a shy student to participate",
       "aspirations": [
-        "Expand yoga classes"
+        "Launch new class series"
       ],
       "gossip": [],
       "relationships": {
@@ -1115,19 +1197,24 @@
           "simDay": 18,
           "type": "daily_update",
           "summary": "Taught yoga to villagers in the park"
+        },
+        {
+          "simDay": 20,
+          "type": "daily_update",
+          "summary": "Taught yoga classes at the park"
         }
       ],
       "today": {
-        "simDay": 18,
-        "dateKey": "sim-18",
-        "generatedAt": "2026-07-15T10:02:55.130Z",
+        "simDay": 20,
+        "dateKey": "sim-20",
+        "generatedAt": "2026-07-17T09:57:17.366Z",
         "locked": true,
-        "mood": "Feeling optimistic",
-        "daySummary": "Taught yoga to villagers in the park",
+        "mood": "Feeling Energized",
+        "daySummary": "Taught yoga classes at the park",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Heard the cafe owner is planning a sale",
+            "text": "Priya's gardening skills are impressive",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1137,7 +1224,7 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "Morning meditation",
+            "activity": "Led morning yoga",
             "status": "planned",
             "eventId": null
           },
@@ -1145,7 +1232,7 @@
             "start": "09:00",
             "end": "13:00",
             "location": "park",
-            "activity": "Teaching yoga class",
+            "activity": "Taught park classes",
             "status": "planned",
             "eventId": null
           },
@@ -1153,7 +1240,7 @@
             "start": "13:00",
             "end": "18:00",
             "location": "cafe",
-            "activity": "Drinking green tea",
+            "activity": "Drank green tea",
             "status": "planned",
             "eventId": null
           },
@@ -1161,7 +1248,7 @@
             "start": "18:00",
             "end": "23:00",
             "location": "town_square",
-            "activity": "Giving motivational talk",
+            "activity": "Congratulated Priya",
             "status": "planned",
             "eventId": null
           }
@@ -1173,14 +1260,14 @@
       "id": "giulia",
       "name": "Giulia",
       "lang": "it",
-      "ageDays": 50,
+      "ageDays": 52,
       "stage": "elder",
       "home": "home_giulia",
       "job": "cafe",
       "personality": "warm barista, remembers everyone's order",
-      "memoryDigest": "Mr. Johnson's dog passed away",
+      "memoryDigest": "Priya's gardening success story",
       "aspirations": [
-        "Master heart design latte"
+        "Create perfect latte art"
       ],
       "gossip": [],
       "relationships": {},
@@ -1229,19 +1316,24 @@
           "simDay": 18,
           "type": "daily_update",
           "summary": "Served familiar faces at the cafe"
+        },
+        {
+          "simDay": 20,
+          "type": "daily_update",
+          "summary": "I served coffee at the cafe"
         }
       ],
       "today": {
-        "simDay": 18,
-        "dateKey": "sim-18",
-        "generatedAt": "2026-07-15T10:02:55.130Z",
+        "simDay": 20,
+        "dateKey": "sim-20",
+        "generatedAt": "2026-07-17T09:57:17.366Z",
         "locked": true,
-        "mood": "Feeling grateful",
-        "daySummary": "Served familiar faces at the cafe",
+        "mood": "cheerful today",
+        "daySummary": "I served coffee at the cafe",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Sarah's twins are adorable",
+            "text": "Priya's garden is thriving",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1251,7 +1343,7 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "Brew coffee drinks",
+            "activity": "make morning coffee",
             "status": "planned",
             "eventId": null
           },
@@ -1259,7 +1351,7 @@
             "start": "09:00",
             "end": "13:00",
             "location": "cafe",
-            "activity": "Chat with Sarah",
+            "activity": "serve regulars",
             "status": "planned",
             "eventId": null
           },
@@ -1267,7 +1359,7 @@
             "start": "13:00",
             "end": "18:00",
             "location": "garden",
-            "activity": "Water flowers",
+            "activity": "offer congratulations",
             "status": "planned",
             "eventId": null
           },
@@ -1275,7 +1367,7 @@
             "start": "18:00",
             "end": "23:00",
             "location": "town_square",
-            "activity": "Watch street performers",
+            "activity": "share town news",
             "status": "planned",
             "eventId": null
           }
@@ -1287,14 +1379,14 @@
       "id": "marco",
       "name": "Marco",
       "lang": "it",
-      "ageDays": 53,
+      "ageDays": 55,
       "stage": "elder",
       "home": "home_marco",
       "job": "workshop",
       "personality": "builds furniture, steady, a little guarded",
-      "memoryDigest": "Met a young apprentice at the workshop",
+      "memoryDigest": "Priya shared her gardening tips with me",
       "aspirations": [
-        "Finish the table"
+        "Finish the table tonight"
       ],
       "gossip": [],
       "relationships": {},
@@ -1343,19 +1435,24 @@
           "simDay": 18,
           "type": "daily_update",
           "summary": "Spent the day working on new furniture pieces"
+        },
+        {
+          "simDay": 20,
+          "type": "daily_update",
+          "summary": "Spent the day working on the table"
         }
       ],
       "today": {
-        "simDay": 18,
-        "dateKey": "sim-18",
-        "generatedAt": "2026-07-15T10:02:55.130Z",
+        "simDay": 20,
+        "dateKey": "sim-20",
+        "generatedAt": "2026-07-17T09:57:17.366Z",
         "locked": true,
-        "mood": "calm and focused",
-        "daySummary": "Spent the day working on new furniture pieces",
+        "mood": "Cautiously optimistic",
+        "daySummary": "Spent the day working on the table",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Heard the cathedral is getting renovated",
+            "text": "Heard the academy is planning a new project",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1365,7 +1462,7 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "Built wooden chair",
+            "activity": "Drinking morning coffee",
             "status": "planned",
             "eventId": null
           },
@@ -1373,23 +1470,23 @@
             "start": "09:00",
             "end": "13:00",
             "location": "workshop",
-            "activity": "Taught apprentice carpentry",
+            "activity": "Building the table",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "market",
-            "activity": "Bought new tools",
+            "location": "garden",
+            "activity": "Discussing gardening",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "cafe",
-            "activity": "Drank afternoon coffee",
+            "location": "town_square",
+            "activity": "Celebrating Priya's success",
             "status": "planned",
             "eventId": null
           }
@@ -1401,14 +1498,14 @@
       "id": "it-tommaso-mridknmr",
       "name": "Tommaso",
       "lang": "it",
-      "ageDays": 14,
-      "stage": "teen",
+      "ageDays": 16,
+      "stage": "young_adult",
       "home": "home_lucia",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Watched a woodworker craft a beautiful chair",
+      "memoryDigest": "Saw Priya's vibrant garden for the first time",
       "aspirations": [
-        "Master woodworking tools"
+        "Learn woodworking basics"
       ],
       "gossip": [],
       "relationships": {
@@ -1476,19 +1573,24 @@
           "simDay": 18,
           "type": "daily_update",
           "summary": "Explored the town to learn new skills"
+        },
+        {
+          "simDay": 20,
+          "type": "daily_update",
+          "summary": "Explored the village and met new people"
         }
       ],
       "today": {
-        "simDay": 18,
-        "dateKey": "sim-18",
-        "generatedAt": "2026-07-15T10:02:55.130Z",
+        "simDay": 20,
+        "dateKey": "sim-20",
+        "generatedAt": "2026-07-17T09:57:17.366Z",
         "locked": true,
-        "mood": "curious and eager",
-        "daySummary": "Explored the town to learn new skills",
+        "mood": "curious and hopeful",
+        "daySummary": "Explored the village and met new people",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Heard the workshop is hiring",
+            "text": "Priya's garden is flourishing",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1498,31 +1600,31 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "Breakfast with family",
+            "activity": "ate breakfast",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "workshop",
-            "activity": "Watched woodwork demo",
+            "location": "garden",
+            "activity": "admired flowers",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "garden",
-            "activity": "Helped with gardening",
+            "location": "cafe",
+            "activity": "had coffee",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "town_square",
-            "activity": "Listened to townspeople",
+            "location": "workshop",
+            "activity": "watched crafts",
             "status": "planned",
             "eventId": null
           }
@@ -1534,14 +1636,14 @@
       "id": "hi-neha-mrify7ge",
       "name": "Neha",
       "lang": "hi",
-      "ageDays": 12,
+      "ageDays": 14,
       "stage": "teen",
       "home": "home_raj",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Tried a new drink at the cafe",
+      "memoryDigest": "Ate a free cake at the garden party",
       "aspirations": [
-        "Make new friends"
+        "Attend more social events"
       ],
       "gossip": [],
       "relationships": {
@@ -1595,19 +1697,24 @@
           "simDay": 18,
           "type": "daily_update",
           "summary": "Explored the town and met new people"
+        },
+        {
+          "simDay": 20,
+          "type": "daily_update",
+          "summary": "Met new people at Priya's celebration"
         }
       ],
       "today": {
-        "simDay": 18,
-        "dateKey": "sim-18",
-        "generatedAt": "2026-07-15T10:02:55.130Z",
+        "simDay": 20,
+        "dateKey": "sim-20",
+        "generatedAt": "2026-07-17T09:57:17.366Z",
         "locked": true,
-        "mood": "curious excitement",
-        "daySummary": "Explored the town and met new people",
+        "mood": "excited curious",
+        "daySummary": "Met new people at Priya's celebration",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Heard the cafe owner is hosting a party",
+            "text": "Priya's garden is thriving",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1617,31 +1724,31 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "had breakfast",
+            "activity": "slept in late",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "cafe",
-            "activity": "tried latte",
+            "location": "garden",
+            "activity": "tried gardening tips",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "town_square",
-            "activity": "watched performers",
+            "location": "cafe",
+            "activity": "drank iced coffee",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "park",
-            "activity": "played soccer",
+            "location": "town_square",
+            "activity": "watched street performers",
             "status": "planned",
             "eventId": null
           }
@@ -1653,14 +1760,14 @@
       "id": "it-vittoria-mrigi63y",
       "name": "Vittoria",
       "lang": "it",
-      "ageDays": 8,
+      "ageDays": 10,
       "stage": "teen",
       "home": "home_paolo",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Met a kind old veterinarian",
+      "memoryDigest": "Tasted Priya's freshly harvested tomatoes",
       "aspirations": [
-        "Volunteer at clinic"
+        "Learn from Priya's gardening"
       ],
       "gossip": [],
       "relationships": {},
@@ -1694,47 +1801,58 @@
           "simDay": 18,
           "type": "daily_update",
           "summary": "Explored the town today"
+        },
+        {
+          "simDay": 20,
+          "type": "daily_update",
+          "summary": "Attended Priya's gardening celebration"
         }
       ],
       "today": {
-        "simDay": 18,
-        "dateKey": "sim-18",
-        "generatedAt": "2026-07-15T10:02:55.130Z",
+        "simDay": 20,
+        "dateKey": "sim-20",
+        "generatedAt": "2026-07-17T09:57:17.366Z",
         "locked": true,
-        "mood": "excited curious",
-        "daySummary": "Explored the town today",
+        "mood": "curious excitement",
+        "daySummary": "Attended Priya's gardening celebration",
         "privateDevelopments": [],
-        "gossipToShare": [],
+        "gossipToShare": [
+          {
+            "text": "Priya's garden is thriving",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
         "schedule": [
           {
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "Browsed food stalls",
+            "activity": "Ate breakfast quickly",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "market",
-            "activity": "Petted stray dogs",
+            "location": "garden",
+            "activity": "Watched gardening tips",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "clinic",
-            "activity": "Helped with injections",
+            "location": "cafe",
+            "activity": "Drank celebratory tea",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "park",
-            "activity": "Fed the pigeons",
+            "location": "town_square",
+            "activity": "Danced with friends",
             "status": "planned",
             "eventId": null
           }
@@ -1746,14 +1864,14 @@
       "id": "hi-raj-mrii3vq5",
       "name": "Raj",
       "lang": "hi",
-      "ageDays": 4,
+      "ageDays": 6,
       "stage": "kid",
       "home": "home_devika",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Made friends with a kid at the park",
+      "memoryDigest": "Helped Priya with her gardening",
       "aspirations": [
-        "Play with new friends"
+        "Make more friends play"
       ],
       "gossip": [],
       "relationships": {},
@@ -1777,19 +1895,108 @@
           "simDay": 18,
           "type": "daily_update",
           "summary": "Went on adventures around town"
+        },
+        {
+          "simDay": 20,
+          "type": "daily_update",
+          "summary": "Explored the town with friends"
         }
       ],
       "today": {
-        "simDay": 18,
-        "dateKey": "sim-18",
-        "generatedAt": "2026-07-15T10:02:55.130Z",
+        "simDay": 20,
+        "dateKey": "sim-20",
+        "generatedAt": "2026-07-17T09:57:17.366Z",
         "locked": true,
-        "mood": "curious excited",
-        "daySummary": "Went on adventures around town",
+        "mood": "excited happy",
+        "daySummary": "Explored the town with friends",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Saw Emma at the market",
+            "text": "Priya's garden is thriving",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
+        "schedule": [
+          {
+            "start": "06:00",
+            "end": "09:00",
+            "location": "home",
+            "activity": "ate quick breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "09:00",
+            "end": "13:00",
+            "location": "garden",
+            "activity": "helped with gardening",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "18:00",
+            "location": "park",
+            "activity": "played tag friends",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "18:00",
+            "end": "23:00",
+            "location": "town_square",
+            "activity": "listened to music",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
+        "sharedEventIds": []
+      }
+    },
+    {
+      "id": "it-paolo-mrlww8wq",
+      "name": "Paolo",
+      "lang": "it",
+      "ageDays": 2,
+      "stage": "kid",
+      "home": "home_elena",
+      "job": null,
+      "personality": "a blank slate — still discovering who they are",
+      "memoryDigest": "Saw Priya's beautiful garden for the first time",
+      "aspirations": [
+        "Make new friends"
+      ],
+      "gossip": [],
+      "relationships": {},
+      "lifeHistory": [
+        {
+          "simDay": 18,
+          "type": "birth",
+          "summary": "Born into home_elena."
+        },
+        {
+          "simDay": 18,
+          "type": "daily_update",
+          "summary": "A newborn's first quiet day."
+        },
+        {
+          "simDay": 20,
+          "type": "daily_update",
+          "summary": "Explored the town with friends today"
+        }
+      ],
+      "today": {
+        "simDay": 20,
+        "dateKey": "sim-20",
+        "generatedAt": "2026-07-17T09:57:17.366Z",
+        "locked": true,
+        "mood": "curious happy",
+        "daySummary": "Explored the town with friends today",
+        "privateDevelopments": [],
+        "gossipToShare": [
+          {
+            "text": "Priya's garden is amazing",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1822,55 +2029,8 @@
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "cafe",
-            "activity": "drank juice",
-            "status": "planned",
-            "eventId": null
-          }
-        ],
-        "sharedEventIds": []
-      }
-    },
-    {
-      "id": "it-paolo-mrlww8wq",
-      "name": "Paolo",
-      "lang": "it",
-      "ageDays": 0,
-      "stage": "kid",
-      "home": "home_elena",
-      "job": null,
-      "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Born into the town after Elena's death.",
-      "aspirations": [],
-      "gossip": [],
-      "relationships": {},
-      "lifeHistory": [
-        {
-          "simDay": 18,
-          "type": "birth",
-          "summary": "Born into home_elena."
-        },
-        {
-          "simDay": 18,
-          "type": "daily_update",
-          "summary": "A newborn's first quiet day."
-        }
-      ],
-      "today": {
-        "simDay": 18,
-        "dateKey": "sim-18",
-        "generatedAt": "2026-07-15T10:02:55.130Z",
-        "locked": true,
-        "mood": "newborn",
-        "daySummary": "A newborn's first quiet day.",
-        "privateDevelopments": [],
-        "gossipToShare": [],
-        "schedule": [
-          {
-            "start": "00:00",
-            "end": "23:59",
-            "location": "home",
-            "activity": "Being cared for at home",
+            "location": "town_square",
+            "activity": "watched performers",
             "status": "planned",
             "eventId": null
           }
@@ -1879,22 +2039,6 @@
       }
     }
   ],
-  "lastDeaths": [
-    {
-      "id": "elena",
-      "name": "Elena",
-      "lang": "it",
-      "ageDays": 57,
-      "simDay": 18
-    }
-  ],
-  "lastBirths": [
-    {
-      "id": "it-paolo-mrlww8wq",
-      "name": "Paolo",
-      "lang": "it",
-      "home": "home_elena",
-      "simDay": 18
-    }
-  ]
+  "lastDeaths": [],
+  "lastBirths": []
 }
