@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "simDay": 26,
-  "lastWake": "2026-07-24T10:17:39.385Z",
+  "simDay": 28,
+  "lastWake": "2026-07-27T11:21:31.825Z",
   "namePool": {
     "it": [
       "Sofia",
@@ -31,35 +31,67 @@
     ]
   },
   "today": {
-    "simDay": 26,
-    "generatedAt": "2026-07-24T10:17:39.385Z",
+    "simDay": 28,
+    "generatedAt": "2026-07-27T11:21:31.825Z",
     "locked": true,
-    "townMood": "neutral",
-    "townSummary": "The town is neutral, with Sofia celebrating her finished bird painting at the cafe. Agents Meera and Matteo must attend the celebration.",
+    "townMood": "melancholic",
+    "townSummary": "The town is gathering for a funeral at the funeral_ground and a birth at home_arjun, both of which are significant events that require the attendance of several agents.",
     "sharedEvents": [
       {
-        "id": "event_1",
-        "type": "celebration",
-        "summary": "Sofia finished her bird painting and is celebrating at the cafe",
+        "id": "funeral_arjun",
+        "type": "funeral",
+        "summary": "The town gathers to bid farewell to Arjun",
         "participants": [
-          "sofia"
-        ],
-        "affectedAgents": [
+          "kiran",
           "sofia",
           "meera",
-          "matteo"
+          "matteo",
+          "priya",
+          "luca",
+          "chiara",
+          "davide"
         ],
-        "location": "cafe",
-        "importance": 1
+        "affectedAgents": [
+          "kiran",
+          "sofia",
+          "meera",
+          "matteo",
+          "priya",
+          "luca",
+          "chiara",
+          "davide"
+        ],
+        "location": "funeral_ground",
+        "importance": 3
+      },
+      {
+        "id": "birth_hi-arjun-ms34zkc2",
+        "type": "birth",
+        "summary": "A new life is born into the town as Arjun's family welcomes a new member",
+        "participants": [
+          "hi-arjun-ms34zkc2"
+        ],
+        "affectedAgents": [
+          "kiran",
+          "sofia",
+          "meera",
+          "matteo",
+          "priya",
+          "luca",
+          "chiara",
+          "davide"
+        ],
+        "location": "home_arjun",
+        "importance": 2
       }
     ],
     "publicRumors": [
       {
-        "id": "rumor_1",
-        "text": "Kiran is trying to identify a rare flower species",
+        "id": "rumor_arjun",
+        "text": "Arjun's passing has left a void in the town's heart",
         "sourceAgentId": null,
         "aboutAgentIds": [
-          "kiran"
+          "arjun"
         ],
         "truthStatus": "true"
       }
@@ -70,14 +102,14 @@
       "id": "kiran",
       "name": "Kiran",
       "lang": "hi",
-      "ageDays": 29,
+      "ageDays": 31,
       "stage": "full_adult",
       "home": "home_kiran",
       "job": null,
       "personality": "curious, playful, asks lots of questions",
-      "memoryDigest": "Met a local botanist who offered to help identify the flower",
+      "memoryDigest": "Saw the whole town come together to pay respects",
       "aspirations": [
-        "Learn about local flora"
+        "Learn about funeral customs"
       ],
       "gossip": [
         {
@@ -156,19 +188,24 @@
           "simDay": 26,
           "type": "daily_update",
           "summary": "Visited Sofia's celebration at the cafe"
+        },
+        {
+          "simDay": 28,
+          "type": "daily_update",
+          "summary": "Attended Arjun's farewell ceremony"
         }
       ],
       "today": {
-        "simDay": 26,
-        "dateKey": "sim-26",
-        "generatedAt": "2026-07-24T10:17:39.385Z",
+        "simDay": 28,
+        "dateKey": "sim-28",
+        "generatedAt": "2026-07-27T11:21:31.825Z",
         "locked": true,
-        "mood": "Excited and curious",
-        "daySummary": "Visited Sofia's celebration at the cafe",
+        "mood": "somber reflection",
+        "daySummary": "Attended Arjun's farewell ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Sofia's painting is a masterpiece",
+            "text": "Arjun's family is struggling to cope",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -177,51 +214,55 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "Drank coffee and chatted",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "cafe",
-            "activity": "Discussed flower species",
+            "location": "town_square",
+            "activity": "listened to eulogies",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "garden",
-            "activity": "Planted new seeds",
+            "location": "cathedral",
+            "activity": "lit a candle",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "academy",
-            "activity": "Read botany books",
+            "location": "funeral_ground",
+            "activity": "reflected on mortality",
             "status": "planned",
             "eventId": null
           }
         ],
-        "sharedEventIds": []
+        "sharedEventIds": [
+          "funeral_arjun",
+          "birth_hi-arjun-ms34zkc2"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "sofia",
       "name": "Sofia",
       "lang": "it",
-      "ageDays": 32,
+      "ageDays": 34,
       "stage": "full_adult",
       "home": "home_sofia",
       "job": null,
       "personality": "cheerful, loves drawing and animals",
-      "memoryDigest": "Received compliments on my art",
+      "memoryDigest": "Saw townspeople united in grief",
       "aspirations": [
-        "Start a new animal portrait"
+        "Draw a portrait of Arjun's pet"
       ],
       "gossip": [
         {
@@ -320,19 +361,24 @@
           "simDay": 26,
           "type": "daily_update",
           "summary": "Celebrated finishing my bird painting"
+        },
+        {
+          "simDay": 28,
+          "type": "daily_update",
+          "summary": "Attended Arjun's farewell ceremony"
         }
       ],
       "today": {
-        "simDay": 26,
-        "dateKey": "sim-26",
-        "generatedAt": "2026-07-24T10:17:39.385Z",
+        "simDay": 28,
+        "dateKey": "sim-28",
+        "generatedAt": "2026-07-27T11:21:31.825Z",
         "locked": true,
-        "mood": "Happy and relieved",
-        "daySummary": "Celebrated finishing my bird painting",
+        "mood": "somber respect",
+        "daySummary": "Attended Arjun's farewell ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Heard the cafe is hiring an artist",
+            "text": "Arjun's dog is now homeless",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -341,53 +387,55 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "Drinking coffee",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "cafe",
-            "activity": "Sketching birds",
+            "location": "town_square",
+            "activity": "paying respects",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "park",
-            "activity": "Feeding squirrels",
+            "location": "clinic",
+            "activity": "offering condolences",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "town_square",
-            "activity": "Showing artwork",
+            "location": "cathedral",
+            "activity": "praying quietly",
             "status": "planned",
             "eventId": null
           }
         ],
         "sharedEventIds": [
-          "event_1"
-        ]
+          "funeral_arjun",
+          "birth_hi-arjun-ms34zkc2"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "meera",
       "name": "Meera",
       "lang": "hi",
-      "ageDays": 35,
+      "ageDays": 37,
       "stage": "full_adult",
       "home": "home_meera",
       "job": "academy",
       "personality": "a bit shy, loves music, studying hard",
-      "memoryDigest": "Saw Sofia's finished bird painting",
+      "memoryDigest": "Heard the town's choir sing a sad hymn",
       "aspirations": [
-        "Practice violin daily"
+        "Master violin solo"
       ],
       "gossip": [],
       "relationships": {
@@ -475,19 +523,24 @@
           "simDay": 26,
           "type": "daily_update",
           "summary": "Attended a celebration at the cafe"
+        },
+        {
+          "simDay": 28,
+          "type": "daily_update",
+          "summary": "Attended Arjun's farewell ceremony"
         }
       ],
       "today": {
-        "simDay": 26,
-        "dateKey": "sim-26",
-        "generatedAt": "2026-07-24T10:17:39.385Z",
+        "simDay": 28,
+        "dateKey": "sim-28",
+        "generatedAt": "2026-07-27T11:21:31.825Z",
         "locked": true,
-        "mood": "Happy and calm",
-        "daySummary": "Attended a celebration at the cafe",
+        "mood": "somber reflection",
+        "daySummary": "Attended Arjun's farewell ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Sofia's painting is beautiful",
+            "text": "Arjun will be deeply missed",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -496,7 +549,7 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "cafe",
+            "location": "funeral_ground",
             "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
@@ -504,30 +557,31 @@
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "academy",
-            "activity": "Studied music theory",
+            "location": "town_square",
+            "activity": "paid respects",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "cafe",
-            "activity": "Congratulated Sofia",
+            "location": "cathedral",
+            "activity": "listened hymn",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "town_square",
-            "activity": "Watched street performers",
+            "location": "funeral_ground",
+            "activity": "said goodbye",
             "status": "planned",
             "eventId": null
           }
         ],
         "sharedEventIds": [
-          "event_1"
+          "funeral_arjun",
+          "birth_hi-arjun-ms34zkc2"
         ],
         "reconciled": true
       }
@@ -536,14 +590,14 @@
       "id": "matteo",
       "name": "Matteo",
       "lang": "it",
-      "ageDays": 38,
+      "ageDays": 40,
       "stage": "full_adult",
       "home": "home_matteo",
       "job": "academy",
       "personality": "energetic, into sports, a little cheeky",
-      "memoryDigest": "Met Sofia at the cafe and admired her bird painting",
+      "memoryDigest": "Saw Sofia crying at the funeral and felt a pang of empathy",
       "aspirations": [
-        "Join the local soccer team"
+        "Practice soccer drills daily"
       ],
       "gossip": [],
       "relationships": {
@@ -622,19 +676,24 @@
           "simDay": 26,
           "type": "daily_update",
           "summary": "I spent the day attending academy and planning my sports future"
+        },
+        {
+          "simDay": 28,
+          "type": "daily_update",
+          "summary": "Attended Arjun's funeral and reflected on life"
         }
       ],
       "today": {
-        "simDay": 26,
-        "dateKey": "sim-26",
-        "generatedAt": "2026-07-24T10:17:39.385Z",
+        "simDay": 28,
+        "dateKey": "sim-28",
+        "generatedAt": "2026-07-27T11:21:31.825Z",
         "locked": true,
-        "mood": "Happy and focused",
-        "daySummary": "I spent the day attending academy and planning my sports future",
+        "mood": "somber yet hopeful",
+        "daySummary": "Attended Arjun's funeral and reflected on life",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Sofia's painting is getting a lot of attention in town",
+            "text": "Heard the cathedral's priest is planning a memorial service for Arjun",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -643,7 +702,7 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "cafe",
+            "location": "funeral_ground",
             "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
@@ -651,8 +710,8 @@
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "academy",
-            "activity": "Attended lectures",
+            "location": "funeral_ground",
+            "activity": "paid respects to Arjun",
             "status": "planned",
             "eventId": null
           },
@@ -660,7 +719,7 @@
             "start": "13:00",
             "end": "18:00",
             "location": "cafe",
-            "activity": "Admired Sofia's art",
+            "activity": "ordered a coffee",
             "status": "planned",
             "eventId": null
           },
@@ -668,13 +727,14 @@
             "start": "18:00",
             "end": "23:00",
             "location": "town_square",
-            "activity": "Played soccer with friends",
+            "activity": "discussed soccer with friends",
             "status": "planned",
             "eventId": null
           }
         ],
         "sharedEventIds": [
-          "event_1"
+          "funeral_arjun",
+          "birth_hi-arjun-ms34zkc2"
         ],
         "reconciled": true
       }
@@ -683,14 +743,14 @@
       "id": "priya",
       "name": "Priya",
       "lang": "hi",
-      "ageDays": 42,
-      "stage": "full_adult",
+      "ageDays": 44,
+      "stage": "senior",
       "home": "home_priya",
       "job": "garden",
       "personality": "calm meditation guide, warm and patient",
-      "memoryDigest": "Found a rare flower in the garden",
+      "memoryDigest": "Saw the whole town come together",
       "aspirations": [
-        "Lead group meditation"
+        "Lead a calming session"
       ],
       "gossip": [],
       "relationships": {
@@ -769,19 +829,24 @@
           "simDay": 26,
           "type": "daily_update",
           "summary": "Started the day with a quiet walk"
+        },
+        {
+          "simDay": 28,
+          "type": "daily_update",
+          "summary": "Attended Arjun's farewell ceremony"
         }
       ],
       "today": {
-        "simDay": 26,
-        "dateKey": "sim-26",
-        "generatedAt": "2026-07-24T10:17:39.385Z",
+        "simDay": 28,
+        "dateKey": "sim-28",
+        "generatedAt": "2026-07-27T11:21:31.825Z",
         "locked": true,
-        "mood": "Peaceful morning",
-        "daySummary": "Started the day with a quiet walk",
+        "mood": "peaceful reflection",
+        "daySummary": "Attended Arjun's farewell ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Sofia's art is getting noticed",
+            "text": "Arjun will be deeply missed",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -790,8 +855,8 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "meditated alone",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
@@ -799,42 +864,46 @@
             "start": "09:00",
             "end": "13:00",
             "location": "garden",
-            "activity": "tended to flowers",
+            "activity": "watered plants",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "cafe",
-            "activity": "had herbal tea",
+            "location": "town_square",
+            "activity": "paid respects",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "town_square",
-            "activity": "shared calm vibes",
+            "location": "cathedral",
+            "activity": "offered prayers",
             "status": "planned",
             "eventId": null
           }
         ],
-        "sharedEventIds": []
+        "sharedEventIds": [
+          "funeral_arjun",
+          "birth_hi-arjun-ms34zkc2"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "luca",
       "name": "Luca",
       "lang": "it",
-      "ageDays": 45,
+      "ageDays": 47,
       "stage": "senior",
       "home": "home_luca",
       "job": "park",
       "personality": "sketches constantly, dreamy, romantic streak",
-      "memoryDigest": "Saw Sofia's finished bird painting",
+      "memoryDigest": "Saw tears in Sofia's eyes",
       "aspirations": [
-        "Finish mural tonight"
+        "Create art for Arjun"
       ],
       "gossip": [],
       "relationships": {
@@ -913,19 +982,24 @@
           "simDay": 26,
           "type": "daily_update",
           "summary": "Spent the day working on my mural"
+        },
+        {
+          "simDay": 28,
+          "type": "daily_update",
+          "summary": "Attended Arjun's farewell ceremony"
         }
       ],
       "today": {
-        "simDay": 26,
-        "dateKey": "sim-26",
-        "generatedAt": "2026-07-24T10:17:39.385Z",
+        "simDay": 28,
+        "dateKey": "sim-28",
+        "generatedAt": "2026-07-27T11:21:31.825Z",
         "locked": true,
-        "mood": "Inspired creativity",
-        "daySummary": "Spent the day working on my mural",
+        "mood": "somber reflection",
+        "daySummary": "Attended Arjun's farewell ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Sofia's party is tonight",
+            "text": "Sofia's bird painting sold quickly",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -934,51 +1008,55 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "Sketching sunrise",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "academy",
-            "activity": "Painting mural",
+            "location": "town_square",
+            "activity": "lit candle quietly",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "park",
-            "activity": "Walking freely",
+            "location": "cathedral",
+            "activity": "prayed for Arjun",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "cafe",
-            "activity": "Sipping coffee",
+            "location": "park",
+            "activity": "painted park scenery",
             "status": "planned",
             "eventId": null
           }
         ],
-        "sharedEventIds": []
+        "sharedEventIds": [
+          "funeral_arjun",
+          "birth_hi-arjun-ms34zkc2"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "chiara",
       "name": "Chiara",
       "lang": "it",
-      "ageDays": 48,
-      "stage": "senior",
+      "ageDays": 50,
+      "stage": "elder",
       "home": "home_chiara",
       "job": "market",
       "personality": "chatty, knows everyone's business, kind",
-      "memoryDigest": "Sofia's bird painting is stunning",
+      "memoryDigest": "Arjun's eulogy was heart-wrenching",
       "aspirations": [
-        "Plan party for Sophia"
+        "Plan Sofia's party soon"
       ],
       "gossip": [],
       "relationships": {
@@ -1057,19 +1135,24 @@
           "simDay": 26,
           "type": "daily_update",
           "summary": "Attended Sofia's painting celebration"
+        },
+        {
+          "simDay": 28,
+          "type": "daily_update",
+          "summary": "Attended Arjun's farewell ceremony"
         }
       ],
       "today": {
-        "simDay": 26,
-        "dateKey": "sim-26",
-        "generatedAt": "2026-07-24T10:17:39.385Z",
+        "simDay": 28,
+        "dateKey": "sim-28",
+        "generatedAt": "2026-07-27T11:21:31.825Z",
         "locked": true,
-        "mood": "Excited Chatter",
-        "daySummary": "Attended Sofia's painting celebration",
+        "mood": "somber reflection",
+        "daySummary": "Attended Arjun's farewell ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Sofia and Alex seem close",
+            "text": "Heard Luca is struggling financially",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1078,16 +1161,16 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "Drank morning coffee",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "cafe",
-            "activity": "Sold fresh produce",
+            "location": "town_square",
+            "activity": "listened to eulogy",
             "status": "planned",
             "eventId": null
           },
@@ -1095,32 +1178,36 @@
             "start": "13:00",
             "end": "18:00",
             "location": "market",
-            "activity": "Met with Sofia",
+            "activity": "sold flowers",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "town_square",
-            "activity": "Congratulated Sofia publicly",
+            "location": "cafe",
+            "activity": "consoled Luca",
             "status": "planned",
             "eventId": null
           }
         ],
-        "sharedEventIds": []
+        "sharedEventIds": [
+          "funeral_arjun",
+          "birth_hi-arjun-ms34zkc2"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "davide",
       "name": "Davide",
       "lang": "it",
-      "ageDays": 51,
+      "ageDays": 53,
       "stage": "elder",
       "home": "home_davide",
       "job": "workshop",
       "personality": "quiet craftsman, focused, dry humor",
-      "memoryDigest": "Saw Sofia's finished bird painting",
+      "memoryDigest": "Saw townspeople crying together",
       "aspirations": [
         "Finish chair prototype"
       ],
@@ -1191,19 +1278,24 @@
           "simDay": 26,
           "type": "daily_update",
           "summary": "Spent day working on chair design"
+        },
+        {
+          "simDay": 28,
+          "type": "daily_update",
+          "summary": "Attended Arjun's farewell ceremony"
         }
       ],
       "today": {
-        "simDay": 26,
-        "dateKey": "sim-26",
-        "generatedAt": "2026-07-24T10:17:39.385Z",
+        "simDay": 28,
+        "dateKey": "sim-28",
+        "generatedAt": "2026-07-27T11:21:31.825Z",
         "locked": true,
-        "mood": "Focused calmness",
-        "daySummary": "Spent day working on chair design",
+        "mood": "somber reflection",
+        "daySummary": "Attended Arjun's farewell ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Sofia's painting is quite colorful",
+            "text": "Heard the cathedral's stained glass is cracked",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1212,24 +1304,24 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "Designed chair legs",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
+            "location": "town_square",
+            "activity": "paid respects",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "18:00",
             "location": "workshop",
-            "activity": "Cut wood pieces",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "13:00",
-            "end": "18:00",
-            "location": "cafe",
-            "activity": "Drank coffee silently",
+            "activity": "sanded chair wood",
             "status": "planned",
             "eventId": null
           },
@@ -1237,170 +1329,30 @@
             "start": "18:00",
             "end": "23:00",
             "location": "town_square",
-            "activity": "Watched celebration parade",
+            "activity": "lit a candle",
             "status": "planned",
             "eventId": null
           }
         ],
-        "sharedEventIds": []
-      }
-    },
-    {
-      "id": "arjun",
-      "name": "Arjun",
-      "lang": "hi",
-      "ageDays": 55,
-      "stage": "elder",
-      "home": "home_arjun",
-      "job": "park",
-      "personality": "upbeat yoga instructor, motivational",
-      "memoryDigest": "Sofia's art inspires me",
-      "aspirations": [
-        "Launch yoga workshop"
-      ],
-      "gossip": [],
-      "relationships": {
-        "it-vittoria-mrigi63y": {
-          "status": "acquaintance",
-          "closeness": 50,
-          "trust": 50,
-          "tension": 0,
-          "attraction": 0,
-          "lastChangeReason": "newborn",
-          "lastChangedSimDay": 10
-        }
-      },
-      "lifeHistory": [
-        {
-          "simDay": 2,
-          "type": "daily_update",
-          "summary": "A quiet and ordinary day."
-        },
-        {
-          "simDay": 4,
-          "type": "daily_update",
-          "summary": "A quiet and ordinary day."
-        },
-        {
-          "simDay": 6,
-          "type": "daily_update",
-          "summary": "attended funeral and celebrated birth"
-        },
-        {
-          "simDay": 8,
-          "type": "daily_update",
-          "summary": "taught yoga"
-        },
-        {
-          "simDay": 10,
-          "type": "daily_update",
-          "summary": "attended funeral and worked at park"
-        },
-        {
-          "simDay": 12,
-          "type": "daily_update",
-          "summary": "A quiet and ordinary day."
-        },
-        {
-          "simDay": 14,
-          "type": "daily_update",
-          "summary": "Taught yoga to villagers in the park"
-        },
-        {
-          "simDay": 16,
-          "type": "daily_update",
-          "summary": "Taught yoga to villagers in the park"
-        },
-        {
-          "simDay": 18,
-          "type": "daily_update",
-          "summary": "Taught yoga to villagers in the park"
-        },
-        {
-          "simDay": 20,
-          "type": "daily_update",
-          "summary": "Taught yoga classes at the park"
-        },
-        {
-          "simDay": 22,
-          "type": "daily_update",
-          "summary": "Taught yoga in the park today"
-        },
-        {
-          "simDay": 24,
-          "type": "daily_update",
-          "summary": "Taught yoga to villagers"
-        },
-        {
-          "simDay": 26,
-          "type": "daily_update",
-          "summary": "Taught yoga in the park today"
-        }
-      ],
-      "today": {
-        "simDay": 26,
-        "dateKey": "sim-26",
-        "generatedAt": "2026-07-24T10:17:39.385Z",
-        "locked": true,
-        "mood": "Feeling joyful",
-        "daySummary": "Taught yoga in the park today",
-        "privateDevelopments": [],
-        "gossipToShare": [
-          {
-            "text": "Sofia's painting is a masterpiece",
-            "aboutAgentIds": [],
-            "confidence": 0.5
-          }
+        "sharedEventIds": [
+          "funeral_arjun",
+          "birth_hi-arjun-ms34zkc2"
         ],
-        "schedule": [
-          {
-            "start": "06:00",
-            "end": "09:00",
-            "location": "home",
-            "activity": "Taught morning yoga",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "09:00",
-            "end": "13:00",
-            "location": "park",
-            "activity": "Led park meditation",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "13:00",
-            "end": "18:00",
-            "location": "cafe",
-            "activity": "Drank green tea",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "18:00",
-            "end": "23:00",
-            "location": "town_square",
-            "activity": "Danced at celebration",
-            "status": "planned",
-            "eventId": null
-          }
-        ],
-        "sharedEventIds": []
+        "reconciled": true
       }
     },
     {
       "id": "it-tommaso-mridknmr",
       "name": "Tommaso",
       "lang": "it",
-      "ageDays": 22,
+      "ageDays": 24,
       "stage": "young_adult",
       "home": "home_lucia",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw Sofia's finished bird painting",
+      "memoryDigest": "Saw the whole town mourn Arjun",
       "aspirations": [
-        "Master woodworking basics"
+        "Learn basic woodworking"
       ],
       "gossip": [],
       "relationships": {
@@ -1488,19 +1440,24 @@
           "simDay": 26,
           "type": "daily_update",
           "summary": "Attended Sofia's celebration at the cafe"
+        },
+        {
+          "simDay": 28,
+          "type": "daily_update",
+          "summary": "Attended Arjun's funeral gathering"
         }
       ],
       "today": {
-        "simDay": 26,
-        "dateKey": "sim-26",
-        "generatedAt": "2026-07-24T10:17:39.385Z",
+        "simDay": 28,
+        "dateKey": "sim-28",
+        "generatedAt": "2026-07-27T11:21:31.825Z",
         "locked": true,
-        "mood": "curious and excited",
-        "daySummary": "Attended Sofia's celebration at the cafe",
+        "mood": "somber reflection",
+        "daySummary": "Attended Arjun's funeral gathering",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Sofia's painting is a masterpiece",
+            "text": "Heard the mayor is struggling",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1510,31 +1467,31 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "Drinking coffee",
+            "activity": "practiced morning stretches",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "cafe",
-            "activity": "Celebrating Sofia",
+            "location": "funeral_ground",
+            "activity": "paid respects silently",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "workshop",
-            "activity": "Watching woodwork",
+            "location": "town_square",
+            "activity": "listened to speeches",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "town_square",
-            "activity": "Exploring stalls",
+            "location": "cafe",
+            "activity": "ordered coffee quietly",
             "status": "planned",
             "eventId": null
           }
@@ -1546,14 +1503,14 @@
       "id": "hi-neha-mrify7ge",
       "name": "Neha",
       "lang": "hi",
-      "ageDays": 20,
+      "ageDays": 22,
       "stage": "young_adult",
       "home": "home_raj",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw Sofia's beautiful bird painting at the cafe",
+      "memoryDigest": "Saw the whole town crying together",
       "aspirations": [
-        "Meet new friends tonight"
+        "Find solace in new friendships"
       ],
       "gossip": [],
       "relationships": {
@@ -1627,19 +1584,24 @@
           "simDay": 26,
           "type": "daily_update",
           "summary": "Explored the town and met new people"
+        },
+        {
+          "simDay": 28,
+          "type": "daily_update",
+          "summary": "Attended Arjun's funeral service"
         }
       ],
       "today": {
-        "simDay": 26,
-        "dateKey": "sim-26",
-        "generatedAt": "2026-07-24T10:17:39.385Z",
+        "simDay": 28,
+        "dateKey": "sim-28",
+        "generatedAt": "2026-07-27T11:21:31.825Z",
         "locked": true,
-        "mood": "curious and hopeful",
-        "daySummary": "Explored the town and met new people",
+        "mood": "somber reflection",
+        "daySummary": "Attended Arjun's funeral service",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Sofia's party is tonight",
+            "text": "Heard the mayor is struggling to cope",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1649,31 +1611,31 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "drank morning coffee",
+            "activity": "packing funeral attire",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "cafe",
-            "activity": "admired bird painting",
+            "location": "funeral_ground",
+            "activity": "paying respects silently",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "park",
-            "activity": "watched children play",
+            "location": "town_square",
+            "activity": "consoling Sofia",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "town_square",
-            "activity": "bought party outfit",
+            "location": "cafe",
+            "activity": "ordering comforting tea",
             "status": "planned",
             "eventId": null
           }
@@ -1685,14 +1647,14 @@
       "id": "it-vittoria-mrigi63y",
       "name": "Vittoria",
       "lang": "it",
-      "ageDays": 16,
+      "ageDays": 18,
       "stage": "young_adult",
       "home": "home_paolo",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Tried a new coffee at the cafe",
+      "memoryDigest": "Saw Sofia crying at the funeral",
       "aspirations": [
-        "Learn to paint like Sofia"
+        "Find a painting mentor"
       ],
       "gossip": [],
       "relationships": {},
@@ -1746,19 +1708,24 @@
           "simDay": 26,
           "type": "daily_update",
           "summary": "Explored the town and met new people"
+        },
+        {
+          "simDay": 28,
+          "type": "daily_update",
+          "summary": "Attended Arjun's funeral ceremony"
         }
       ],
       "today": {
-        "simDay": 26,
-        "dateKey": "sim-26",
-        "generatedAt": "2026-07-24T10:17:39.385Z",
+        "simDay": 28,
+        "dateKey": "sim-28",
+        "generatedAt": "2026-07-27T11:21:31.825Z",
         "locked": true,
-        "mood": "curious and hopeful",
-        "daySummary": "Explored the town and met new people",
+        "mood": "somber reflection",
+        "daySummary": "Attended Arjun's funeral ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Sofia's party is tonight",
+            "text": "Sofia's art has been lacking inspiration lately",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1768,23 +1735,23 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "Drinking coffee slowly",
+            "activity": "woke up early",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "cafe",
-            "activity": "Watering my plants",
+            "location": "funeral_ground",
+            "activity": "paid respects",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "garden",
-            "activity": "Reading a book",
+            "location": "cafe",
+            "activity": "ordered coffee",
             "status": "planned",
             "eventId": null
           },
@@ -1792,7 +1759,7 @@
             "start": "18:00",
             "end": "23:00",
             "location": "town_square",
-            "activity": "Watching street performers",
+            "activity": "listened to eulogy",
             "status": "planned",
             "eventId": null
           }
@@ -1804,14 +1771,14 @@
       "id": "hi-raj-mrii3vq5",
       "name": "Raj",
       "lang": "hi",
-      "ageDays": 12,
+      "ageDays": 14,
       "stage": "teen",
       "home": "home_devika",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw Sofia's beautiful bird painting",
+      "memoryDigest": "Saw the whole town come together to mourn",
       "aspirations": [
-        "Meet new people"
+        "Make a new friend today"
       ],
       "gossip": [],
       "relationships": {},
@@ -1855,19 +1822,24 @@
           "simDay": 26,
           "type": "daily_update",
           "summary": "Attended Sofia's art celebration"
+        },
+        {
+          "simDay": 28,
+          "type": "daily_update",
+          "summary": "Attended Arjun's farewell ceremony in town"
         }
       ],
       "today": {
-        "simDay": 26,
-        "dateKey": "sim-26",
-        "generatedAt": "2026-07-24T10:17:39.385Z",
+        "simDay": 28,
+        "dateKey": "sim-28",
+        "generatedAt": "2026-07-27T11:21:31.825Z",
         "locked": true,
-        "mood": "neutral calm",
-        "daySummary": "Attended Sofia's art celebration",
+        "mood": "curious sadness",
+        "daySummary": "Attended Arjun's farewell ceremony in town",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Sofia's painting was amazing",
+            "text": "Sofia seemed really upset about Arjun's passing",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1877,31 +1849,31 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "Ate breakfast slowly",
+            "activity": "ate simple breakfast",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "cafe",
-            "activity": "Congratulated Sofia",
+            "location": "town_square",
+            "activity": "listened to eulogies",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "town_square",
-            "activity": "Watched street performers",
+            "location": "cathedral",
+            "activity": "prayed for Arjun",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "park",
-            "activity": "Played with kids",
+            "location": "funeral_ground",
+            "activity": "reflected on life",
             "status": "planned",
             "eventId": null
           }
@@ -1913,14 +1885,14 @@
       "id": "it-paolo-mrlww8wq",
       "name": "Paolo",
       "lang": "it",
-      "ageDays": 8,
+      "ageDays": 10,
       "stage": "teen",
       "home": "home_elena",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Tried delicious cake at Sofia's celebration",
+      "memoryDigest": "Saw townspeople crying together",
       "aspirations": [
-        "Learn new skills"
+        "Master a new craft"
       ],
       "gossip": [],
       "relationships": {},
@@ -1954,19 +1926,24 @@
           "simDay": 26,
           "type": "daily_update",
           "summary": "Explored the town and met new people"
+        },
+        {
+          "simDay": 28,
+          "type": "daily_update",
+          "summary": "Attended Arjun's farewell ceremony"
         }
       ],
       "today": {
-        "simDay": 26,
-        "dateKey": "sim-26",
-        "generatedAt": "2026-07-24T10:17:39.385Z",
+        "simDay": 28,
+        "dateKey": "sim-28",
+        "generatedAt": "2026-07-27T11:21:31.825Z",
         "locked": true,
-        "mood": "curious excitement",
-        "daySummary": "Explored the town and met new people",
+        "mood": "curious calm",
+        "daySummary": "Attended Arjun's farewell ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Sofia's bird painting is amazing",
+            "text": "Sofia seems sad lately",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1976,31 +1953,31 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "bought fresh bread",
+            "activity": "ate quiet breakfast",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "market",
-            "activity": "tried new foods",
+            "location": "town_square",
+            "activity": "listened to speeches",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "cafe",
-            "activity": "attended celebration",
+            "location": "cathedral",
+            "activity": "lit a candle",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "town_square",
-            "activity": "watched street performers",
+            "location": "funeral_ground",
+            "activity": "paid respects silently",
             "status": "planned",
             "eventId": null
           }
@@ -2012,14 +1989,14 @@
       "id": "it-marco-mrt3v0tb",
       "name": "Marco",
       "lang": "it",
-      "ageDays": 4,
+      "ageDays": 6,
       "stage": "kid",
       "home": "home_marco",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw Sofia's finished bird painting",
+      "memoryDigest": "Saw everyone crying for Arjun",
       "aspirations": [
-        "Attend the celebration"
+        "Learn about Arjun's life"
       ],
       "gossip": [],
       "relationships": {},
@@ -2043,29 +2020,28 @@
           "simDay": 26,
           "type": "daily_update",
           "summary": "Explored the town with friends today"
+        },
+        {
+          "simDay": 28,
+          "type": "daily_update",
+          "summary": "Attended Arjun's farewell ceremony"
         }
       ],
       "today": {
-        "simDay": 26,
-        "dateKey": "sim-26",
-        "generatedAt": "2026-07-24T10:17:39.385Z",
+        "simDay": 28,
+        "dateKey": "sim-28",
+        "generatedAt": "2026-07-27T11:21:31.825Z",
         "locked": true,
-        "mood": "curious excited",
-        "daySummary": "Explored the town with friends today",
+        "mood": "curious sad",
+        "daySummary": "Attended Arjun's farewell ceremony",
         "privateDevelopments": [],
-        "gossipToShare": [
-          {
-            "text": "Sofia's painting is amazing",
-            "aboutAgentIds": [],
-            "confidence": 0.5
-          }
-        ],
+        "gossipToShare": [],
         "schedule": [
           {
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "played with toys",
+            "activity": "ate breakfast slowly",
             "status": "planned",
             "eventId": null
           },
@@ -2073,23 +2049,23 @@
             "start": "09:00",
             "end": "13:00",
             "location": "town_square",
-            "activity": "watched celebration",
+            "activity": "listened to speeches",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "cafe",
-            "activity": "drank hot chocolate",
+            "location": "cathedral",
+            "activity": "prayed quietly",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "park",
-            "activity": "chased pigeons",
+            "location": "funeral_ground",
+            "activity": "paid respects",
             "status": "planned",
             "eventId": null
           }
@@ -2101,14 +2077,14 @@
       "id": "it-giulia-mrvxrx1j",
       "name": "Giulia",
       "lang": "it",
-      "ageDays": 2,
+      "ageDays": 4,
       "stage": "kid",
       "home": "home_giulia",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw Sofia's beautiful bird painting",
+      "memoryDigest": "Saw the whole town cry together",
       "aspirations": [
-        "Make new friends"
+        "Make friends at school"
       ],
       "gossip": [],
       "relationships": {},
@@ -2127,53 +2103,99 @@
           "simDay": 26,
           "type": "daily_update",
           "summary": "Explored the town with friends"
+        },
+        {
+          "simDay": 28,
+          "type": "daily_update",
+          "summary": "Attended Arjun's farewell ceremony"
         }
       ],
       "today": {
-        "simDay": 26,
-        "dateKey": "sim-26",
-        "generatedAt": "2026-07-24T10:17:39.385Z",
+        "simDay": 28,
+        "dateKey": "sim-28",
+        "generatedAt": "2026-07-27T11:21:31.825Z",
         "locked": true,
-        "mood": "curious happy",
-        "daySummary": "Explored the town with friends",
+        "mood": "curious sad",
+        "daySummary": "Attended Arjun's farewell ceremony",
         "privateDevelopments": [],
-        "gossipToShare": [
-          {
-            "text": "Sofia's party was fun",
-            "aboutAgentIds": [],
-            "confidence": 0.5
-          }
-        ],
+        "gossipToShare": [],
         "schedule": [
           {
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "played tag",
+            "activity": "played alone",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "park",
-            "activity": "chased pigeons",
+            "location": "town_square",
+            "activity": "listened to speeches",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "market",
-            "activity": "bought candy",
+            "location": "cathedral",
+            "activity": "prayed quietly",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "cafe",
-            "activity": "drank hot chocolate",
+            "location": "funeral_ground",
+            "activity": "reflected sadly",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
+        "sharedEventIds": []
+      }
+    },
+    {
+      "id": "hi-arjun-ms34zkc2",
+      "name": "Arjun",
+      "lang": "hi",
+      "ageDays": 0,
+      "stage": "kid",
+      "home": "home_arjun",
+      "job": null,
+      "personality": "a blank slate — still discovering who they are",
+      "memoryDigest": "Born into the town after Arjun's death.",
+      "aspirations": [],
+      "gossip": [],
+      "relationships": {},
+      "lifeHistory": [
+        {
+          "simDay": 28,
+          "type": "birth",
+          "summary": "Born into home_arjun."
+        },
+        {
+          "simDay": 28,
+          "type": "daily_update",
+          "summary": "A newborn's first quiet day."
+        }
+      ],
+      "today": {
+        "simDay": 28,
+        "dateKey": "sim-28",
+        "generatedAt": "2026-07-27T11:21:31.825Z",
+        "locked": true,
+        "mood": "newborn",
+        "daySummary": "A newborn's first quiet day.",
+        "privateDevelopments": [],
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "00:00",
+            "end": "23:59",
+            "location": "home",
+            "activity": "Being cared for at home",
             "status": "planned",
             "eventId": null
           }
@@ -2182,6 +2204,22 @@
       }
     }
   ],
-  "lastDeaths": [],
-  "lastBirths": []
+  "lastDeaths": [
+    {
+      "id": "arjun",
+      "name": "Arjun",
+      "lang": "hi",
+      "ageDays": 57,
+      "simDay": 28
+    }
+  ],
+  "lastBirths": [
+    {
+      "id": "hi-arjun-ms34zkc2",
+      "name": "Arjun",
+      "lang": "hi",
+      "home": "home_arjun",
+      "simDay": 28
+    }
+  ]
 }
