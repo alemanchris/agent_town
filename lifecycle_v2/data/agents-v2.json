@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "simDay": 38,
-  "lastWake": "2026-08-07T08:58:34.456Z",
+  "simDay": 40,
+  "lastWake": "2026-08-10T09:21:14.480Z",
   "namePool": {
     "it": [
       "Sofia",
@@ -31,69 +31,67 @@
     ]
   },
   "today": {
-    "simDay": 38,
-    "generatedAt": "2026-08-07T08:58:34.456Z",
+    "simDay": 40,
+    "generatedAt": "2026-08-10T09:21:14.480Z",
     "locked": true,
     "townMood": "melancholic",
-    "townSummary": "The town is gathering for a funeral to mourn the loss of Luca and also celebrating the birth of Elena, creating a mix of melancholic and joyful emotions. Agents are attending these events as required.",
+    "townSummary": "The town is in a melancholic mood as they mourn the passing of Priya and celebrate the birth of Ananya",
     "sharedEvents": [
       {
-        "id": "funeral_luca",
+        "id": "priya_funeral",
         "type": "funeral",
-        "summary": "The town gathers to mourn the loss of Luca",
+        "summary": "The town comes together to mourn the passing of Priya",
         "participants": [
           "kiran",
           "sofia",
           "meera",
           "matteo",
-          "priya",
           "it-tommaso-mridknmr",
           "hi-neha-mrify7ge",
           "it-vittoria-mrigi63y"
         ],
         "affectedAgents": [
-          "it-elena-msipq3bt"
+          "hi-ananya-msn0usq8"
         ],
         "location": "funeral_ground",
         "importance": 3
       },
       {
-        "id": "birth_elena",
+        "id": "ananya_birth",
         "type": "birth",
-        "summary": "Elena is born into the town",
+        "summary": "Ananya is born to the town",
         "participants": [
-          "it-elena-msipq3bt"
+          "hi-ananya-msn0usq8"
         ],
         "affectedAgents": [
           "kiran",
           "sofia",
           "meera",
           "matteo",
-          "priya",
           "it-tommaso-mridknmr",
           "hi-neha-mrify7ge",
           "it-vittoria-mrigi63y"
         ],
-        "location": "home_luca",
+        "location": "home_priya",
         "importance": 2
       }
     ],
     "publicRumors": [
       {
-        "id": "luca_death",
-        "text": "Luca has passed away",
+        "id": "priya_death_rumor",
+        "text": "Priya has passed away",
         "sourceAgentId": null,
         "aboutAgentIds": [
-          "luca"
+          "priya"
         ],
         "truthStatus": "true"
       },
       {
-        "id": "elena_birth",
-        "text": "A new baby, Elena, has been born into the town",
+        "id": "ananya_birth_rumor",
+        "text": "A new child, Ananya, has been born to the town",
         "sourceAgentId": null,
         "aboutAgentIds": [
-          "it-elena-msipq3bt"
+          "hi-ananya-msn0usq8"
         ],
         "truthStatus": "true"
       }
@@ -104,14 +102,14 @@
       "id": "kiran",
       "name": "Kiran",
       "lang": "hi",
-      "ageDays": 41,
-      "stage": "full_adult",
+      "ageDays": 43,
+      "stage": "senior",
       "home": "home_kiran",
       "job": null,
       "personality": "curious, playful, asks lots of questions",
-      "memoryDigest": "Saw the whole town come together to mourn",
+      "memoryDigest": "Saw the priest's emotional eulogy",
       "aspirations": [
-        "Understand funeral customs"
+        "Learn about mourning rituals"
       ],
       "gossip": [
         {
@@ -220,19 +218,24 @@
           "simDay": 38,
           "type": "daily_update",
           "summary": "Attended Luca's funeral service"
+        },
+        {
+          "simDay": 40,
+          "type": "daily_update",
+          "summary": "Attended Priya's funeral ceremony"
         }
       ],
       "today": {
-        "simDay": 38,
-        "dateKey": "sim-38",
-        "generatedAt": "2026-08-07T08:58:34.456Z",
+        "simDay": 40,
+        "dateKey": "sim-40",
+        "generatedAt": "2026-08-10T09:21:14.480Z",
         "locked": true,
-        "mood": "somber reflection",
-        "daySummary": "Attended Luca's funeral service",
+        "mood": "Somber reflection",
+        "daySummary": "Attended Priya's funeral ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Heard Luca was a kind soul",
+            "text": "Priya's family is struggling to cope",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -241,53 +244,54 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "paid respects",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "funeral_ground",
-            "activity": "listened to eulogies",
+            "location": "cathedral",
+            "activity": "Listened to eulogy",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "town_square",
-            "activity": "joined mourners",
+            "location": "funeral_ground",
+            "activity": "Placed funeral flowers",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "cafe",
-            "activity": "shared condolences",
+            "location": "town_square",
+            "activity": "Consoled grieving friends",
             "status": "planned",
             "eventId": null
           }
         ],
         "sharedEventIds": [
-          "birth_elena"
-        ]
+          "ananya_birth"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "sofia",
       "name": "Sofia",
       "lang": "it",
-      "ageDays": 44,
+      "ageDays": 46,
       "stage": "senior",
       "home": "home_sofia",
       "job": null,
       "personality": "cheerful, loves drawing and animals",
-      "memoryDigest": "I saw many friends crying at the funeral",
+      "memoryDigest": "Saw the whole town united in grief",
       "aspirations": [
-        "Draw Luca's portrait"
+        "Draw comfort art"
       ],
       "gossip": [
         {
@@ -416,19 +420,24 @@
           "simDay": 38,
           "type": "daily_update",
           "summary": "Today was a sad day for our town as we mourned Luca's passing"
+        },
+        {
+          "simDay": 40,
+          "type": "daily_update",
+          "summary": "Attended the mourning ceremony for Priya"
         }
       ],
       "today": {
-        "simDay": 38,
-        "dateKey": "sim-38",
-        "generatedAt": "2026-08-07T08:58:34.456Z",
+        "simDay": 40,
+        "dateKey": "sim-40",
+        "generatedAt": "2026-08-10T09:21:14.480Z",
         "locked": true,
         "mood": "somber reflection",
-        "daySummary": "Today was a sad day for our town as we mourned Luca's passing",
+        "daySummary": "Attended the mourning ceremony for Priya",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "I heard Luca's family is struggling",
+            "text": "Luca seemed devastated by Priya's passing",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -437,15 +446,15 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "sketching cathedral",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "cathedral",
+            "location": "town_square",
             "activity": "paying respects",
             "status": "planned",
             "eventId": null
@@ -453,37 +462,38 @@
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "funeral_ground",
-            "activity": "laying flowers",
+            "location": "cathedral",
+            "activity": "praying silently",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "town_square",
-            "activity": "listening to eulogies",
+            "location": "clinic",
+            "activity": "comforting friends",
             "status": "planned",
             "eventId": null
           }
         ],
         "sharedEventIds": [
-          "birth_elena"
-        ]
+          "ananya_birth"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "meera",
       "name": "Meera",
       "lang": "hi",
-      "ageDays": 47,
+      "ageDays": 49,
       "stage": "senior",
       "home": "home_meera",
       "job": "academy",
       "personality": "a bit shy, loves music, studying hard",
-      "memoryDigest": "Saw the whole town crying together",
+      "memoryDigest": "Played the funeral song at the funeral",
       "aspirations": [
-        "Master the funeral song"
+        "Improve funeral song skills"
       ],
       "gossip": [],
       "relationships": {
@@ -601,19 +611,24 @@
           "simDay": 38,
           "type": "daily_update",
           "summary": "Attended Luca's funeral procession"
+        },
+        {
+          "simDay": 40,
+          "type": "daily_update",
+          "summary": "Attended Priya's funeral ceremony"
         }
       ],
       "today": {
-        "simDay": 38,
-        "dateKey": "sim-38",
-        "generatedAt": "2026-08-07T08:58:34.456Z",
+        "simDay": 40,
+        "dateKey": "sim-40",
+        "generatedAt": "2026-08-10T09:21:14.480Z",
         "locked": true,
-        "mood": "sad and solemn",
-        "daySummary": "Attended Luca's funeral procession",
+        "mood": "sadly nostalgic",
+        "daySummary": "Attended Priya's funeral ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Luca's family is devastated",
+            "text": "Priya will be deeply missed",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -622,8 +637,8 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "practicing music alone",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
@@ -631,7 +646,7 @@
             "start": "09:00",
             "end": "13:00",
             "location": "cathedral",
-            "activity": "singing hymns quietly",
+            "activity": "paid respects",
             "status": "planned",
             "eventId": null
           },
@@ -639,7 +654,7 @@
             "start": "13:00",
             "end": "18:00",
             "location": "funeral_ground",
-            "activity": "paying respects silently",
+            "activity": "played requiem",
             "status": "planned",
             "eventId": null
           },
@@ -647,28 +662,29 @@
             "start": "18:00",
             "end": "23:00",
             "location": "town_square",
-            "activity": "sharing condolences gently",
+            "activity": "shared condolences",
             "status": "planned",
             "eventId": null
           }
         ],
         "sharedEventIds": [
-          "birth_elena"
-        ]
+          "ananya_birth"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "matteo",
       "name": "Matteo",
       "lang": "it",
-      "ageDays": 50,
+      "ageDays": 52,
       "stage": "elder",
       "home": "home_matteo",
       "job": "academy",
       "personality": "energetic, into sports, a little cheeky",
-      "memoryDigest": "Saw the whole town mourn Luca's passing",
+      "memoryDigest": "Saw the whole town mourn Priya's passing",
       "aspirations": [
-        "Pay respects to Luca"
+        "Visit Priya's grave"
       ],
       "gossip": [],
       "relationships": {
@@ -777,19 +793,24 @@
           "simDay": 38,
           "type": "daily_update",
           "summary": "Attended Luca's funeral at the cathedral"
+        },
+        {
+          "simDay": 40,
+          "type": "daily_update",
+          "summary": "Attended Priya's mourning ceremony"
         }
       ],
       "today": {
-        "simDay": 38,
-        "dateKey": "sim-38",
-        "generatedAt": "2026-08-07T08:58:34.456Z",
+        "simDay": 40,
+        "dateKey": "sim-40",
+        "generatedAt": "2026-08-10T09:21:14.480Z",
         "locked": true,
-        "mood": "sad reflection",
-        "daySummary": "Attended Luca's funeral at the cathedral",
+        "mood": "Somber Reflections",
+        "daySummary": "Attended Priya's mourning ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Luca will be deeply missed",
+            "text": "Heard the cathedral bells tolling",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -798,8 +819,8 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "paid respects",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
@@ -807,7 +828,7 @@
             "start": "09:00",
             "end": "13:00",
             "location": "town_square",
-            "activity": "listened to eulogy",
+            "activity": "Laid flowers",
             "status": "planned",
             "eventId": null
           },
@@ -815,212 +836,37 @@
             "start": "13:00",
             "end": "18:00",
             "location": "cathedral",
-            "activity": "gave condolences",
+            "activity": "Said prayers",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "funeral_ground",
-            "activity": "reflected sadly",
+            "location": "clinic",
+            "activity": "Consoled friends",
             "status": "planned",
             "eventId": null
           }
         ],
         "sharedEventIds": [
-          "birth_elena"
-        ]
-      }
-    },
-    {
-      "id": "priya",
-      "name": "Priya",
-      "lang": "hi",
-      "ageDays": 54,
-      "stage": "elder",
-      "home": "home_priya",
-      "job": "garden",
-      "personality": "calm meditation guide, warm and patient",
-      "memoryDigest": "Saw the whole town come together to mourn",
-      "aspirations": [
-        "Lead a healing meditation"
-      ],
-      "gossip": [],
-      "relationships": {
-        "devika": {
-          "status": "acquaintance",
-          "closeness": 51,
-          "trust": 50,
-          "tension": 0,
-          "attraction": 0,
-          "lastChangeReason": "both spent time near the garden",
-          "lastChangedSimDay": 8
-        }
-      },
-      "lifeHistory": [
-        {
-          "simDay": 2,
-          "type": "daily_update",
-          "summary": "A quiet and ordinary day."
-        },
-        {
-          "simDay": 4,
-          "type": "daily_update",
-          "summary": "A quiet and ordinary day."
-        },
-        {
-          "simDay": 6,
-          "type": "daily_update",
-          "summary": "attended funeral and celebrated new birth"
-        },
-        {
-          "simDay": 8,
-          "type": "daily_update",
-          "summary": "tended to garden"
-        },
-        {
-          "simDay": 10,
-          "type": "daily_update",
-          "summary": "attended funeral and worked in garden"
-        },
-        {
-          "simDay": 12,
-          "type": "daily_update",
-          "summary": "normal day"
-        },
-        {
-          "simDay": 14,
-          "type": "daily_update",
-          "summary": "Spent day tending to garden"
-        },
-        {
-          "simDay": 16,
-          "type": "daily_update",
-          "summary": "Spent the day tending to the garden and guiding meditation sessions"
-        },
-        {
-          "simDay": 18,
-          "type": "daily_update",
-          "summary": "Spent the day guiding meditation sessions"
-        },
-        {
-          "simDay": 20,
-          "type": "daily_update",
-          "summary": "Celebrated gardening success"
-        },
-        {
-          "simDay": 22,
-          "type": "daily_update",
-          "summary": "Spent the day tending to the garden"
-        },
-        {
-          "simDay": 24,
-          "type": "daily_update",
-          "summary": "Started the day with a quiet moment of reflection"
-        },
-        {
-          "simDay": 26,
-          "type": "daily_update",
-          "summary": "Started the day with a quiet walk"
-        },
-        {
-          "simDay": 28,
-          "type": "daily_update",
-          "summary": "Attended Arjun's farewell ceremony"
-        },
-        {
-          "simDay": 30,
-          "type": "daily_update",
-          "summary": "Attended a serene gathering"
-        },
-        {
-          "simDay": 32,
-          "type": "daily_update",
-          "summary": "I tended to the garden with care"
-        },
-        {
-          "simDay": 34,
-          "type": "daily_update",
-          "summary": "Attended mourning ceremony for Chiara"
-        },
-        {
-          "simDay": 36,
-          "type": "daily_update",
-          "summary": "Tended to the garden"
-        },
-        {
-          "simDay": 38,
-          "type": "daily_update",
-          "summary": "Attended Luca's funeral ceremony"
-        }
-      ],
-      "today": {
-        "simDay": 38,
-        "dateKey": "sim-38",
-        "generatedAt": "2026-08-07T08:58:34.456Z",
-        "locked": true,
-        "mood": "Sad yet serene",
-        "daySummary": "Attended Luca's funeral ceremony",
-        "privateDevelopments": [],
-        "gossipToShare": [
-          {
-            "text": "Luca will be deeply missed",
-            "aboutAgentIds": [],
-            "confidence": 0.5
-          }
+          "ananya_birth"
         ],
-        "schedule": [
-          {
-            "start": "06:00",
-            "end": "09:00",
-            "location": "home",
-            "activity": "Prayed for Luca",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "09:00",
-            "end": "13:00",
-            "location": "funeral_ground",
-            "activity": "Paid respects silently",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "13:00",
-            "end": "18:00",
-            "location": "town_square",
-            "activity": "Listened to eulogies",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "18:00",
-            "end": "23:00",
-            "location": "cathedral",
-            "activity": "Reflected in prayer",
-            "status": "planned",
-            "eventId": null
-          }
-        ],
-        "sharedEventIds": [
-          "birth_elena"
-        ]
+        "reconciled": true
       }
     },
     {
       "id": "it-tommaso-mridknmr",
       "name": "Tommaso",
       "lang": "it",
-      "ageDays": 34,
+      "ageDays": 36,
       "stage": "full_adult",
       "home": "home_lucia",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw the whole town mourn together",
+      "memoryDigest": "Saw the town's priest give a heartfelt eulogy",
       "aspirations": [
-        "Learn basic woodworking"
+        "Master woodworking fundamentals"
       ],
       "gossip": [],
       "relationships": {
@@ -1138,19 +984,24 @@
           "simDay": 38,
           "type": "daily_update",
           "summary": "Attended Luca's funeral service"
+        },
+        {
+          "simDay": 40,
+          "type": "daily_update",
+          "summary": "Attended the town's mourning ceremony"
         }
       ],
       "today": {
-        "simDay": 38,
-        "dateKey": "sim-38",
-        "generatedAt": "2026-08-07T08:58:34.456Z",
+        "simDay": 40,
+        "dateKey": "sim-40",
+        "generatedAt": "2026-08-10T09:21:14.480Z",
         "locked": true,
         "mood": "somber reflection",
-        "daySummary": "Attended Luca's funeral service",
+        "daySummary": "Attended the town's mourning ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Priya was emotional today",
+            "text": "Priya's family is struggling to cope",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1159,53 +1010,54 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "paid respects",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "funeral_ground",
-            "activity": "listened to eulogy",
+            "location": "cathedral",
+            "activity": "Listened to sermon",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "town_square",
-            "activity": "shared condolences",
+            "location": "funeral_ground",
+            "activity": "Offered condolences",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "cafe",
-            "activity": "ordered tea",
+            "location": "home",
+            "activity": "Reflected on life",
             "status": "planned",
             "eventId": null
           }
         ],
         "sharedEventIds": [
-          "birth_elena"
-        ]
+          "ananya_birth"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "hi-neha-mrify7ge",
       "name": "Neha",
       "lang": "hi",
-      "ageDays": 32,
+      "ageDays": 34,
       "stage": "full_adult",
       "home": "home_raj",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw the whole town mourn together",
+      "memoryDigest": "Saw the town's children crying for Priya",
       "aspirations": [
-        "Comfort a grieving friend"
+        "Comfort Neha's friend"
       ],
       "gossip": [],
       "relationships": {
@@ -1309,19 +1161,24 @@
           "simDay": 38,
           "type": "daily_update",
           "summary": "Attended Luca's funeral ceremony"
+        },
+        {
+          "simDay": 40,
+          "type": "daily_update",
+          "summary": "Attended the town's mourning ceremony"
         }
       ],
       "today": {
-        "simDay": 38,
-        "dateKey": "sim-38",
-        "generatedAt": "2026-08-07T08:58:34.456Z",
+        "simDay": 40,
+        "dateKey": "sim-40",
+        "generatedAt": "2026-08-10T09:21:14.480Z",
         "locked": true,
         "mood": "somber reflection",
-        "daySummary": "Attended Luca's funeral ceremony",
+        "daySummary": "Attended the town's mourning ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Priya was close to Luca",
+            "text": "Priya's family is devastated",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1330,23 +1187,23 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "paid respects",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "funeral_ground",
-            "activity": "listened to eulogy",
+            "location": "town_square",
+            "activity": "listened to eulogies",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "town_square",
+            "location": "clinic",
             "activity": "offered condolences",
             "status": "planned",
             "eventId": null
@@ -1354,29 +1211,30 @@
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "cafe",
-            "activity": "had silent tea",
+            "location": "cathedral",
+            "activity": "lit a candle",
             "status": "planned",
             "eventId": null
           }
         ],
         "sharedEventIds": [
-          "birth_elena"
-        ]
+          "ananya_birth"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "it-vittoria-mrigi63y",
       "name": "Vittoria",
       "lang": "it",
-      "ageDays": 28,
-      "stage": "young_adult",
+      "ageDays": 30,
+      "stage": "full_adult",
       "home": "home_paolo",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw the whole town mourn together",
+      "memoryDigest": "Saw the mayor comfort a grieving child",
       "aspirations": [
-        "Create a memorial portrait"
+        "Honor Priya's memory"
       ],
       "gossip": [],
       "relationships": {},
@@ -1460,19 +1318,24 @@
           "simDay": 38,
           "type": "daily_update",
           "summary": "Attended Luca's funeral ceremony"
+        },
+        {
+          "simDay": 40,
+          "type": "daily_update",
+          "summary": "Attended the town's mourning ceremony"
         }
       ],
       "today": {
-        "simDay": 38,
-        "dateKey": "sim-38",
-        "generatedAt": "2026-08-07T08:58:34.456Z",
+        "simDay": 40,
+        "dateKey": "sim-40",
+        "generatedAt": "2026-08-10T09:21:14.480Z",
         "locked": true,
-        "mood": "Somber reflection",
-        "daySummary": "Attended Luca's funeral ceremony",
+        "mood": "somber reflection",
+        "daySummary": "Attended the town's mourning ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Priya was devastated by Luca's passing",
+            "text": "Priya's family is struggling",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1481,53 +1344,54 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "Packed black clothes",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "funeral_ground",
-            "activity": "Paid respects silently",
+            "location": "town_square",
+            "activity": "listened to eulogies",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "town_square",
-            "activity": "Listened to eulogies",
+            "location": "cathedral",
+            "activity": "lit a candle",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "cafe",
-            "activity": "Drank coffee alone",
+            "location": "funeral_ground",
+            "activity": "paid respects",
             "status": "planned",
             "eventId": null
           }
         ],
         "sharedEventIds": [
-          "birth_elena"
-        ]
+          "ananya_birth"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "hi-raj-mrii3vq5",
       "name": "Raj",
       "lang": "hi",
-      "ageDays": 24,
+      "ageDays": 26,
       "stage": "young_adult",
       "home": "home_devika",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw the whole town come together to support Luca's family",
+      "memoryDigest": "Saw townspeople support each other in grief",
       "aspirations": [
-        "Find a painting mentor"
+        "Learn to paint emotionally"
       ],
       "gossip": [],
       "relationships": {},
@@ -1601,19 +1465,24 @@
           "simDay": 38,
           "type": "daily_update",
           "summary": "Attended Luca's mourning ceremony at the town square"
+        },
+        {
+          "simDay": 40,
+          "type": "daily_update",
+          "summary": "Attended Priya's funeral ceremony"
         }
       ],
       "today": {
-        "simDay": 38,
-        "dateKey": "sim-38",
-        "generatedAt": "2026-08-07T08:58:34.456Z",
+        "simDay": 40,
+        "dateKey": "sim-40",
+        "generatedAt": "2026-08-10T09:21:14.480Z",
         "locked": true,
         "mood": "somber reflection",
-        "daySummary": "Attended Luca's mourning ceremony at the town square",
+        "daySummary": "Attended Priya's funeral ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Heard the cathedral's priest is a skilled artist",
+            "text": "Luca's family is still struggling",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1623,31 +1492,31 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "prayed quietly",
+            "activity": "paid respects",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "town_square",
-            "activity": "paid respects",
+            "location": "funeral_ground",
+            "activity": "listened to eulogies",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "cathedral",
-            "activity": "lit a candle",
+            "location": "town_square",
+            "activity": "shared condolences",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "garden",
-            "activity": "sketched flowers",
+            "location": "cafe",
+            "activity": "ordered coffee",
             "status": "planned",
             "eventId": null
           }
@@ -1659,14 +1528,14 @@
       "id": "it-paolo-mrlww8wq",
       "name": "Paolo",
       "lang": "it",
-      "ageDays": 20,
+      "ageDays": 22,
       "stage": "young_adult",
       "home": "home_elena",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw everyone crying at the funeral",
+      "memoryDigest": "Saw the whole town come together to mourn Priya",
       "aspirations": [
-        "Learn to play violin"
+        "Find a violin teacher"
       ],
       "gossip": [],
       "relationships": {},
@@ -1730,19 +1599,24 @@
           "simDay": 38,
           "type": "daily_update",
           "summary": "Attended Luca's funeral with the town"
+        },
+        {
+          "simDay": 40,
+          "type": "daily_update",
+          "summary": "Attended the town's mourning ceremony"
         }
       ],
       "today": {
-        "simDay": 38,
-        "dateKey": "sim-38",
-        "generatedAt": "2026-08-07T08:58:34.456Z",
+        "simDay": 40,
+        "dateKey": "sim-40",
+        "generatedAt": "2026-08-10T09:21:14.480Z",
         "locked": true,
         "mood": "somber reflection",
-        "daySummary": "Attended Luca's funeral with the town",
+        "daySummary": "Attended the town's mourning ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Priya was close to Luca",
+            "text": "Heard the mayor will give a eulogy tomorrow",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1752,31 +1626,31 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "woke up early",
+            "activity": "prayed quietly",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "funeral_ground",
-            "activity": "paid respects",
+            "location": "town_square",
+            "activity": "listened to speeches",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "town_square",
-            "activity": "listened to eulogy",
+            "location": "cathedral",
+            "activity": "lit a candle",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "cafe",
-            "activity": "had silent coffee",
+            "location": "funeral_ground",
+            "activity": "paid respects",
             "status": "planned",
             "eventId": null
           }
@@ -1788,14 +1662,14 @@
       "id": "it-marco-mrt3v0tb",
       "name": "Marco",
       "lang": "it",
-      "ageDays": 16,
+      "ageDays": 18,
       "stage": "young_adult",
       "home": "home_marco",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw the whole town mourn Luca",
+      "memoryDigest": "Saw the whole town mourn Priya",
       "aspirations": [
-        "Learn from elders"
+        "Seek elder wisdom"
       ],
       "gossip": [],
       "relationships": {},
@@ -1849,19 +1723,24 @@
           "simDay": 38,
           "type": "daily_update",
           "summary": "Attended Luca's funeral and met new faces"
+        },
+        {
+          "simDay": 40,
+          "type": "daily_update",
+          "summary": "Attended the town's mourning ceremony"
         }
       ],
       "today": {
-        "simDay": 38,
-        "dateKey": "sim-38",
-        "generatedAt": "2026-08-07T08:58:34.456Z",
+        "simDay": 40,
+        "dateKey": "sim-40",
+        "generatedAt": "2026-08-10T09:21:14.480Z",
         "locked": true,
         "mood": "somber reflection",
-        "daySummary": "Attended Luca's funeral and met new faces",
+        "daySummary": "Attended the town's mourning ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Priya spoke of Luca's kindness",
+            "text": "Priya's family is devastated",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1870,8 +1749,8 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "funeral_ground",
-            "activity": "paid respects",
+            "location": "home",
+            "activity": "prayed quietly",
             "status": "planned",
             "eventId": null
           },
@@ -1879,23 +1758,23 @@
             "start": "09:00",
             "end": "13:00",
             "location": "town_square",
-            "activity": "listened stories",
+            "activity": "listened to speeches",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "cafe",
-            "activity": "had silent coffee",
+            "location": "cathedral",
+            "activity": "lit a candle",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "home",
-            "activity": "wrote in journal",
+            "location": "funeral_ground",
+            "activity": "paid respects",
             "status": "planned",
             "eventId": null
           }
@@ -1907,14 +1786,14 @@
       "id": "it-giulia-mrvxrx1j",
       "name": "Giulia",
       "lang": "it",
-      "ageDays": 14,
-      "stage": "teen",
+      "ageDays": 16,
+      "stage": "young_adult",
       "home": "home_giulia",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw the whole town mourning together",
+      "memoryDigest": "Heard the mayor's heartfelt eulogy",
       "aspirations": [
-        "Master gardening basics"
+        "Learn to tend flowers"
       ],
       "gossip": [],
       "relationships": {},
@@ -1963,19 +1842,24 @@
           "simDay": 38,
           "type": "daily_update",
           "summary": "Attended Luca's funeral ceremony"
+        },
+        {
+          "simDay": 40,
+          "type": "daily_update",
+          "summary": "Attended the mourning ceremony for Priya"
         }
       ],
       "today": {
-        "simDay": 38,
-        "dateKey": "sim-38",
-        "generatedAt": "2026-08-07T08:58:34.456Z",
+        "simDay": 40,
+        "dateKey": "sim-40",
+        "generatedAt": "2026-08-10T09:21:14.480Z",
         "locked": true,
         "mood": "somber reflection",
-        "daySummary": "Attended Luca's funeral ceremony",
+        "daySummary": "Attended the mourning ceremony for Priya",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Luca's death has shaken everyone",
+            "text": "Priya will be deeply missed",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1985,31 +1869,31 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "practiced mourning etiquette",
+            "activity": "had morning coffee",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "funeral_ground",
-            "activity": "paid respects to Luca",
+            "location": "town_square",
+            "activity": "paid respects",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "town_square",
-            "activity": "listened to townspeople",
+            "location": "garden",
+            "activity": "watered plants",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "garden",
-            "activity": "helped Priya with flowers",
+            "location": "cathedral",
+            "activity": "lit a candle",
             "status": "planned",
             "eventId": null
           }
@@ -2021,14 +1905,14 @@
       "id": "hi-arjun-ms34zkc2",
       "name": "Arjun",
       "lang": "hi",
-      "ageDays": 10,
+      "ageDays": 12,
       "stage": "teen",
       "home": "home_arjun",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw the whole town mourn together",
+      "memoryDigest": "Saw tears in the eyes of the town's strongest man",
       "aspirations": [
-        "Learn from the elders"
+        "Honor Priya's memory"
       ],
       "gossip": [],
       "relationships": {},
@@ -2067,19 +1951,24 @@
           "simDay": 38,
           "type": "daily_update",
           "summary": "Attended Luca's funeral in town"
+        },
+        {
+          "simDay": 40,
+          "type": "daily_update",
+          "summary": "Attended the mourning ceremony for Priya"
         }
       ],
       "today": {
-        "simDay": 38,
-        "dateKey": "sim-38",
-        "generatedAt": "2026-08-07T08:58:34.456Z",
+        "simDay": 40,
+        "dateKey": "sim-40",
+        "generatedAt": "2026-08-10T09:21:14.480Z",
         "locked": true,
-        "mood": "sad and curious",
-        "daySummary": "Attended Luca's funeral in town",
+        "mood": "somber reflection",
+        "daySummary": "Attended the mourning ceremony for Priya",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Luca's family is struggling",
+            "text": "People say Priya's kindness will never be forgotten",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -2089,31 +1978,31 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "woke up early",
+            "activity": "paid respects quietly",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "funeral_ground",
-            "activity": "paid respects",
+            "location": "town_square",
+            "activity": "listened to elder's eulogy",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "town_square",
-            "activity": "listened to stories",
+            "location": "cathedral",
+            "activity": "lit a candle",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "cafe",
-            "activity": "had a coffee",
+            "location": "funeral_ground",
+            "activity": "reflected on mortality",
             "status": "planned",
             "eventId": null
           }
@@ -2125,14 +2014,14 @@
       "id": "it-davide-ms8t83nq",
       "name": "Davide",
       "lang": "it",
-      "ageDays": 6,
-      "stage": "kid",
+      "ageDays": 8,
+      "stage": "teen",
       "home": "home_davide",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw the whole town crying together",
+      "memoryDigest": "Saw townspeople comforting each other",
       "aspirations": [
-        "Find my place"
+        "Find my purpose"
       ],
       "gossip": [],
       "relationships": {},
@@ -2161,47 +2050,58 @@
           "simDay": 38,
           "type": "daily_update",
           "summary": "Attended Luca's funeral with family"
+        },
+        {
+          "simDay": 40,
+          "type": "daily_update",
+          "summary": "Attended the mourning ceremony"
         }
       ],
       "today": {
-        "simDay": 38,
-        "dateKey": "sim-38",
-        "generatedAt": "2026-08-07T08:58:34.456Z",
+        "simDay": 40,
+        "dateKey": "sim-40",
+        "generatedAt": "2026-08-10T09:21:14.480Z",
         "locked": true,
-        "mood": "curious sad",
-        "daySummary": "Attended Luca's funeral with family",
+        "mood": "somber reflection",
+        "daySummary": "Attended the mourning ceremony",
         "privateDevelopments": [],
-        "gossipToShare": [],
+        "gossipToShare": [
+          {
+            "text": "Priya's family is struggling",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
         "schedule": [
           {
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "played alone",
+            "activity": "got dressed slowly",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "funeral_ground",
-            "activity": "listened to eulogy",
+            "location": "town_square",
+            "activity": "listened to speeches",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "town_square",
-            "activity": "watched mourners",
+            "location": "cathedral",
+            "activity": "lit a candle",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "home",
-            "activity": "reflected quietly",
+            "location": "funeral_ground",
+            "activity": "said a prayer",
             "status": "planned",
             "eventId": null
           }
@@ -2213,14 +2113,14 @@
       "id": "it-chiara-msd54ajb",
       "name": "Chiara",
       "lang": "it",
-      "ageDays": 4,
+      "ageDays": 6,
       "stage": "kid",
       "home": "home_chiara",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw the whole town crying for Luca",
+      "memoryDigest": "Saw the whole town united in grief",
       "aspirations": [
-        "Make friends at academy"
+        "Learn about Priya's life"
       ],
       "gossip": [],
       "relationships": {},
@@ -2244,19 +2144,24 @@
           "simDay": 38,
           "type": "daily_update",
           "summary": "Attended Luca's funeral with family"
+        },
+        {
+          "simDay": 40,
+          "type": "daily_update",
+          "summary": "Attended Priya's funeral with family"
         }
       ],
       "today": {
-        "simDay": 38,
-        "dateKey": "sim-38",
-        "generatedAt": "2026-08-07T08:58:34.456Z",
+        "simDay": 40,
+        "dateKey": "sim-40",
+        "generatedAt": "2026-08-10T09:21:14.480Z",
         "locked": true,
-        "mood": "sad and curious",
-        "daySummary": "Attended Luca's funeral with family",
+        "mood": "curious sadness",
+        "daySummary": "Attended Priya's funeral with family",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Priya is very quiet today",
+            "text": "Priya was a kind soul",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -2266,7 +2171,7 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "played alone",
+            "activity": "watched funeral procession",
             "status": "planned",
             "eventId": null
           },
@@ -2274,23 +2179,23 @@
             "start": "09:00",
             "end": "13:00",
             "location": "funeral_ground",
-            "activity": "paid respects",
+            "activity": "paid respects silently",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "cafe",
-            "activity": "listened stories",
+            "location": "town_square",
+            "activity": "listened to stories",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "town_square",
-            "activity": "watched procession",
+            "location": "cafe",
+            "activity": "shared tears with strangers",
             "status": "planned",
             "eventId": null
           }
@@ -2302,13 +2207,15 @@
       "id": "it-elena-msipq3bt",
       "name": "Elena",
       "lang": "it",
-      "ageDays": 0,
+      "ageDays": 2,
       "stage": "kid",
       "home": "home_luca",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Born into the town after Luca's death.",
-      "aspirations": [],
+      "memoryDigest": "Saw the whole town crying together",
+      "aspirations": [
+        "Learn about the town's history"
+      ],
       "gossip": [],
       "relationships": {},
       "lifeHistory": [
@@ -2321,12 +2228,94 @@
           "simDay": 38,
           "type": "daily_update",
           "summary": "A newborn's first quiet day."
+        },
+        {
+          "simDay": 40,
+          "type": "daily_update",
+          "summary": "Attended a mourning ceremony for Priya"
         }
       ],
       "today": {
-        "simDay": 38,
-        "dateKey": "sim-38",
-        "generatedAt": "2026-08-07T08:58:34.456Z",
+        "simDay": 40,
+        "dateKey": "sim-40",
+        "generatedAt": "2026-08-10T09:21:14.480Z",
+        "locked": true,
+        "mood": "sad and curious",
+        "daySummary": "Attended a mourning ceremony for Priya",
+        "privateDevelopments": [],
+        "gossipToShare": [
+          {
+            "text": "Priya was very kind to everyone",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
+        "schedule": [
+          {
+            "start": "06:00",
+            "end": "09:00",
+            "location": "home",
+            "activity": "watched mourning prep",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "09:00",
+            "end": "13:00",
+            "location": "town_square",
+            "activity": "listened to speeches",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "18:00",
+            "location": "cathedral",
+            "activity": "lit a candle",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "18:00",
+            "end": "23:00",
+            "location": "funeral_ground",
+            "activity": "paid respects quietly",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
+        "sharedEventIds": []
+      }
+    },
+    {
+      "id": "hi-ananya-msn0usq8",
+      "name": "Ananya",
+      "lang": "hi",
+      "ageDays": 0,
+      "stage": "kid",
+      "home": "home_priya",
+      "job": null,
+      "personality": "a blank slate — still discovering who they are",
+      "memoryDigest": "Born into the town after Priya's death.",
+      "aspirations": [],
+      "gossip": [],
+      "relationships": {},
+      "lifeHistory": [
+        {
+          "simDay": 40,
+          "type": "birth",
+          "summary": "Born into home_priya."
+        },
+        {
+          "simDay": 40,
+          "type": "daily_update",
+          "summary": "A newborn's first quiet day."
+        }
+      ],
+      "today": {
+        "simDay": 40,
+        "dateKey": "sim-40",
+        "generatedAt": "2026-08-10T09:21:14.480Z",
         "locked": true,
         "mood": "newborn",
         "daySummary": "A newborn's first quiet day.",
@@ -2343,7 +2332,7 @@
           }
         ],
         "sharedEventIds": [
-          "funeral_luca"
+          "priya_funeral"
         ],
         "reconciled": true
       }
@@ -2351,20 +2340,20 @@
   ],
   "lastDeaths": [
     {
-      "id": "luca",
-      "name": "Luca",
-      "lang": "it",
-      "ageDays": 57,
-      "simDay": 38
+      "id": "priya",
+      "name": "Priya",
+      "lang": "hi",
+      "ageDays": 56,
+      "simDay": 40
     }
   ],
   "lastBirths": [
     {
-      "id": "it-elena-msipq3bt",
-      "name": "Elena",
-      "lang": "it",
-      "home": "home_luca",
-      "simDay": 38
+      "id": "hi-ananya-msn0usq8",
+      "name": "Ananya",
+      "lang": "hi",
+      "home": "home_priya",
+      "simDay": 40
     }
   ]
 }
