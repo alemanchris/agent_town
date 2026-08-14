@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "simDay": 42,
-  "lastWake": "2026-08-12T09:11:19.538Z",
+  "simDay": 44,
+  "lastWake": "2026-08-14T09:06:27.995Z",
   "namePool": {
     "it": [
       "Sofia",
@@ -31,33 +31,56 @@
     ]
   },
   "today": {
-    "simDay": 42,
-    "generatedAt": "2026-08-12T09:11:19.538Z",
+    "simDay": 44,
+    "generatedAt": "2026-08-14T09:06:27.995Z",
     "locked": true,
-    "townMood": "reflective",
-    "townSummary": "The town is in a reflective mood as Matteo visits Priya's grave to pay respects",
+    "townMood": "melancholic",
+    "townSummary": "The town is in a melancholic mood as they gather to mourn the loss of Matteo and celebrate the birth of a new life named after him",
     "sharedEvents": [
       {
-        "id": "visit_to_priya's_grave",
-        "type": "personal_event",
-        "summary": "Matteo visits Priya's grave to pay respects",
+        "id": "matteo_funeral",
+        "type": "funeral",
+        "summary": "The town gathers to mourn the loss of Matteo",
         "participants": [
-          "matteo"
+          "kiran",
+          "sofia",
+          "meera",
+          "it-tommaso-mridknmr",
+          "hi-neha-mrify7ge",
+          "it-vittoria-mrigi63y"
         ],
         "affectedAgents": [
-          "matteo"
+          "kiran",
+          "sofia",
+          "meera",
+          "it-tommaso-mridknmr",
+          "hi-neha-mrify7ge",
+          "it-vittoria-mrigi63y"
         ],
         "location": "funeral_ground",
-        "importance": 1
+        "importance": 3
+      },
+      {
+        "id": "new_matteo_birth",
+        "type": "birth",
+        "summary": "A new life is born into the town, named after the late Matteo",
+        "participants": [
+          "it-matteo-mssq37do"
+        ],
+        "affectedAgents": [
+          "it-matteo-mssq37do"
+        ],
+        "location": "home_matteo",
+        "importance": 2
       }
     ],
     "publicRumors": [
       {
-        "id": "priya's_legacy",
-        "text": "Priya's legacy lives on in the town's garden",
+        "id": "matteo_legacy",
+        "text": "The town will never forget Matteo's legacy",
         "sourceAgentId": null,
         "aboutAgentIds": [
-          "priya"
+          "matteo"
         ],
         "truthStatus": "true"
       }
@@ -68,14 +91,14 @@
       "id": "kiran",
       "name": "Kiran",
       "lang": "hi",
-      "ageDays": 45,
+      "ageDays": 47,
       "stage": "senior",
       "home": "home_kiran",
       "job": null,
       "personality": "curious, playful, asks lots of questions",
-      "memoryDigest": "Saw Matteo cry at Priya's grave",
+      "memoryDigest": "Witnessed the whole town crying together",
       "aspirations": [
-        "Learn mourning customs"
+        "Understand grief rituals"
       ],
       "gossip": [
         {
@@ -194,19 +217,24 @@
           "simDay": 42,
           "type": "daily_update",
           "summary": "Visited Priya's grave with Matteo"
+        },
+        {
+          "simDay": 44,
+          "type": "daily_update",
+          "summary": "Attended Matteo's funeral ceremony"
         }
       ],
       "today": {
-        "simDay": 42,
-        "dateKey": "sim-42",
-        "generatedAt": "2026-08-12T09:11:19.538Z",
+        "simDay": 44,
+        "dateKey": "sim-44",
+        "generatedAt": "2026-08-14T09:06:27.995Z",
         "locked": true,
         "mood": "somber reflection",
-        "daySummary": "Visited Priya's grave with Matteo",
+        "daySummary": "Attended Matteo's funeral ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Matteo seems genuinely sorrowful",
+            "text": "Matteo's family is beside themselves",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -215,51 +243,54 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "paid respects quietly",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "funeral_ground",
-            "activity": "asked about rituals",
+            "location": "town_square",
+            "activity": "listened to eulogies",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "cafe",
-            "activity": "listened to stories",
+            "location": "cathedral",
+            "activity": "sang mourning hymns",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "town_square",
-            "activity": "observed townspeople",
+            "location": "home",
+            "activity": "reflected on loss",
             "status": "planned",
             "eventId": null
           }
         ],
-        "sharedEventIds": []
+        "sharedEventIds": [
+          "matteo_funeral"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "sofia",
       "name": "Sofia",
       "lang": "it",
-      "ageDays": 48,
-      "stage": "senior",
+      "ageDays": 50,
+      "stage": "elder",
       "home": "home_sofia",
       "job": null,
       "personality": "cheerful, loves drawing and animals",
-      "memoryDigest": "Saw Matteo visiting Priya's grave",
+      "memoryDigest": "Saw the whole town come together to mourn",
       "aspirations": [
-        "Create comforting art"
+        "Draw comfort art"
       ],
       "gossip": [
         {
@@ -398,19 +429,24 @@
           "simDay": 42,
           "type": "daily_update",
           "summary": "Reflected on life and legacy"
+        },
+        {
+          "simDay": 44,
+          "type": "daily_update",
+          "summary": "Attended Matteo's funeral today"
         }
       ],
       "today": {
-        "simDay": 42,
-        "dateKey": "sim-42",
-        "generatedAt": "2026-08-12T09:11:19.538Z",
+        "simDay": 44,
+        "dateKey": "sim-44",
+        "generatedAt": "2026-08-14T09:06:27.995Z",
         "locked": true,
-        "mood": "Somber yet hopeful",
-        "daySummary": "Reflected on life and legacy",
+        "mood": "sad but hopeful",
+        "daySummary": "Attended Matteo's funeral today",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Matteo seems troubled lately",
+            "text": "Heard the mayor will give a speech tomorrow",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -419,51 +455,54 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "Drawing flowers",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "garden",
-            "activity": "Petting stray cats",
+            "location": "funeral_ground",
+            "activity": "paying respects",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "cathedral",
-            "activity": "Praying silently",
+            "location": "town_square",
+            "activity": "listening to eulogies",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "park",
-            "activity": "Sketching scenery",
+            "location": "cafe",
+            "activity": "consoling friends",
             "status": "planned",
             "eventId": null
           }
         ],
-        "sharedEventIds": []
+        "sharedEventIds": [
+          "matteo_funeral"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "meera",
       "name": "Meera",
       "lang": "hi",
-      "ageDays": 51,
+      "ageDays": 53,
       "stage": "elder",
       "home": "home_meera",
       "job": "academy",
       "personality": "a bit shy, loves music, studying hard",
-      "memoryDigest": "Saw Matteo cry at the grave",
+      "memoryDigest": "Heard the town's eulogy",
       "aspirations": [
-        "Master funeral song"
+        "Play at funeral"
       ],
       "gossip": [],
       "relationships": {
@@ -591,203 +630,24 @@
           "simDay": 42,
           "type": "daily_update",
           "summary": "Visited Priya's grave with Matteo"
+        },
+        {
+          "simDay": 44,
+          "type": "daily_update",
+          "summary": "Mourned Matteo's passing"
         }
       ],
       "today": {
-        "simDay": 42,
-        "dateKey": "sim-42",
-        "generatedAt": "2026-08-12T09:11:19.538Z",
+        "simDay": 44,
+        "dateKey": "sim-44",
+        "generatedAt": "2026-08-14T09:06:27.995Z",
         "locked": true,
         "mood": "somber mood",
-        "daySummary": "Visited Priya's grave with Matteo",
+        "daySummary": "Mourned Matteo's passing",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Matteo still misses Priya",
-            "aboutAgentIds": [],
-            "confidence": 0.5
-          }
-        ],
-        "schedule": [
-          {
-            "start": "06:00",
-            "end": "09:00",
-            "location": "home",
-            "activity": "practiced piano",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "09:00",
-            "end": "13:00",
-            "location": "funeral_ground",
-            "activity": "paid respects",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "13:00",
-            "end": "18:00",
-            "location": "cathedral",
-            "activity": "lit candles",
-            "status": "planned",
-            "eventId": null
-          },
-          {
-            "start": "18:00",
-            "end": "23:00",
-            "location": "cafe",
-            "activity": "read books",
-            "status": "planned",
-            "eventId": null
-          }
-        ],
-        "sharedEventIds": []
-      }
-    },
-    {
-      "id": "matteo",
-      "name": "Matteo",
-      "lang": "it",
-      "ageDays": 54,
-      "stage": "elder",
-      "home": "home_matteo",
-      "job": "academy",
-      "personality": "energetic, into sports, a little cheeky",
-      "memoryDigest": "Laid flowers on Priya's grave",
-      "aspirations": [
-        "Run a memorial race"
-      ],
-      "gossip": [],
-      "relationships": {
-        "it-vittoria-mrigi63y": {
-          "status": "acquaintance",
-          "closeness": 51,
-          "trust": 51,
-          "tension": 0,
-          "attraction": 0,
-          "lastChangeReason": "met at funeral",
-          "lastChangedSimDay": 10
-        }
-      },
-      "lifeHistory": [
-        {
-          "simDay": 2,
-          "type": "daily_update",
-          "summary": "A quiet and ordinary day."
-        },
-        {
-          "simDay": 4,
-          "type": "daily_update",
-          "summary": "A quiet and ordinary day."
-        },
-        {
-          "simDay": 6,
-          "type": "daily_update",
-          "summary": "attended funeral"
-        },
-        {
-          "simDay": 8,
-          "type": "daily_update",
-          "summary": "attended academy"
-        },
-        {
-          "simDay": 10,
-          "type": "daily_update",
-          "summary": "attended funeral"
-        },
-        {
-          "simDay": 12,
-          "type": "daily_update",
-          "summary": "A quiet and ordinary day."
-        },
-        {
-          "simDay": 14,
-          "type": "daily_update",
-          "summary": "Attended academy classes today"
-        },
-        {
-          "simDay": 16,
-          "type": "daily_update",
-          "summary": "Attended classes at the academy"
-        },
-        {
-          "simDay": 18,
-          "type": "daily_update",
-          "summary": "Spent the day at work and play"
-        },
-        {
-          "simDay": 20,
-          "type": "daily_update",
-          "summary": "Attended Priya's gardening celebration"
-        },
-        {
-          "simDay": 22,
-          "type": "daily_update",
-          "summary": "Went to work and explored the town"
-        },
-        {
-          "simDay": 24,
-          "type": "daily_update",
-          "summary": "Went to academy for work"
-        },
-        {
-          "simDay": 26,
-          "type": "daily_update",
-          "summary": "I spent the day attending academy and planning my sports future"
-        },
-        {
-          "simDay": 28,
-          "type": "daily_update",
-          "summary": "Attended Arjun's funeral and reflected on life"
-        },
-        {
-          "simDay": 30,
-          "type": "daily_update",
-          "summary": "Spent the day balancing work and soccer practice"
-        },
-        {
-          "simDay": 32,
-          "type": "daily_update",
-          "summary": "Spent the day at the academy and explored the town"
-        },
-        {
-          "simDay": 34,
-          "type": "daily_update",
-          "summary": "Attended Chiara's funeral at the funeral ground"
-        },
-        {
-          "simDay": 36,
-          "type": "daily_update",
-          "summary": "Visited the garden and academy"
-        },
-        {
-          "simDay": 38,
-          "type": "daily_update",
-          "summary": "Attended Luca's funeral at the cathedral"
-        },
-        {
-          "simDay": 40,
-          "type": "daily_update",
-          "summary": "Attended Priya's mourning ceremony"
-        },
-        {
-          "simDay": 42,
-          "type": "daily_update",
-          "summary": "Visited Priya's grave today"
-        }
-      ],
-      "today": {
-        "simDay": 42,
-        "dateKey": "sim-42",
-        "generatedAt": "2026-08-12T09:11:19.538Z",
-        "locked": true,
-        "mood": "somber reflection",
-        "daySummary": "Visited Priya's grave today",
-        "privateDevelopments": [],
-        "gossipToShare": [
-          {
-            "text": "Heard the clinic is helping grieving families",
+            "text": "Matteo's family is devastated",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -804,8 +664,8 @@
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "academy",
-            "activity": "taught a class",
+            "location": "cathedral",
+            "activity": "attended ceremony",
             "status": "planned",
             "eventId": null
           },
@@ -821,13 +681,13 @@
             "start": "18:00",
             "end": "23:00",
             "location": "town_square",
-            "activity": "shared stories",
+            "activity": "consoled family",
             "status": "planned",
             "eventId": null
           }
         ],
         "sharedEventIds": [
-          "visit_to_priya's_grave"
+          "matteo_funeral"
         ],
         "reconciled": true
       }
@@ -836,14 +696,14 @@
       "id": "it-tommaso-mridknmr",
       "name": "Tommaso",
       "lang": "it",
-      "ageDays": 38,
+      "ageDays": 40,
       "stage": "full_adult",
       "home": "home_lucia",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw Matteo cry at Priya's gravesite",
+      "memoryDigest": "Saw the whole town cry for Matteo",
       "aspirations": [
-        "Learn basic woodworking"
+        "Learn woodworking basics"
       ],
       "gossip": [],
       "relationships": {
@@ -971,19 +831,24 @@
           "simDay": 42,
           "type": "daily_update",
           "summary": "Visited Priya's grave with Matteo"
+        },
+        {
+          "simDay": 44,
+          "type": "daily_update",
+          "summary": "Attended mourning gathering"
         }
       ],
       "today": {
-        "simDay": 42,
-        "dateKey": "sim-42",
-        "generatedAt": "2026-08-12T09:11:19.538Z",
+        "simDay": 44,
+        "dateKey": "sim-44",
+        "generatedAt": "2026-08-14T09:06:27.995Z",
         "locked": true,
         "mood": "somber reflection",
-        "daySummary": "Visited Priya's grave with Matteo",
+        "daySummary": "Attended mourning gathering",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Heard Matteo and Priya were close",
+            "text": "Matteo's funeral was heartbreaking",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -992,51 +857,54 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "prayed quietly",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "funeral_ground",
-            "activity": "paid respects",
+            "location": "town_square",
+            "activity": "paid respects silently",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "cafe",
-            "activity": "ordered tea",
+            "location": "cathedral",
+            "activity": "prayed for Matteo",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "town_square",
-            "activity": "watched people",
+            "location": "funeral_ground",
+            "activity": "reflected on loss",
             "status": "planned",
             "eventId": null
           }
         ],
-        "sharedEventIds": []
+        "sharedEventIds": [
+          "matteo_funeral"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "hi-neha-mrify7ge",
       "name": "Neha",
       "lang": "hi",
-      "ageDays": 36,
+      "ageDays": 38,
       "stage": "full_adult",
       "home": "home_raj",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Met Matteo at Priya's grave today",
+      "memoryDigest": "Saw the whole town mourn Matteo's passing",
       "aspirations": [
-        "Learn to console others"
+        "Comfort a grieving friend"
       ],
       "gossip": [],
       "relationships": {
@@ -1150,19 +1018,24 @@
           "simDay": 42,
           "type": "daily_update",
           "summary": "Spent the day visiting various town locations"
+        },
+        {
+          "simDay": 44,
+          "type": "daily_update",
+          "summary": "Attended Matteo's funeral in town"
         }
       ],
       "today": {
-        "simDay": 42,
-        "dateKey": "sim-42",
-        "generatedAt": "2026-08-12T09:11:19.538Z",
+        "simDay": 44,
+        "dateKey": "sim-44",
+        "generatedAt": "2026-08-14T09:06:27.995Z",
         "locked": true,
-        "mood": "Somber reflection",
-        "daySummary": "Spent the day visiting various town locations",
+        "mood": "sad and lost",
+        "daySummary": "Attended Matteo's funeral in town",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Matteo seems heartbroken",
+            "text": "Priya's grave was visited again today",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1171,24 +1044,24 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "Made breakfast",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "cathedral",
-            "activity": "Lit a candle",
+            "location": "funeral_ground",
+            "activity": "paying respects",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "funeral_ground",
-            "activity": "Paid respects",
+            "location": "town_square",
+            "activity": "listening quietly",
             "status": "planned",
             "eventId": null
           },
@@ -1196,26 +1069,29 @@
             "start": "18:00",
             "end": "23:00",
             "location": "cafe",
-            "activity": "Listened to stories",
+            "activity": "offering condolences",
             "status": "planned",
             "eventId": null
           }
         ],
-        "sharedEventIds": []
+        "sharedEventIds": [
+          "matteo_funeral"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "it-vittoria-mrigi63y",
       "name": "Vittoria",
       "lang": "it",
-      "ageDays": 32,
+      "ageDays": 34,
       "stage": "full_adult",
       "home": "home_paolo",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw Matteo cry at Priya's grave",
+      "memoryDigest": "Saw the whole town mourn Matteo's passing",
       "aspirations": [
-        "Learn from Matteo"
+        "Understand my emotions"
       ],
       "gossip": [],
       "relationships": {},
@@ -1309,19 +1185,24 @@
           "simDay": 42,
           "type": "daily_update",
           "summary": "Visited Priya's grave with Matteo"
+        },
+        {
+          "simDay": 44,
+          "type": "daily_update",
+          "summary": "Attended Matteo's funeral with the town"
         }
       ],
       "today": {
-        "simDay": 42,
-        "dateKey": "sim-42",
-        "generatedAt": "2026-08-12T09:11:19.538Z",
+        "simDay": 44,
+        "dateKey": "sim-44",
+        "generatedAt": "2026-08-14T09:06:27.995Z",
         "locked": true,
-        "mood": "somber reflection",
-        "daySummary": "Visited Priya's grave with Matteo",
+        "mood": "sad and lost",
+        "daySummary": "Attended Matteo's funeral with the town",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Matteo seems heartbroken",
+            "text": "Matteo's death has shaken everyone",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1330,8 +1211,8 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "Had morning tea",
+            "location": "funeral_ground",
+            "activity": "Attending a town event",
             "status": "planned",
             "eventId": null
           },
@@ -1339,7 +1220,7 @@
             "start": "09:00",
             "end": "13:00",
             "location": "funeral_ground",
-            "activity": "Paid respects silently",
+            "activity": "listened to eulogy",
             "status": "planned",
             "eventId": null
           },
@@ -1347,7 +1228,7 @@
             "start": "13:00",
             "end": "18:00",
             "location": "town_square",
-            "activity": "Watched people mourn",
+            "activity": "shared condolences",
             "status": "planned",
             "eventId": null
           },
@@ -1355,26 +1236,29 @@
             "start": "18:00",
             "end": "23:00",
             "location": "cafe",
-            "activity": "Listened to stories",
+            "activity": "reflected alone",
             "status": "planned",
             "eventId": null
           }
         ],
-        "sharedEventIds": []
+        "sharedEventIds": [
+          "matteo_funeral"
+        ],
+        "reconciled": true
       }
     },
     {
       "id": "hi-raj-mrii3vq5",
       "name": "Raj",
       "lang": "hi",
-      "ageDays": 28,
-      "stage": "young_adult",
+      "ageDays": 30,
+      "stage": "full_adult",
       "home": "home_devika",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Met Matteo at the funeral ground",
+      "memoryDigest": "Saw the town come together to mourn Matteo's passing",
       "aspirations": [
-        "Find a painting mentor"
+        "Find a way to honor Matteo"
       ],
       "gossip": [],
       "relationships": {},
@@ -1458,19 +1342,24 @@
           "simDay": 42,
           "type": "daily_update",
           "summary": "Spent the day exploring and learning"
+        },
+        {
+          "simDay": 44,
+          "type": "daily_update",
+          "summary": "Attended Matteo's funeral at the funeral ground"
         }
       ],
       "today": {
-        "simDay": 42,
-        "dateKey": "sim-42",
-        "generatedAt": "2026-08-12T09:11:19.538Z",
+        "simDay": 44,
+        "dateKey": "sim-44",
+        "generatedAt": "2026-08-14T09:06:27.995Z",
         "locked": true,
-        "mood": "somber yet hopeful",
-        "daySummary": "Spent the day exploring and learning",
+        "mood": "somber reflection",
+        "daySummary": "Attended Matteo's funeral at the funeral ground",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Matteo seems troubled lately",
+            "text": "Matteo's paintings will be missed",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1480,7 +1369,7 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "had morning tea",
+            "activity": "paid respects",
             "status": "planned",
             "eventId": null
           },
@@ -1488,23 +1377,23 @@
             "start": "09:00",
             "end": "13:00",
             "location": "funeral_ground",
-            "activity": "paid respects silently",
+            "activity": "listened to eulogies",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "garden",
-            "activity": "sketched flowers",
+            "location": "town_square",
+            "activity": "shared memories",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "cafe",
-            "activity": "listened to stories",
+            "location": "cathedral",
+            "activity": "lit a candle",
             "status": "planned",
             "eventId": null
           }
@@ -1516,14 +1405,14 @@
       "id": "it-paolo-mrlww8wq",
       "name": "Paolo",
       "lang": "it",
-      "ageDays": 24,
+      "ageDays": 26,
       "stage": "young_adult",
       "home": "home_elena",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Met Matteo at the funeral ground and he seemed nice",
+      "memoryDigest": "Saw the whole town mourn Matteo's passing",
       "aspirations": [
-        "Learn to play violin"
+        "Find a violin teacher"
       ],
       "gossip": [],
       "relationships": {},
@@ -1597,19 +1486,24 @@
           "simDay": 42,
           "type": "daily_update",
           "summary": "Spent the day exploring the town and meeting people"
+        },
+        {
+          "simDay": 44,
+          "type": "daily_update",
+          "summary": "Attended Matteo's funeral ceremony"
         }
       ],
       "today": {
-        "simDay": 42,
-        "dateKey": "sim-42",
-        "generatedAt": "2026-08-12T09:11:19.538Z",
+        "simDay": 44,
+        "dateKey": "sim-44",
+        "generatedAt": "2026-08-14T09:06:27.995Z",
         "locked": true,
-        "mood": "curious and calm",
-        "daySummary": "Spent the day exploring the town and meeting people",
+        "mood": "somber reflection",
+        "daySummary": "Attended Matteo's funeral ceremony",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Matteo visits Priya's grave daily",
+            "text": "Matteo was so young",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1618,32 +1512,32 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "watering plants",
+            "location": "funeral_ground",
+            "activity": "paid respects",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "garden",
-            "activity": "paying respects",
+            "location": "town_square",
+            "activity": "listened to speeches",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "funeral_ground",
-            "activity": "talking to Matteo",
+            "location": "home",
+            "activity": "rested alone",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "cafe",
-            "activity": "drinking coffee",
+            "location": "clinic",
+            "activity": "got a checkup",
             "status": "planned",
             "eventId": null
           }
@@ -1655,14 +1549,14 @@
       "id": "it-marco-mrt3v0tb",
       "name": "Marco",
       "lang": "it",
-      "ageDays": 20,
+      "ageDays": 22,
       "stage": "young_adult",
       "home": "home_marco",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Met Matteo at Priya's grave",
+      "memoryDigest": "Saw the whole town mourn Matteo's loss",
       "aspirations": [
-        "Find life purpose"
+        "Find my place"
       ],
       "gossip": [],
       "relationships": {},
@@ -1726,39 +1620,50 @@
           "simDay": 42,
           "type": "daily_update",
           "summary": "Visited various town spots"
+        },
+        {
+          "simDay": 44,
+          "type": "daily_update",
+          "summary": "Attended Matteo's funeral with the town"
         }
       ],
       "today": {
-        "simDay": 42,
-        "dateKey": "sim-42",
-        "generatedAt": "2026-08-12T09:11:19.538Z",
+        "simDay": 44,
+        "dateKey": "sim-44",
+        "generatedAt": "2026-08-14T09:06:27.995Z",
         "locked": true,
-        "mood": "curious calm",
-        "daySummary": "Visited various town spots",
+        "mood": "sad and lost",
+        "daySummary": "Attended Matteo's funeral with the town",
         "privateDevelopments": [],
-        "gossipToShare": [],
+        "gossipToShare": [
+          {
+            "text": "Matteo's death was so sudden",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
         "schedule": [
           {
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "read old books",
+            "activity": "woke up early",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "cathedral",
-            "activity": "pray silently",
+            "location": "funeral_ground",
+            "activity": "paid respects",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "funeral_ground",
-            "activity": "pay respects",
+            "location": "town_square",
+            "activity": "shared condolences",
             "status": "planned",
             "eventId": null
           },
@@ -1766,7 +1671,7 @@
             "start": "18:00",
             "end": "23:00",
             "location": "cafe",
-            "activity": "listen to tales",
+            "activity": "reflected alone",
             "status": "planned",
             "eventId": null
           }
@@ -1778,14 +1683,14 @@
       "id": "it-giulia-mrvxrx1j",
       "name": "Giulia",
       "lang": "it",
-      "ageDays": 18,
+      "ageDays": 20,
       "stage": "young_adult",
       "home": "home_giulia",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Met Matteo at the funeral ground",
+      "memoryDigest": "Saw the whole town mourn Matteo's passing",
       "aspirations": [
-        "Learn to tend flowers"
+        "Learn gardening skills"
       ],
       "gossip": [],
       "relationships": {},
@@ -1844,19 +1749,24 @@
           "simDay": 42,
           "type": "daily_update",
           "summary": "Spent the day exploring the village"
+        },
+        {
+          "simDay": 44,
+          "type": "daily_update",
+          "summary": "Attended a funeral at the funeral ground"
         }
       ],
       "today": {
-        "simDay": 42,
-        "dateKey": "sim-42",
-        "generatedAt": "2026-08-12T09:11:19.538Z",
+        "simDay": 44,
+        "dateKey": "sim-44",
+        "generatedAt": "2026-08-14T09:06:27.995Z",
         "locked": true,
-        "mood": "Curious and calm",
-        "daySummary": "Spent the day exploring the village",
+        "mood": "sad and lost",
+        "daySummary": "Attended a funeral at the funeral ground",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Matteo seems very sad",
+            "text": "Matteo's death was so sudden",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1866,31 +1776,31 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "Drank morning tea",
+            "activity": "woke up early",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "garden",
-            "activity": "Planted new seeds",
+            "location": "funeral_ground",
+            "activity": "paid respects",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "funeral_ground",
-            "activity": "Paid respects silently",
+            "location": "town_square",
+            "activity": "listened to speeches",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "cafe",
-            "activity": "Ordered floral tea",
+            "location": "garden",
+            "activity": "watered plants",
             "status": "planned",
             "eventId": null
           }
@@ -1902,14 +1812,14 @@
       "id": "hi-arjun-ms34zkc2",
       "name": "Arjun",
       "lang": "hi",
-      "ageDays": 14,
-      "stage": "teen",
+      "ageDays": 16,
+      "stage": "young_adult",
       "home": "home_arjun",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Met Matteo at the funeral ground",
+      "memoryDigest": "Saw the whole town mourn Matteo's passing",
       "aspirations": [
-        "Learn from Matteo's strength"
+        "Find my own strength now"
       ],
       "gossip": [],
       "relationships": {},
@@ -1958,19 +1868,24 @@
           "simDay": 42,
           "type": "daily_update",
           "summary": "Visited Priya's grave with Matteo"
+        },
+        {
+          "simDay": 44,
+          "type": "daily_update",
+          "summary": "Attended Matteo's funeral and felt lost"
         }
       ],
       "today": {
-        "simDay": 42,
-        "dateKey": "sim-42",
-        "generatedAt": "2026-08-12T09:11:19.538Z",
+        "simDay": 44,
+        "dateKey": "sim-44",
+        "generatedAt": "2026-08-14T09:06:27.995Z",
         "locked": true,
-        "mood": "contemplative mood",
-        "daySummary": "Visited Priya's grave with Matteo",
+        "mood": "sad and unsure",
+        "daySummary": "Attended Matteo's funeral and felt lost",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Matteo seems troubled",
+            "text": "People say Matteo's death was sudden",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -1979,32 +1894,32 @@
           {
             "start": "06:00",
             "end": "09:00",
-            "location": "home",
-            "activity": "Had morning coffee",
+            "location": "funeral_ground",
+            "activity": "paid respects",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "funeral_ground",
-            "activity": "Paid respects silently",
+            "location": "town_square",
+            "activity": "listened to eulogies",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "cafe",
-            "activity": "Listened to Matteo",
+            "location": "home",
+            "activity": "reflected alone",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "town_square",
-            "activity": "Watched townspeople pass",
+            "location": "cathedral",
+            "activity": "prayed silently",
             "status": "planned",
             "eventId": null
           }
@@ -2016,14 +1931,14 @@
       "id": "it-davide-ms8t83nq",
       "name": "Davide",
       "lang": "it",
-      "ageDays": 10,
+      "ageDays": 12,
       "stage": "teen",
       "home": "home_davide",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw Matteo crying at Priya's grave",
+      "memoryDigest": "Watched the town come together to mourn Matteo",
       "aspirations": [
-        "Find my purpose"
+        "Find my role"
       ],
       "gossip": [],
       "relationships": {},
@@ -2062,39 +1977,50 @@
           "simDay": 42,
           "type": "daily_update",
           "summary": "Wandered around town, lost in thought"
+        },
+        {
+          "simDay": 44,
+          "type": "daily_update",
+          "summary": "Attended Matteo's funeral with the town"
         }
       ],
       "today": {
-        "simDay": 42,
-        "dateKey": "sim-42",
-        "generatedAt": "2026-08-12T09:11:19.538Z",
+        "simDay": 44,
+        "dateKey": "sim-44",
+        "generatedAt": "2026-08-14T09:06:27.995Z",
         "locked": true,
         "mood": "somber reflection",
-        "daySummary": "Wandered around town, lost in thought",
+        "daySummary": "Attended Matteo's funeral with the town",
         "privateDevelopments": [],
-        "gossipToShare": [],
+        "gossipToShare": [
+          {
+            "text": "Matteo's death was a shock",
+            "aboutAgentIds": [],
+            "confidence": 0.5
+          }
+        ],
         "schedule": [
           {
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "ate breakfast",
+            "activity": "paid respects",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "town_square",
-            "activity": "watched townspeople",
+            "location": "funeral_ground",
+            "activity": "listened to eulogies",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "funeral_ground",
-            "activity": "paid respects",
+            "location": "town_square",
+            "activity": "shared condolences",
             "status": "planned",
             "eventId": null
           },
@@ -2102,7 +2028,7 @@
             "start": "18:00",
             "end": "23:00",
             "location": "cafe",
-            "activity": "read books",
+            "activity": "sipped coffee",
             "status": "planned",
             "eventId": null
           }
@@ -2114,14 +2040,14 @@
       "id": "it-chiara-msd54ajb",
       "name": "Chiara",
       "lang": "it",
-      "ageDays": 8,
+      "ageDays": 10,
       "stage": "teen",
       "home": "home_chiara",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw Matteo cry for the first time",
+      "memoryDigest": "Saw the whole town cry together",
       "aspirations": [
-        "Discover my passions"
+        "Find my place in town"
       ],
       "gossip": [],
       "relationships": {},
@@ -2155,19 +2081,24 @@
           "simDay": 42,
           "type": "daily_update",
           "summary": "Visited Priya's grave with Matteo"
+        },
+        {
+          "simDay": 44,
+          "type": "daily_update",
+          "summary": "Attended Matteo's funeral in town"
         }
       ],
       "today": {
-        "simDay": 42,
-        "dateKey": "sim-42",
-        "generatedAt": "2026-08-12T09:11:19.538Z",
+        "simDay": 44,
+        "dateKey": "sim-44",
+        "generatedAt": "2026-08-14T09:06:27.995Z",
         "locked": true,
-        "mood": "somber reflection",
-        "daySummary": "Visited Priya's grave with Matteo",
+        "mood": "Somber reflection",
+        "daySummary": "Attended Matteo's funeral in town",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Matteo seems really sad",
+            "text": "Matteo's death has shaken everyone",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -2177,23 +2108,23 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "had quiet breakfast",
+            "activity": "Packed black clothes",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "funeral_ground",
-            "activity": "paid respects silently",
+            "location": "cathedral",
+            "activity": "Paid respects silently",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "cafe",
-            "activity": "listened to stories",
+            "location": "funeral_ground",
+            "activity": "Listened to eulogies",
             "status": "planned",
             "eventId": null
           },
@@ -2201,7 +2132,7 @@
             "start": "18:00",
             "end": "23:00",
             "location": "town_square",
-            "activity": "watched people mourn",
+            "activity": "Comforted a friend",
             "status": "planned",
             "eventId": null
           }
@@ -2213,14 +2144,14 @@
       "id": "it-elena-msipq3bt",
       "name": "Elena",
       "lang": "it",
-      "ageDays": 4,
+      "ageDays": 6,
       "stage": "kid",
       "home": "home_luca",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw Matteo visiting Priya's grave",
+      "memoryDigest": "Saw the whole town crying together",
       "aspirations": [
-        "Discover town legends"
+        "Learn about Matteo's life"
       ],
       "gossip": [],
       "relationships": {},
@@ -2244,19 +2175,24 @@
           "simDay": 42,
           "type": "daily_update",
           "summary": "Explored the town with friends"
+        },
+        {
+          "simDay": 44,
+          "type": "daily_update",
+          "summary": "Attended Matteo's funeral with the town"
         }
       ],
       "today": {
-        "simDay": 42,
-        "dateKey": "sim-42",
-        "generatedAt": "2026-08-12T09:11:19.538Z",
+        "simDay": 44,
+        "dateKey": "sim-44",
+        "generatedAt": "2026-08-14T09:06:27.995Z",
         "locked": true,
-        "mood": "curious and calm",
-        "daySummary": "Explored the town with friends",
+        "mood": "curious sadness",
+        "daySummary": "Attended Matteo's funeral with the town",
         "privateDevelopments": [],
         "gossipToShare": [
           {
-            "text": "Matteo seems very sad",
+            "text": "Matteo was very kind to everyone",
             "aboutAgentIds": [],
             "confidence": 0.5
           }
@@ -2266,31 +2202,31 @@
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "played with toys",
+            "activity": "got dressed slowly",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "09:00",
             "end": "13:00",
-            "location": "garden",
-            "activity": "picked flowers",
+            "location": "funeral_ground",
+            "activity": "paid respects quietly",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "13:00",
             "end": "18:00",
-            "location": "funeral_ground",
-            "activity": "watched Matteo",
+            "location": "town_square",
+            "activity": "listened to stories",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "town_square",
-            "activity": "listened stories",
+            "location": "cafe",
+            "activity": "drank warm tea",
             "status": "planned",
             "eventId": null
           }
@@ -2302,14 +2238,14 @@
       "id": "hi-ananya-msn0usq8",
       "name": "Ananya",
       "lang": "hi",
-      "ageDays": 2,
+      "ageDays": 4,
       "stage": "kid",
       "home": "home_priya",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
-      "memoryDigest": "Saw Matteo cry at Priya's grave",
+      "memoryDigest": "Saw the whole town crying for Matteo",
       "aspirations": [
-        "Learn about family"
+        "Understand mourning rituals"
       ],
       "gossip": [],
       "relationships": {},
@@ -2328,29 +2264,28 @@
           "simDay": 42,
           "type": "daily_update",
           "summary": "Explored the town with Matteo"
+        },
+        {
+          "simDay": 44,
+          "type": "daily_update",
+          "summary": "Went to the funeral ground with family"
         }
       ],
       "today": {
-        "simDay": 42,
-        "dateKey": "sim-42",
-        "generatedAt": "2026-08-12T09:11:19.538Z",
+        "simDay": 44,
+        "dateKey": "sim-44",
+        "generatedAt": "2026-08-14T09:06:27.995Z",
         "locked": true,
-        "mood": "curious wonder",
-        "daySummary": "Explored the town with Matteo",
+        "mood": "sad and curious",
+        "daySummary": "Went to the funeral ground with family",
         "privateDevelopments": [],
-        "gossipToShare": [
-          {
-            "text": "Matteo seems very sad",
-            "aboutAgentIds": [],
-            "confidence": 0.5
-          }
-        ],
+        "gossipToShare": [],
         "schedule": [
           {
             "start": "06:00",
             "end": "09:00",
             "location": "home",
-            "activity": "played with toys",
+            "activity": "ate breakfast",
             "status": "planned",
             "eventId": null
           },
@@ -2358,7 +2293,7 @@
             "start": "09:00",
             "end": "13:00",
             "location": "funeral_ground",
-            "activity": "watched Matteo cry",
+            "activity": "paid respects",
             "status": "planned",
             "eventId": null
           },
@@ -2366,23 +2301,89 @@
             "start": "13:00",
             "end": "18:00",
             "location": "town_square",
-            "activity": "met new people",
+            "activity": "listened to speeches",
             "status": "planned",
             "eventId": null
           },
           {
             "start": "18:00",
             "end": "23:00",
-            "location": "cafe",
-            "activity": "drank hot chocolate",
+            "location": "home",
+            "activity": "reflected alone",
             "status": "planned",
             "eventId": null
           }
         ],
         "sharedEventIds": []
       }
+    },
+    {
+      "id": "it-matteo-mssq37do",
+      "name": "Matteo",
+      "lang": "it",
+      "ageDays": 0,
+      "stage": "kid",
+      "home": "home_matteo",
+      "job": null,
+      "personality": "a blank slate — still discovering who they are",
+      "memoryDigest": "Born into the town after Matteo's death.",
+      "aspirations": [],
+      "gossip": [],
+      "relationships": {},
+      "lifeHistory": [
+        {
+          "simDay": 44,
+          "type": "birth",
+          "summary": "Born into home_matteo."
+        },
+        {
+          "simDay": 44,
+          "type": "daily_update",
+          "summary": "A newborn's first quiet day."
+        }
+      ],
+      "today": {
+        "simDay": 44,
+        "dateKey": "sim-44",
+        "generatedAt": "2026-08-14T09:06:27.995Z",
+        "locked": true,
+        "mood": "newborn",
+        "daySummary": "A newborn's first quiet day.",
+        "privateDevelopments": [],
+        "gossipToShare": [],
+        "schedule": [
+          {
+            "start": "00:00",
+            "end": "23:59",
+            "location": "home",
+            "activity": "Attending a town event",
+            "status": "planned",
+            "eventId": null
+          }
+        ],
+        "sharedEventIds": [
+          "new_matteo_birth"
+        ],
+        "reconciled": true
+      }
     }
   ],
-  "lastDeaths": [],
-  "lastBirths": []
+  "lastDeaths": [
+    {
+      "id": "matteo",
+      "name": "Matteo",
+      "lang": "it",
+      "ageDays": 56,
+      "simDay": 44
+    }
+  ],
+  "lastBirths": [
+    {
+      "id": "it-matteo-mssq37do",
+      "name": "Matteo",
+      "lang": "it",
+      "home": "home_matteo",
+      "simDay": 44
+    }
+  ]
 }
