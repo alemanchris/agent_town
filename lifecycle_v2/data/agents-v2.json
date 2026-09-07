@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "simDay": 62,
-  "lastWake": "2026-09-04T12:32:13.770Z",
+  "simDay": 64,
+  "lastWake": "2026-09-07T14:00:51.309Z",
   "namePool": {
     "it": [
       "Sofia",
@@ -31,8 +31,8 @@
     ]
   },
   "today": {
-    "simDay": 62,
-    "generatedAt": "2026-09-04T12:32:13.770Z",
+    "simDay": 64,
+    "generatedAt": "2026-09-07T14:00:51.309Z",
     "locked": true,
     "townMood": "an ordinary day",
     "townSummary": "The town completed another ordinary wake cycle.",
@@ -44,7 +44,7 @@
       "id": "it-vittoria-mrigi63y",
       "name": "Vittoria",
       "lang": "it",
-      "ageDays": 52,
+      "ageDays": 54,
       "stage": "elder",
       "home": "home_paolo",
       "job": null,
@@ -195,12 +195,17 @@
           "simDay": 62,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 64,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 62,
-        "dateKey": "sim-62",
-        "generatedAt": "2026-09-04T12:32:13.770Z",
+        "simDay": 64,
+        "dateKey": "sim-64",
+        "generatedAt": "2026-09-07T14:00:51.309Z",
         "locked": true,
         "mood": "neutral",
         "daySummary": "A quiet and ordinary day.",
@@ -263,8 +268,8 @@
       "id": "hi-raj-mrii3vq5",
       "name": "Raj",
       "lang": "hi",
-      "ageDays": 48,
-      "stage": "senior",
+      "ageDays": 50,
+      "stage": "elder",
       "home": "home_devika",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
@@ -404,12 +409,17 @@
           "simDay": 62,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 64,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 62,
-        "dateKey": "sim-62",
-        "generatedAt": "2026-09-04T12:32:13.770Z",
+        "simDay": 64,
+        "dateKey": "sim-64",
+        "generatedAt": "2026-09-07T14:00:51.309Z",
         "locked": true,
         "mood": "neutral",
         "daySummary": "A quiet and ordinary day.",
@@ -472,7 +482,7 @@
       "id": "it-paolo-mrlww8wq",
       "name": "Paolo",
       "lang": "it",
-      "ageDays": 44,
+      "ageDays": 46,
       "stage": "senior",
       "home": "home_elena",
       "job": null,
@@ -603,12 +613,17 @@
           "simDay": 62,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 64,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 62,
-        "dateKey": "sim-62",
-        "generatedAt": "2026-09-04T12:32:13.770Z",
+        "simDay": 64,
+        "dateKey": "sim-64",
+        "generatedAt": "2026-09-07T14:00:51.309Z",
         "locked": true,
         "mood": "neutral",
         "daySummary": "A quiet and ordinary day.",
@@ -671,7 +686,7 @@
       "id": "it-marco-mrt3v0tb",
       "name": "Marco",
       "lang": "it",
-      "ageDays": 40,
+      "ageDays": 42,
       "stage": "full_adult",
       "home": "home_marco",
       "job": null,
@@ -792,12 +807,17 @@
           "simDay": 62,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 64,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 62,
-        "dateKey": "sim-62",
-        "generatedAt": "2026-09-04T12:32:13.770Z",
+        "simDay": 64,
+        "dateKey": "sim-64",
+        "generatedAt": "2026-09-07T14:00:51.309Z",
         "locked": true,
         "mood": "neutral",
         "daySummary": "A quiet and ordinary day.",
@@ -860,7 +880,7 @@
       "id": "it-giulia-mrvxrx1j",
       "name": "Giulia",
       "lang": "it",
-      "ageDays": 38,
+      "ageDays": 40,
       "stage": "full_adult",
       "home": "home_giulia",
       "job": null,
@@ -976,12 +996,17 @@
           "simDay": 62,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 64,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 62,
-        "dateKey": "sim-62",
-        "generatedAt": "2026-09-04T12:32:13.770Z",
+        "simDay": 64,
+        "dateKey": "sim-64",
+        "generatedAt": "2026-09-07T14:00:51.309Z",
         "locked": true,
         "mood": "neutral",
         "daySummary": "A quiet and ordinary day.",
@@ -1044,7 +1069,7 @@
       "id": "hi-arjun-ms34zkc2",
       "name": "Arjun",
       "lang": "hi",
-      "ageDays": 34,
+      "ageDays": 36,
       "stage": "full_adult",
       "home": "home_arjun",
       "job": null,
@@ -1150,12 +1175,17 @@
           "simDay": 62,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 64,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 62,
-        "dateKey": "sim-62",
-        "generatedAt": "2026-09-04T12:32:13.770Z",
+        "simDay": 64,
+        "dateKey": "sim-64",
+        "generatedAt": "2026-09-07T14:00:51.309Z",
         "locked": true,
         "mood": "neutral",
         "daySummary": "A quiet and ordinary day.",
@@ -1218,7 +1248,7 @@
       "id": "it-davide-ms8t83nq",
       "name": "Davide",
       "lang": "it",
-      "ageDays": 30,
+      "ageDays": 32,
       "stage": "full_adult",
       "home": "home_davide",
       "job": null,
@@ -1314,12 +1344,17 @@
           "simDay": 62,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 64,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 62,
-        "dateKey": "sim-62",
-        "generatedAt": "2026-09-04T12:32:13.770Z",
+        "simDay": 64,
+        "dateKey": "sim-64",
+        "generatedAt": "2026-09-07T14:00:51.309Z",
         "locked": true,
         "mood": "neutral",
         "daySummary": "A quiet and ordinary day.",
@@ -1382,8 +1417,8 @@
       "id": "it-chiara-msd54ajb",
       "name": "Chiara",
       "lang": "it",
-      "ageDays": 28,
-      "stage": "young_adult",
+      "ageDays": 30,
+      "stage": "full_adult",
       "home": "home_chiara",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
@@ -1473,12 +1508,17 @@
           "simDay": 62,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 64,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 62,
-        "dateKey": "sim-62",
-        "generatedAt": "2026-09-04T12:32:13.770Z",
+        "simDay": 64,
+        "dateKey": "sim-64",
+        "generatedAt": "2026-09-07T14:00:51.309Z",
         "locked": true,
         "mood": "neutral",
         "daySummary": "A quiet and ordinary day.",
@@ -1541,7 +1581,7 @@
       "id": "it-elena-msipq3bt",
       "name": "Elena",
       "lang": "it",
-      "ageDays": 24,
+      "ageDays": 26,
       "stage": "young_adult",
       "home": "home_luca",
       "job": null,
@@ -1622,12 +1662,17 @@
           "simDay": 62,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 64,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 62,
-        "dateKey": "sim-62",
-        "generatedAt": "2026-09-04T12:32:13.770Z",
+        "simDay": 64,
+        "dateKey": "sim-64",
+        "generatedAt": "2026-09-07T14:00:51.309Z",
         "locked": true,
         "mood": "neutral",
         "daySummary": "A quiet and ordinary day.",
@@ -1690,7 +1735,7 @@
       "id": "hi-ananya-msn0usq8",
       "name": "Ananya",
       "lang": "hi",
-      "ageDays": 22,
+      "ageDays": 24,
       "stage": "young_adult",
       "home": "home_priya",
       "job": null,
@@ -1766,12 +1811,17 @@
           "simDay": 62,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 64,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 62,
-        "dateKey": "sim-62",
-        "generatedAt": "2026-09-04T12:32:13.770Z",
+        "simDay": 64,
+        "dateKey": "sim-64",
+        "generatedAt": "2026-09-07T14:00:51.309Z",
         "locked": true,
         "mood": "neutral",
         "daySummary": "A quiet and ordinary day.",
@@ -1834,7 +1884,7 @@
       "id": "it-matteo-mssq37do",
       "name": "Matteo",
       "lang": "it",
-      "ageDays": 18,
+      "ageDays": 20,
       "stage": "young_adult",
       "home": "home_matteo",
       "job": null,
@@ -1898,12 +1948,17 @@
           "simDay": 62,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 64,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 62,
-        "dateKey": "sim-62",
-        "generatedAt": "2026-09-04T12:32:13.770Z",
+        "simDay": 64,
+        "dateKey": "sim-64",
+        "generatedAt": "2026-09-07T14:00:51.309Z",
         "locked": true,
         "mood": "neutral",
         "daySummary": "A quiet and ordinary day.",
@@ -1966,8 +2021,8 @@
       "id": "hi-priya-mszu8dj4",
       "name": "Priya",
       "lang": "hi",
-      "ageDays": 14,
-      "stage": "teen",
+      "ageDays": 16,
+      "stage": "young_adult",
       "home": "home_meera",
       "job": null,
       "personality": "a blank slate — still discovering who they are",
@@ -2020,12 +2075,17 @@
           "simDay": 62,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 64,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 62,
-        "dateKey": "sim-62",
-        "generatedAt": "2026-09-04T12:32:13.770Z",
+        "simDay": 64,
+        "dateKey": "sim-64",
+        "generatedAt": "2026-09-07T14:00:51.309Z",
         "locked": true,
         "mood": "neutral",
         "daySummary": "A quiet and ordinary day.",
@@ -2043,8 +2103,8 @@
           {
             "start": "08:00",
             "end": "12:00",
-            "location": "academy",
-            "activity": "Attending classes",
+            "location": "town_square",
+            "activity": "Spending time in town",
             "status": "planned",
             "eventId": null
           },
@@ -2059,8 +2119,8 @@
           {
             "start": "13:00",
             "end": "17:00",
-            "location": "academy",
-            "activity": "Attending classes",
+            "location": "town_square",
+            "activity": "Spending time in town",
             "status": "planned",
             "eventId": null
           },
@@ -2088,7 +2148,7 @@
       "id": "it-rosa-mt2p875l",
       "name": "Rosa",
       "lang": "it",
-      "ageDays": 12,
+      "ageDays": 14,
       "stage": "teen",
       "home": "home_sofia",
       "job": null,
@@ -2137,12 +2197,17 @@
           "simDay": 62,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 64,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 62,
-        "dateKey": "sim-62",
-        "generatedAt": "2026-09-04T12:32:13.770Z",
+        "simDay": 64,
+        "dateKey": "sim-64",
+        "generatedAt": "2026-09-07T14:00:51.309Z",
         "locked": true,
         "mood": "neutral",
         "daySummary": "A quiet and ordinary day.",
@@ -2205,7 +2270,7 @@
       "id": "hi-kiran-mt9ui9qt",
       "name": "Kiran",
       "lang": "hi",
-      "ageDays": 8,
+      "ageDays": 10,
       "stage": "teen",
       "home": "home_kiran",
       "job": null,
@@ -2244,12 +2309,17 @@
           "simDay": 62,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 64,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 62,
-        "dateKey": "sim-62",
-        "generatedAt": "2026-09-04T12:32:13.770Z",
+        "simDay": 64,
+        "dateKey": "sim-64",
+        "generatedAt": "2026-09-07T14:00:51.309Z",
         "locked": true,
         "mood": "neutral",
         "daySummary": "A quiet and ordinary day.",
@@ -2312,7 +2382,7 @@
       "id": "it-luca-mtk2wshs",
       "name": "Luca",
       "lang": "it",
-      "ageDays": 2,
+      "ageDays": 4,
       "stage": "kid",
       "home": "home_lucia",
       "job": null,
@@ -2336,12 +2406,17 @@
           "simDay": 62,
           "type": "daily_update",
           "summary": "A quiet and ordinary day."
+        },
+        {
+          "simDay": 64,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 62,
-        "dateKey": "sim-62",
-        "generatedAt": "2026-09-04T12:32:13.770Z",
+        "simDay": 64,
+        "dateKey": "sim-64",
+        "generatedAt": "2026-09-07T14:00:51.309Z",
         "locked": true,
         "mood": "neutral",
         "daySummary": "A quiet and ordinary day.",
@@ -2404,7 +2479,7 @@
       "id": "hi-meera-mtmxopfu",
       "name": "Meera",
       "lang": "hi",
-      "ageDays": 0,
+      "ageDays": 2,
       "stage": "kid",
       "home": "home_raj",
       "job": null,
@@ -2423,23 +2498,68 @@
           "simDay": 62,
           "type": "daily_update",
           "summary": "A newborn's first quiet day."
+        },
+        {
+          "simDay": 64,
+          "type": "daily_update",
+          "summary": "A quiet and ordinary day."
         }
       ],
       "today": {
-        "simDay": 62,
-        "dateKey": "sim-62",
-        "generatedAt": "2026-09-04T12:32:13.770Z",
+        "simDay": 64,
+        "dateKey": "sim-64",
+        "generatedAt": "2026-09-07T14:00:51.309Z",
         "locked": true,
-        "mood": "newborn",
-        "daySummary": "A newborn's first quiet day.",
+        "mood": "neutral",
+        "daySummary": "A quiet and ordinary day.",
         "privateDevelopments": [],
         "gossipToShare": [],
         "schedule": [
           {
-            "start": "00:00",
-            "end": "23:59",
+            "start": "06:30",
+            "end": "08:00",
             "location": "home",
-            "activity": "Being cared for at home",
+            "activity": "Morning routine and breakfast",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "08:00",
+            "end": "12:00",
+            "location": "academy",
+            "activity": "Attending classes",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "12:00",
+            "end": "13:00",
+            "location": "market",
+            "activity": "Lunch",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "location": "academy",
+            "activity": "Attending classes",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "location": "town_square",
+            "activity": "Free time",
+            "status": "planned",
+            "eventId": null
+          },
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "location": "home",
+            "activity": "Dinner and evening at home",
             "status": "planned",
             "eventId": null
           }
@@ -2448,22 +2568,6 @@
       }
     }
   ],
-  "lastDeaths": [
-    {
-      "id": "hi-neha-mrify7ge",
-      "name": "Neha",
-      "lang": "hi",
-      "ageDays": 56,
-      "simDay": 62
-    }
-  ],
-  "lastBirths": [
-    {
-      "id": "hi-meera-mtmxopfu",
-      "name": "Meera",
-      "lang": "hi",
-      "home": "home_raj",
-      "simDay": 62
-    }
-  ]
+  "lastDeaths": [],
+  "lastBirths": []
 }
